@@ -1,0 +1,16 @@
+#+TITLE: kenchu dotfiles
+* Dotfiles
+This is my dotfiles.
+
+* Requirements
+** Stow
+To install [[https://www.gnu.org/software/stow/][stow]].
+#+begin_src zsh
+brew install stow
+#+end_src
+
+* Getting Start 
+For example, if you want to symlink the ssh config.
+#+begin_src zsh
+stow -S ssh
+#+end_src
