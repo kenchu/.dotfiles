@@ -1,0 +1,362 @@
+#+title:     Doom Emacs Configuration
+#+author:    Ken Chu
+#+email:     chuwingyu@gmail.com
+
+* Main Config
+Place your private configuration here! Remember, you do not need to run 'doom sync' after modifying this file!
+
+** lexical-binding
+Make this file run (slightly) faster with lexical binding (see this blog post for more info).
+#+begin_src elisp
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+end_src
+
+** Personal Information
+Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets.
+#+begin_src elisp
+(setq user-full-name "Ken Chu"
+      user-mail-address "chuwingyu@gmail.com")
+#+end_src
+
+** Better Defaults
+*** Misc Config
+#+begin_src elisp
+;; This determines the style of line numbers in effect. If set to `nil', line
+;; numbers are disabled. For relative line numbers, set this to `relative'.
+(setq display-line-numbers-type 'relative)
+
+;; Here are some additional functions/macros that could help you configure Doom:
+;;
+;; - `load!' for loading external *.el files relative to this one
+;; - `use-package!' for configuring packages
+;; - `after!' for running code after a package has loaded
+;; - `add-load-path!' for adding directories to the `load-path', relative to
+;;   this file. Emacs searches the `load-path' when you load packages with
+;;   `require' or `use-package'.
+;; - `map!' for binding new keys
+;;
+;; To get information about any of these functions/macros, move the cursor over
+;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
+;; This will open documentation for it, including demos of how they are used.
+;;
+;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
+;; they are implemented.
+#+end_src
+** Org Mode
+If you use `org' and don't want your org files in the default location below,
+change `org-directory'. It must be set before org loads!
+#+begin_src elisp
+(setq org-directory "~/org/")
+#+end_src
+
+*** org-roam
+#+begin_src elisp
+(setq org-roam-directory "~/org/roam")
+#+end_src
+
+** UI
+*** Font and Theme
+Doom exposes five (optional) variables for controlling fonts in Doom. Here
+are the three important ones:
++ `doom-font'
++ `doom-variable-pitch-font'
++ `doom-big-font' -- used for `doom-big-font-mode'; use this for
+  presentations or streaming.
+
+They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
+font string. You generally only need these two:
+#+begin_src elisp :tangle no
+(setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "sans" :size 13))
+
+(setq doom-font (font-spec :family "Hasklug Nerd Font" :size 12))
+
+(setq doom-font (font-spec :family "Inconsolata Nerd Font" :size 14)
+      doom-variable-pitch-font (font-spec :family "Inconsolata Nerd Font" :size 14))
+#+end_src
+#+begin_src elisp
+(setq doom-font (font-spec :family "Iosevka term ss04" :size 13)
+      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font Mono" :size 13))
+
+;; There are two ways to load a theme. Both assume the theme is installed and
+;; available. You can either set `doom-theme' or manually load a theme with the
+;; `load-theme' function. This is the default:
+(setq doom-theme 'doom-dracula)
+#+end_src
+
+*** Modeline
+Enable time in the mode-line.
+#+begin_src elisp
+(display-time-mode 1)
+#+end_src
+On laptops it's nice to know how much power you have.
+#+begin_src elisp
+(unless (equal "Battery status not available" (battery))
+  (display-battery-mode 1))
+#+end_src
+
+*** Fullscreen
+#+begin_src elisp
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+#+end_src
+
+*** rainbow-mode
+#+begin_src elisp
+(add-hook! 'rainbow-mode-hook
+  (hl-line-mode (if rainbow-mode -1 +1)))
+#+end_src
+
+** Workflow
+*** Windows
+I find it rather handy to be asked which buffer I want to see after splitting
+the window. Let's make that happen.
+First, we'll enter the new window
+#+begin_src elisp
+(setq evil-vsplit-window-right t
+      evil-split-window-below t)
+#+end_src
+Then, we'll pull up ~ivy~
+#+begin_src elisp
+(defadvice! prompt-for-buffer (&rest _)
+  :after '(evil-window-split evil-window-vsplit)
+  ;; (+ivy/switch-buffer))
+  (+ivy/projectile-find-file))
+#+end_src
+Oh, and previews are nice
+#+begin_src elisp
+(setq +ivy-buffer-preview t)
+#+end_src
+
+*** which-key
+Set the time delay (in seconds) for the which-key popup to appear. A value of
+zero might cause issues so a non-zero value is recommended.
+#+begin_src elisp
+(setq which-key-idle-delay 0.5)
+#+end_src
+Refreshes quickly after which-key is triggered.
+#+begin_src elisp
+(setq which-key-idle-secondary-delay 0.05)
+#+end_src
+
+Replace which-key prefix `evil-*` and `evilem-motion-` by symbols
+#+begin_src elisp
+(setq which-key-allow-multiple-replacements t)
+(after! which-key
+  (pushnew!
+   which-key-replacement-alist
+   '(("" . "\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil . "◂\\1"))
+   '(("\\`g s" . "\\`evilem--?motion-\\(.*\\)") . (nil . "◃\\1"))
+   ))
+#+end_src
+
+*** Magit
+#+begin_src elisp
+(after! magit
+  (magit-delta-mode +1))
+#+end_src
+
+** Completion
+*** company-mode
+#+begin_src elisp
+(setq company-show-numbers t)
+#+end_src
+
+*** company-tabnine
+Run ~M-x company-tabnine-install-binary~ to install the TabNine binary for your system.
+#+begin_src elisp
+(use-package company-tabnine
+  :config (add-to-list 'company-backends #'company-tabnine))
+#+end_src
+
+*** counsel-tramp
+#+begin_src elisp
+(use-package counsel-tramp
+  :commands (counsel-tramp))
+#+end_src
+
+** Hydra
+*** hydra-yasnippet
+#+begin_src elisp
+(defhydra hydra-yasnippet (:color blue :hint nil)
+  "
+              ^YASnippets^
+--------------------------------------------
+  Modes:    Load/Visit:    Actions:
+
+ _g_lobal  _d_irectory    _i_nsert
+ _m_inor   _f_ile         _t_ryout
+ _e_xtra   _l_ist         _n_ew
+         _a_ll
+"
+  ("d" yas-load-directory)
+  ("e" yas-activate-extra-mode)
+  ("i" yas-insert-snippet)
+  ("f" yas-visit-snippet-file :color blue)
+  ("n" yas-new-snippet)
+  ("t" yas-tryout-snippet)
+  ("l" yas-describe-tables)
+  ("g" yas/global-mode)
+  ("m" yas/minor-mode)
+  ("a" yas-reload-all))
+#+end_src
+
+*** hydra-smartparens
+#+begin_src elisp
+(defhydra hydra-smartparens (:hint nil)
+  "
+ Moving^^^^                       Slurp & Barf^^   Wrapping^^            Sexp juggling^^^^               Destructive
+------------------------------------------------------------------------------------------------------------------------
+ [_a_] beginning  [_n_] down      [_h_] bw slurp   [_R_]   rewrap        [_S_] split   [_t_] transpose   [_c_] change inner  [_w_] copy
+ [_e_] end        [_N_] bw down   [_H_] bw barf    [_u_]   unwrap        [_s_] splice  [_A_] absorb      [_C_] change outer
+ [_f_] forward    [_p_] up        [_l_] slurp      [_U_]   bw unwrap     [_r_] raise   [_E_] emit        [_k_] kill          [_g_] quit
+ [_b_] backward   [_P_] bw up     [_L_] barf       [_(__{__[_] wrap (){}[]   [_j_] join    [_o_] convolute   [_K_] bw kill       [_q_] quit"
+  ;; Moving
+  ("a" sp-beginning-of-sexp)
+  ("e" sp-end-of-sexp)
+  ("f" sp-forward-sexp)
+  ("b" sp-backward-sexp)
+  ("n" sp-down-sexp)
+  ("N" sp-backward-down-sexp)
+  ("p" sp-up-sexp)
+  ("P" sp-backward-up-sexp)
+
+  ;; Slurping & barfing
+  ("h" sp-backward-slurp-sexp)
+  ("H" sp-backward-barf-sexp)
+  ("l" sp-forward-slurp-sexp)
+  ("L" sp-forward-barf-sexp)
+
+  ;; Wrapping
+  ("R" sp-rewrap-sexp)
+  ("u" sp-unwrap-sexp)
+  ("U" sp-backward-unwrap-sexp)
+  ("(" sp-wrap-round)
+  ("{" sp-wrap-curly)
+  ("[" sp-wrap-square)
+
+  ;; Sexp juggling
+  ("S" sp-split-sexp)
+  ("s" sp-splice-sexp)
+  ("r" sp-raise-sexp)
+  ("j" sp-join-sexp)
+  ("t" sp-transpose-sexp)
+  ("A" sp-absorb-sexp)
+  ("E" sp-emit-sexp)
+  ("o" sp-convolute-sexp)
+
+  ;; Destructive editing
+  ("c" sp-change-inner :exit t)
+  ("C" sp-change-enclosing :exit t)
+  ("k" sp-kill-sexp)
+  ("K" sp-backward-kill-sexp)
+  ("w" sp-copy-sexp)
+
+  ("q" nil)
+  ("g" nil))
+#+end_src
+
+*** hydra-projectile
+#+begin_src elisp
+(defhydra hydra-projectile-other-window (:color teal)
+  "projectile-other-window"
+  ("f"  projectile-find-file-other-window        "file")
+  ("g"  projectile-find-file-dwim-other-window   "file dwim")
+  ("d"  projectile-find-dir-other-window         "dir")
+  ("b"  projectile-switch-to-buffer-other-window "buffer")
+  ("q"  nil                                      "cancel" :color blue))
+
+(defhydra hydra-projectile (:color teal
+                            :hint nil)
+  "
+     PROJECTILE: %(projectile-project-root)
+
+     Find File            Search/Tags          Buffers                Cache
+------------------------------------------------------------------------------------------
+_s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache clear
+ _ff_: file dwim       _g_: update gtags      _b_: switch to buffer  _x_: remove known project
+ _fd_: file curr dir   _o_: multi-occur     _s-k_: Kill all buffers  _X_: cleanup non-existing
+  _r_: recent file                                               ^^^^_z_: cache current
+  _d_: dir
+
+"
+  ("a"   projectile-ag)
+  ("b"   projectile-switch-to-buffer)
+  ("c"   projectile-invalidate-cache)
+  ("d"   projectile-find-dir)
+  ("s-f" projectile-find-file)
+  ("ff"  projectile-find-file-dwim)
+  ("fd"  projectile-find-file-in-directory)
+  ("g"   ggtags-update-tags)
+  ("s-g" ggtags-update-tags)
+  ("i"   projectile-ibuffer)
+  ("K"   projectile-kill-buffers)
+  ("s-k" projectile-kill-buffers)
+  ("m"   projectile-multi-occur)
+  ("o"   projectile-multi-occur)
+  ("s-p" projectile-switch-project "switch project")
+  ("p"   projectile-switch-project)
+  ("s"   projectile-switch-project)
+  ("r"   projectile-recentf)
+  ("x"   projectile-remove-known-project)
+  ("X"   projectile-cleanup-known-projects)
+  ("z"   projectile-cache-current-file)
+  ("`"   hydra-projectile-other-window/body "other window")
+  ("q"   nil "cancel" :color blue))
+#+end_src
+
+*** hydra-git-gutter
+#+begin_src elisp
+(defhydra hydra-git-gutter (:body-pre (git-gutter-mode 1)
+                            :hint nil)
+"
+Git gutter:
+  _j_: next hunk        _s_tage hunk     _q_uit
+  _k_: previous hunk    _r_evert hunk    _Q_uit and deactivate git-gutter
+  ^ ^                   _p_opup hunk
+  _h_: first hunk
+  _l_: last hunk        set start _R_evision
+"
+  ("j" git-gutter:next-hunk)
+  ("k" git-gutter:previous-hunk)
+  ("h" (progn (goto-char (point-min))
+              (git-gutter:next-hunk 1)))
+  ("l" (progn (goto-char (point-min))
+              (git-gutter:previous-hunk 1)))
+  ("s" git-gutter:stage-hunk)
+  ("r" git-gutter:revert-hunk)
+  ("p" git-gutter:popup-hunk)
+  ("R" git-gutter:set-start-revision)
+  ("q" nil :color blue)
+  ("Q" (progn (git-gutter-mode -1)
+              ;; git-gutter-fringe doesn't seem to
+              ;; clear the markup right away
+              (sit-for 0.1)
+              (git-gutter:clear))
+       :color blue))
+#+end_src
+
+*** Projectile
+Set projectile search path.
+#+begin_src elisp
+(setq projectile-project-search-path '("~/code" "~/code/work"))
+#+end_src
+
+*** Word Wrap
+Toggle by =SPC t w=, set ~word-wrap-extra-index~ with one of the values:
+- 'double
+- 'single
+- nil
+#+begin_src elisp
+(setq +word-wrap-extra-indent nil)
+#+end_src
+
+* Requirement
+** git-delta
+The Delta binary. It’s packaged for some distributions but I installed it with
+#+BEGIN_SRC sh :tangle no
+cargo install git-delta
+#+END_SRC
+Or on macOS,
+#+BEGIN_SRC sh :tangle no
+brew install git-delta
+#+END_SRC
