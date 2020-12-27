@@ -8,6 +8,11 @@ To install [[https://www.gnu.org/software/stow/][stow]].
 #+begin_src zsh
 brew install stow
 #+end_src
+** Subversion
+Zinit needs subversion to download packages.
+#+begin_src zsh
+brew install subversion
+#+end_src
 
 * Getting Start 
 For example, if you want to symlink the ssh config.
