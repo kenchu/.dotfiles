@@ -11,3 +11,6 @@
 
 *.zcompcache*
 *.zsh_sessions*
+
+/doom-emacs/.config/doom/config.el
+/doom-emacs/.config/doom/packages.el
