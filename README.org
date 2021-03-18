@@ -19,3 +19,13 @@ For example, if you want to symlink the ssh config.
 #+begin_src zsh
 stow -S ssh
 #+end_src
+
+To remove the symlink,
+#+begin_src zsh
+stow -D ssh
+#+end_src
+
+To re-stow,
+#+begin_src zsh
+stow -R ssh
+#+end_src
