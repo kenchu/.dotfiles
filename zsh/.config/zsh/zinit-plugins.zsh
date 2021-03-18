@@ -37,9 +37,12 @@ zinit wait lucid for \
 zinit wait="1" lucid from="gh-r" as="null" for \
       sbin="**/bat"       @sharkdp/bat \
       sbin="**/fd"        @sharkdp/fd \
+      sbin="**/hexyl"     @sharkdp/hexyl \
       sbin="**/rg"        BurntSushi/ripgrep \
       sbin="**/delta"     dandavison/delta \
-      sbin="exa* -> exa"  ogham/exa
+      sbin="exa* -> exa"  ogham/exa \
+      sbin="jq* -> jq"    stedolan/jq \
+      sbin="**/editorconfig" editorconfig/editorconfig-core-go
 
 # exa alias
 # zinit for DarrinTisdale/zsh-aliases-exa
