@@ -40,7 +40,7 @@ zinit wait="1" lucid from="gh-r" as="null" for \
       sbin="**/hexyl"     @sharkdp/hexyl \
       sbin="**/rg"        BurntSushi/ripgrep \
       sbin="**/delta"     dandavison/delta \
-      sbin="exa* -> exa"  ogham/exa \
+      sbin="**/exa"       ogham/exa \
       sbin="jq* -> jq"    stedolan/jq \
       sbin="**/editorconfig" editorconfig/editorconfig-core-go
 
