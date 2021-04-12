@@ -36,11 +36,12 @@ zinit wait lucid for \
 # bat, fd, exa
 zinit wait="1" lucid from="gh-r" as="null" for \
       sbin="**/bat"       @sharkdp/bat \
+      sbin="**/delta"     dandavison/delta \
+      sbin="**/exa"       ogham/exa \
       sbin="**/fd"        @sharkdp/fd \
       sbin="**/hexyl"     @sharkdp/hexyl \
       sbin="**/rg"        BurntSushi/ripgrep \
-      sbin="**/delta"     dandavison/delta \
-      sbin="**/exa"       ogham/exa \
+      sbin="**/procs"     dalance/procs \
       sbin="jq* -> jq"    stedolan/jq \
       sbin="**/editorconfig" editorconfig/editorconfig-core-go
 
