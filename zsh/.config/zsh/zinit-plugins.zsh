@@ -33,7 +33,7 @@ zinit wait lucid for \
       urbainvaes/fzf-marks \
       svn OMZP::zsh-interactive-cd
 
-# bat, fd, exa
+# bat, delta, exa, fd, hexyl, rg, procs, jq, editorconfig
 zinit wait="1" lucid from="gh-r" as="null" for \
       sbin="**/bat"       @sharkdp/bat \
       sbin="**/delta"     dandavison/delta \
