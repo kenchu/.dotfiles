@@ -35,14 +35,17 @@ zinit wait lucid for \
 
 # bat, delta, exa, fd, hexyl, rg, procs, jq, editorconfig
 zinit wait="1" lucid from="gh-r" as="null" for \
-      sbin="**/bat"       @sharkdp/bat \
-      sbin="**/delta"     dandavison/delta \
-      sbin="**/exa"       ogham/exa \
-      sbin="**/fd"        @sharkdp/fd \
-      sbin="**/hexyl"     @sharkdp/hexyl \
-      sbin="**/rg"        BurntSushi/ripgrep \
-      sbin="**/procs"     dalance/procs \
-      sbin="jq* -> jq"    stedolan/jq \
+      sbin="**/bat"          @sharkdp/bat \
+      sbin="**/fd"           @sharkdp/fd \
+      sbin="**/hexyl"        @sharkdp/hexyl \
+      sbin="**/delta"        dandavison/delta \
+      sbin="**/exa"          ogham/exa \
+      sbin="**/rg"           BurntSushi/ripgrep \
+      sbin="**/sk"           lotabout/skim \
+      sbin="**/procs"        dalance/procs \
+      sbin="**/zoxide"       ajeetdsouza/zoxide \
+      sbin="jq* -> jq"       stedolan/jq \
+      sbin="shfmt* -> shfmt" @mvdan/sh \
       sbin="**/editorconfig" editorconfig/editorconfig-core-go
 
 # exa alias
