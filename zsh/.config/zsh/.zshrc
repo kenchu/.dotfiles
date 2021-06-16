@@ -25,3 +25,5 @@ zinit light-mode for \
 
 source $ZDOTDIR/zinit-plugins.zsh
 
+eval "$(pyenv init --path)"
+

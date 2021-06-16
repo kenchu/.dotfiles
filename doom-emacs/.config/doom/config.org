@@ -19,6 +19,11 @@ Some functionality uses this to identify you, e.g. GPG configuration, email clie
 #+end_src
 
 ** Better Defaults
+*** Touchpad horizontal scroll
+#+begin_src elisp
+(setq mouse-wheel-flip-direction t
+      mouse-wheel-tilt-scroll t)
+#+end_src
 *** Misc Config
 #+begin_src elisp
 ;; This determines the style of line numbers in effect. If set to `nil', line
