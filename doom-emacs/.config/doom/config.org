@@ -346,13 +346,13 @@ Git gutter:
        :color blue))
 #+end_src
 
-*** Projectile
+** Projectile
 Set projectile search path.
 #+begin_src elisp
 (setq projectile-project-search-path '("~/code" "~/code/work"))
 #+end_src
 
-*** Word Wrap
+** Word Wrap
 Toggle by =SPC t w=, set ~word-wrap-extra-index~ with one of the values:
 - 'double
 - 'single
