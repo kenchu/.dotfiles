@@ -111,6 +111,12 @@ On laptops it's nice to know how much power you have.
   (hl-line-mode (if rainbow-mode -1 +1)))
 #+end_src
 
+*** treemacs icon theme
+#+begin_src elisp
+(setq doom-themes-treemacs-theme "doom-colors")
+;; (setq treemacs--icon-size 20)
+#+end_src
+
 ** Workflow
 *** Windows
 I find it rather handy to be asked which buffer I want to see after splitting
