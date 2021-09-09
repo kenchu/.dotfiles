@@ -1,10 +1,18 @@
 tap "homebrew/cask"
 
+# required
+brew stow
+
+# Optional
+brew figlet
+brew lolcat
+brew hexyl
+
 # Rust
 brew bat
-brew git-delta
 brew exa
 brew fd
+brew git-delta
 brew ripgrep
 
 # Go
@@ -14,4 +22,8 @@ brew fasd
 brew httpie
 
 # cask
-cask "google-chrome", greedy: true 
+cask docker
+cask "google-chrome", greedy: true
+cask postman
+cask ngrok
+cask sdkman
