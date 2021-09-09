@@ -15,7 +15,7 @@ brew install subversion
 #+end_src
 
 * Getting Start 
-For example, if you want to symlink the ssh config.
+To symlink the ssh config.
 #+begin_src zsh
 stow -S ssh
 #+end_src
