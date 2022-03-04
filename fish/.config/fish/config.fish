@@ -1,6 +1,8 @@
 # set fish_user_paths
+fish_add_path /usr/local/bin
 fish_add_path /Applications/Emacs.app/Contents/MacOS
 fish_add_path $HOME/.emacs.d/bin
+fish_add_path $HOME/.asdf/shims
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.pyenv/bin
 
@@ -16,7 +18,11 @@ fzf_configure_bindings --directory=\cf
 if status is-interactive
     # Commands to run in interactive sessions can go here
     starship init fish | source
+    zoxide init fish | source
     direnv hook fish | source
-    pyenv init --path | source
-    pyenv init - | source
+    source /usr/local/opt/asdf/libexec/asdf.fish
 end
+
+# pyenv
+# status is-login; and pyenv init --path | source
+# status is-interactive; and pyenv init - | source
