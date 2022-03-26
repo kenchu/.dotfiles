@@ -21,6 +21,7 @@ fzf_configure_bindings --directory=\cf
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    thefuck --alias | source
     starship init fish | source
     zoxide init fish | source
     direnv hook fish | source
