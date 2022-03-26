@@ -1,12 +1,13 @@
+fish_vi_key_bindings
+
 # set fish_user_paths
 fish_add_path /usr/local/bin
 fish_add_path /Applications/Emacs.app/Contents/MacOS
 fish_add_path $HOME/.emacs.d/bin
 fish_add_path $HOME/.asdf/shims
+fish_add_path $HOME/.anyenv/bin
 fish_add_path $HOME/.cargo/bin
-fish_add_path $HOME/.pyenv/bin
-
-fish_vi_key_bindings
+# fish_add_path $HOME/.pyenv/bin
 
 # set environment variables
 set -x XDG_CONFIG_HOME $HOME/.config
