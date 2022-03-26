@@ -10,6 +10,10 @@ fish_vi_key_bindings
 
 # set environment variables
 set -x XDG_CONFIG_HOME $HOME/.config
+
+# with both ampersand-nobg-in-token and qmark-noglob, this argument has no special characters anymore
+set -Ux fish_features ampersand-nobg-in-token qmark-noglob
+
 # set -gx EMACS /Applications/Emacs.app/Contents/MacOS/bin
 
 # https://github.com/PatrickF1/fzf.fish/wiki/Migration-Guides#v7
