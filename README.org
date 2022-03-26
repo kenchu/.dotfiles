@@ -5,27 +5,27 @@ This is my dotfiles.
 * Requirements
 ** Stow
 To install [[https://www.gnu.org/software/stow/][stow]].
-#+begin_src zsh
+#+begin_src fish
 brew install stow
 #+end_src
-** Subversion
-Zinit needs subversion to download packages.
-#+begin_src zsh
+** (Optional) Subversion
+zinit needs subversion to download packages.
+#+begin_src fish
 brew install subversion
 #+end_src
 
 * Getting Start 
 To symlink the ssh config.
-#+begin_src zsh
+#+begin_src fish
 stow -S ssh
 #+end_src
 
 To remove the symlink,
-#+begin_src zsh
+#+begin_src fish
 stow -D ssh
 #+end_src
 
 To re-stow,
-#+begin_src zsh
+#+begin_src fish
 stow -R ssh
 #+end_src
