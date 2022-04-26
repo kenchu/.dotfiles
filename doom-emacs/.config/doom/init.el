@@ -165,7 +165,7 @@
             +pretty
             +roam2)      ; organize your plain life in plain text
        (php +lsp)        ; perl's insecure younger brother
-       ;;plantuml          ; diagrams for confusing people more
+       plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
        (python +lsp
                ;; +pyright
