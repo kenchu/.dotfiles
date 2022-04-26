@@ -28,7 +28,8 @@
        ;;      -fuzzy
        ;;      +childframe
        ;;      +icons)      ; a search engine for love and life
-       (vertico +icons)  ; the search engine of the future
+       (vertico +childframe
+                +icons)  ; the search engine of the future
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -181,8 +182,7 @@
              +onsave)    ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;(scheme +guile)   ; a fully conniving family of lisps
-       (sh +lsp
-           +fish)        ; she sells {ba,z,fi}sh shells on the C xor
+       (sh +lsp +fish)   ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
