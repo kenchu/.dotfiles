@@ -1,5 +1,3 @@
-jorgebucaran/fisher
-jorgebucaran/autopair.fish
 DrPhil/kubectl-fish-abbr
 PatrickF1/colored_man_pages.fish
 PatrickF1/fzf.fish
@@ -8,10 +6,13 @@ franciscolourenco/done
 gazorby/fish-abbreviation-tips
 gazorby/fish-exa
 gyakovlev/fish-fzy
+jorgebucaran/autopair.fish
+jorgebucaran/fisher
 lewisacidic/fish-docker
 oh-my-fish/plugin-direnv
 oh-my-fish/plugin-errno
 oh-my-fish/plugin-fasd
+oh-my-fish/plugin-gi
 oh-my-fish/plugin-localhost
 oh-my-fish/plugin-nodenv
 oh-my-fish/theme-bobthefish
