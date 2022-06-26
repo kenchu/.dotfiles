@@ -83,8 +83,8 @@ font string. You generally only need these two:
       doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font Mono" :size 13))
 #+end_src
 #+begin_src elisp
-(setq doom-font (font-spec :family "JetbrainsMono Nerd Font" :size 12)
-      doom-variable-pitch-font (font-spec :family "JetbrainsMono Nerd Font" :size 12))
+(setq doom-font (font-spec :family "JetbrainsMono Nerd Font Mono" :size 12)
+      doom-variable-pitch-font (font-spec :family "JetbrainsMono Nerd Font Mono" :size 12))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
