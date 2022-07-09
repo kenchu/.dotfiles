@@ -163,10 +163,10 @@ Replace which-key prefix `evil-*` and `evilem-motion-` by symbols
    ))
 #+end_src
 
-*** Magit
+*** magit-delta-mode
 #+begin_src elisp
-(after! magit
-  (magit-delta-mode +1))
+(use-package! magit-delta
+  :hook (magit-mode . magit-delta-mode))
 #+end_src
 
 ** Completion
@@ -176,7 +176,7 @@ Replace which-key prefix `evil-*` and `evilem-motion-` by symbols
 #+end_src
 
 *** company-tabnine
-Run ~M-x company-tabnine-install-binary~ to install the TabNine binary for your system.
+Run ~M-x company-tabnine-install-binary~ to install the tabnine binary for your system.
 #+begin_src elisp
 (use-package company-tabnine
   :config (add-to-list 'company-backends #'company-tabnine))
