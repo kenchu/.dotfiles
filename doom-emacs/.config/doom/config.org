@@ -364,6 +364,14 @@ Toggle by =SPC t w=, set ~word-wrap-extra-index~ with one of the values:
 (setq +word-wrap-extra-indent nil)
 #+end_src
 
+** Key Bindings
+Define lsp key bindings similar to ~VS Code~.
+#+begin_src elisp
+(after! lsp-mode
+  (map! "s-." #'lsp-execute-code-action)
+  (map! :nv "g h" #'lsp-ui-doc-glance))
+#+end_src
+
 * Requirement
 ** git-delta
 The Delta binary. It’s packaged for some distributions but I installed it with
