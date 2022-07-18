@@ -24,6 +24,12 @@ Some functionality uses this to identify you, e.g. GPG configuration, email clie
 (setq mouse-wheel-flip-direction t
       mouse-wheel-tilt-scroll t)
 #+end_src
+*** Evil-snipe
+Disable ~evil-snipe-mode~
+#+begin_src elisp
+(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+#+end_src
+
 *** Misc Config
 #+begin_src elisp
 ;; This determines the style of line numbers in effect. If set to `nil', line
