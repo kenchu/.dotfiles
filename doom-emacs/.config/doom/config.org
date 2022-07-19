@@ -373,6 +373,8 @@ Toggle by =SPC t w=, set ~word-wrap-extra-index~ with one of the values:
 ** Key Bindings
 Define lsp key bindings similar to ~VS Code~.
 #+begin_src elisp
+(map! :nv "s-p" #'projectile-find-file)
+(map! :nv "s-P" #'execute-extended-command)
 (after! lsp-mode
   (map! "s-." #'lsp-execute-code-action)
   (map! :nv "g h" #'lsp-ui-doc-glance))
