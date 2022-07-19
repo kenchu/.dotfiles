@@ -178,7 +178,8 @@ Replace which-key prefix `evil-*` and `evilem-motion-` by symbols
 ** Completion
 *** company-mode
 #+begin_src elisp
-(setq company-show-numbers t)
+(use-package! company
+  :config (setq company-show-quick-access t))
 #+end_src
 
 *** company-tabnine
