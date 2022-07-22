@@ -4,11 +4,17 @@
 
 * Main Config
 Place your private configuration here! Remember, you do not need to run 'doom sync' after modifying this file!
-
 ** lexical-binding
 Make this file run (slightly) faster with lexical binding (see this blog post for more info).
++ config.el
 #+begin_src elisp
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+;; -*- lexical-binding: t; -*-
+;; $DOOMDIR/config.el
+#+end_src
++ packages.el
+#+begin_src elisp :tangle packages.el
+;; -*- no-byte-compile: t; -*-
+;; $DOOMDIR/packages.el
 #+end_src
 
 ** Personal Information
@@ -24,10 +30,9 @@ Some functionality uses this to identify you, e.g. GPG configuration, email clie
 (setq mouse-wheel-flip-direction t
       mouse-wheel-tilt-scroll t)
 #+end_src
-*** Evil-snipe
-Disable ~evil-snipe-mode~
+*** Evil Collection - unimpaired-vim
 #+begin_src elisp
-(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+(setq evil-collection-want-unimpaired-p t)
 #+end_src
 
 *** Misc Config
@@ -95,7 +100,8 @@ font string. You generally only need these two:
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-dracula)
+;; (setq doom-theme 'doom-dracula)
+(setq doom-theme 'doom-snazzy)
 #+end_src
 
 *** Modeline
@@ -104,23 +110,26 @@ Enable time in the mode-line.
 (display-time-mode 1)
 #+end_src
 On laptops it's nice to know how much power you have.
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (unless (equal "Battery status not available" (battery))
   (display-battery-mode 1))
 #+end_src
 
 *** Fullscreen
+Maximize Emacs when start.
 #+begin_src elisp
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 #+end_src
 
 *** rainbow-mode
+Enable rainbow-mode when hl-line-mode
 #+begin_src elisp
 (add-hook! 'rainbow-mode-hook
   (hl-line-mode (if rainbow-mode -1 +1)))
 #+end_src
 
-*** treemacs icon theme
+*** treemacs-theme
+Set treemacs icon theme.
 #+begin_src elisp
 (setq doom-themes-treemacs-theme "doom-colors")
 ;; (setq treemacs--icon-size 20)
@@ -128,22 +137,22 @@ On laptops it's nice to know how much power you have.
 
 ** Workflow
 *** Windows
-I find it rather handy to be asked which buffer I want to see after splitting
-the window. Let's make that happen.
-First, we'll enter the new window
+I find it rather handy to be asked which buffer I want to see after splitting the window.
+Let's make that happen. First, we'll enter the new window
 #+begin_src elisp
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
 #+end_src
-Then, we'll pull up ~ivy~
+Then, we'll pull up ~projectile-find-file~
 #+begin_src elisp
 (defadvice! prompt-for-buffer (&rest _)
   :after '(evil-window-split evil-window-vsplit)
   ;; (+ivy/switch-buffer))
-  (+ivy/projectile-find-file))
+  ;; (+ivy/projectile-find-file))
+  (projectile-find-file))
 #+end_src
 Oh, and previews are nice
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (setq +ivy-buffer-preview t)
 #+end_src
 
@@ -185,13 +194,13 @@ Replace which-key prefix `evil-*` and `evilem-motion-` by symbols
 *** company-tabnine
 Run ~M-x company-tabnine-install-binary~ to install the tabnine binary for your system.
 #+begin_src elisp
-(use-package company-tabnine
+(use-package! company-tabnine
   :config (add-to-list 'company-backends #'company-tabnine))
 #+end_src
 
 *** counsel-tramp
 #+begin_src elisp
-(use-package counsel-tramp
+(use-package! counsel-tramp
   :commands (counsel-tramp))
 #+end_src
 
@@ -371,7 +380,30 @@ Toggle by =SPC t w=, set ~word-wrap-extra-index~ with one of the values:
 (setq +word-wrap-extra-indent nil)
 #+end_src
 
-** Key Bindings
+* Programming
+** Java
+#+begin_src elisp
+(setq lsp-java-configuration-runtimes
+      '[(:name "JavaSE-17" :path "~/.asdf/installs/java/microsoft-17.0.3" :default t)
+        (:name "JavaSE-11" :path "~/.asdf/installs/java/microsoft-11.0.15")])
+#+end_src
+
+* Key Bindings
+** Evil-snipe
+Restore to vim-like substitution, disable ~evil-snipe-mode~
+#+begin_src elisp
+(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+#+end_src
+
+** Evil-easymotion
+#+begin_src elisp
+(setq evilem-style 'at-full)
+(map! :leader :m "j" #'evilem-default-keybindings)
+;; (after! evil-easymotion
+;;   (evilem-default-keybindings "SPC"))
+#+end_src
+
+** VSCode keybindings
 Define lsp key bindings similar to ~VS Code~.
 #+begin_src elisp
 (map! :nv "s-p" #'projectile-find-file)
@@ -381,7 +413,87 @@ Define lsp key bindings similar to ~VS Code~.
   (map! :nv "g h" #'lsp-ui-doc-glance))
 #+end_src
 
-* Requirement
+* Emacs Packages
+** Notes
+To install a package with Doom you must declare them here and run 'doom sync'
+on the command line, then restart Emacs for the changes to take effect -- or
+use 'M-x doom/reload'.
+
+To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
+#+begin_src elisp :tangle no
+(package! some-package)
+#+end_src
+
+To install a package directly from a remote git repo, you must specify a
+`:recipe'. You'll find documentation on what `:recipe' accepts here:
+https://github.com/raxod502/straight.el#the-recipe-format
+#+begin_src elisp :tangle no
+(package! another-package
+  :recipe (:host github :repo "username/repo"))
+#+end_src
+
+If the package you are trying to install does not contain a PACKAGENAME.el
+file, or is located in a subdirectory of the repo, you'll need to specify
+`:files' in the `:recipe':
+#+begin_src elisp :tangle no
+(package! this-package
+ :recipe (:host github :repo "username/repo"
+          :files ("some-file.el" "src/lisp/*.el")))
+#+end_src
+
+If you'd like to disable a package included with Doom, you can do so here
+with the `:disable' property:
+#+begin_src elisp :tangle no
+(package! builtin-package :disable t)
+#+end_src
+
+You can override the recipe of a built in package without having to specify
+all the properties for `:recipe'. These will inherit the rest of its recipe
+from Doom or MELPA/ELPA/Emacsmirror:
+#+begin_src elisp :tangle no
+(package! builtin-package :recipe (:nonrecursive t))
+(package! builtin-package-2 :recipe (:repo "myfork/package"))
+#+end_src
+
+Specify a `:branch' to install a package from a particular branch or tag.
+This is required for some packages whose default branch isn't 'master' (which
+our package manager can't deal with; see raxod502/straight.el#279)
+(package! builtin-package :recipe (:branch "develop"))
+
+Use `:pin' to specify a particular commit to install.
+#+begin_src elisp :tangle no
+(package! builtin-package :pin "1a2b3c4d5e")
+#+end_src
+
+Doom's packages are pinned to a specific commit and updated from release to
+release. The `unpin!' macro allows you to unpin single packages...
+#+begin_src elisp :tangle no
+(unpin! pinned-package)
+...or multiple packages
+(unpin! pinned-package another-pinned-package)
+...Or *all* packages (NOT RECOMMENDED; will likely break things)
+(unpin! t)
+#+end_src
+
+** Heading
+** magit-delta
+#+begin_src elisp :tangle packages.el
+(package! magit-delta)
+#+end_src
+** gitignore-snippets
+#+begin_src elisp :tangle packages.el
+(package! gitignore-snippets)
+#+end_src
+** counsel-tramp
+#+begin_src elisp :tangle packages.el
+(package! counsel-tramp)
+#+end_src
+** company-tabnine
+#+begin_src elisp :tangle packages.el
+(package! company-tabnine)
+#+end_src
+
+* CLI Requirement
 ** git-delta
 The Delta binary. It’s packaged for some distributions but I installed it with
 #+BEGIN_SRC sh :tangle no
