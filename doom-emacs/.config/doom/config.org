@@ -382,7 +382,17 @@ Toggle by =SPC t w=, set ~word-wrap-extra-index~ with one of the values:
 
 * Programming
 ** Java
+*** Install Java
+**** asdf
+#+begin_src sh :tangle no
+asdf install java microsoft-17.0.3
+#+end_src
+**** sdkman
+#+begin_src sh :tangle no
+sdk install java 17.0.0-ms
+#+end_src
 *** LSP Java Configuration Runtimes
+Install Java17
 #+begin_src elisp
 (setq lsp-java-configuration-runtimes
       '[(:name "JavaSE-17" :path "~/.asdf/installs/java/microsoft-17.0.3" :default t)
