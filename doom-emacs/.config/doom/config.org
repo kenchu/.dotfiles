@@ -382,10 +382,22 @@ Toggle by =SPC t w=, set ~word-wrap-extra-index~ with one of the values:
 
 * Programming
 ** Java
+*** LSP Java Configuration Runtimes
 #+begin_src elisp
 (setq lsp-java-configuration-runtimes
       '[(:name "JavaSE-17" :path "~/.asdf/installs/java/microsoft-17.0.3" :default t)
         (:name "JavaSE-11" :path "~/.asdf/installs/java/microsoft-11.0.15")])
+#+end_src
+*** Lombok
+Install [[https://projectlombok.org/download][lombok.jar]] and assign java vmargs.
+#+begin_src elisp
+(setq lombok-jar-path (expand-file-name "~/.vscode/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar"))
+(setq lsp-java-vmargs `("-XX:+UseParallelGC"
+                        "-XX:GCTimeRatio=4"
+                        "-XX:AdaptiveSizePolicyWeight=90"
+                        "-Dsun.zip.disableMemoryMapping=true"
+                        "-Xmx1G" "-Xms100m"
+                        ,(concat "-javaagent:" lombok-jar-path)))
 #+end_src
 
 * Key Bindings
