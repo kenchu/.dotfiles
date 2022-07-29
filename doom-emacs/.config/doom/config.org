@@ -3,9 +3,11 @@
 #+email:     chuwingyu@gmail.com
 
 * Main Config
-Place your private configuration here! Remember, you do not need to run 'doom sync' after modifying this file!
+Place your private configuration here! Remember, you do not need to run 'doom
+sync' after modifying this file!
 ** lexical-binding
-Make this file run (slightly) faster with lexical binding (see this blog post for more info).
+Make this file run (slightly) faster with lexical binding (see this blog post
+for more info).
 + config.el
 #+begin_src elisp
 ;; -*- lexical-binding: t; -*-
@@ -18,7 +20,8 @@ Make this file run (slightly) faster with lexical binding (see this blog post fo
 #+end_src
 
 ** Personal Information
-Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets.
+Some functionality uses this to identify you, e.g. GPG configuration, email
+clients, file templates and snippets.
 #+begin_src elisp
 (setq user-full-name "Ken Chu"
       user-mail-address "chuwingyu@gmail.com")
@@ -72,15 +75,15 @@ change `org-directory'. It must be set before org loads!
 
 ** UI
 *** Font and Theme
-Doom exposes five (optional) variables for controlling fonts in Doom. Here
-are the three important ones:
+Doom exposes five (optional) variables for controlling fonts in Doom. Here are
+the three important ones:
 + `doom-font'
 + `doom-variable-pitch-font'
 + `doom-big-font' -- used for `doom-big-font-mode'; use this for
   presentations or streaming.
 
-They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-font string. You generally only need these two:
+They all accept either a font-spec, font string ("Input Mono-12"), or xlfd font
+string. You generally only need these two:
 #+begin_src elisp :tangle no
 (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "sans" :size 13))
@@ -137,8 +140,8 @@ Set treemacs icon theme.
 
 ** Workflow
 *** Windows
-I find it rather handy to be asked which buffer I want to see after splitting the window.
-Let's make that happen. First, we'll enter the new window
+I find it rather handy to be asked which buffer I want to see after splitting
+the window. Let's make that happen. First, we'll enter the new window
 #+begin_src elisp
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
@@ -380,6 +383,17 @@ Toggle by =SPC t w=, set ~word-wrap-extra-index~ with one of the values:
 (setq +word-wrap-extra-indent nil)
 #+end_src
 
+** Lookup
+To open results from ~+lookup/online~ or ~+lookup/in-docsets~ in Xwidget WebKit
+instead of your system browser, set ~+lookup-open-url-fn~ and/or
+~dash-docs-browser-func~ to ~+lookup-xwidget-webkit-open-url-fn~ (needs Emacs
+with Xwidgets support):
+#+begin_src elisp
+(setq +lookup-open-url-fn #'+lookup-xwidget-webkit-open-url-fn)
+(after! dash-docs
+  (setq dash-docs-browser-func #'+lookup-xwidget-webkit-open-url-fn))
+#+end_src
+
 * Programming
 ** Java
 *** Install Java
@@ -437,9 +451,9 @@ Define lsp key bindings similar to ~VS Code~.
 
 * Emacs Packages
 ** Notes
-To install a package with Doom you must declare them here and run 'doom sync'
-on the command line, then restart Emacs for the changes to take effect -- or
-use 'M-x doom/reload'.
+To install a package with Doom you must declare them here and run 'doom sync' on
+the command line, then restart Emacs for the changes to take effect -- or use
+'M-x doom/reload'.
 
 To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 #+begin_src elisp :tangle no
@@ -454,33 +468,35 @@ https://github.com/raxod502/straight.el#the-recipe-format
   :recipe (:host github :repo "username/repo"))
 #+end_src
 
-If the package you are trying to install does not contain a PACKAGENAME.el
-file, or is located in a subdirectory of the repo, you'll need to specify
-`:files' in the `:recipe':
+If the package you are trying to install does not contain a PACKAGENAME.el file,
+or is located in a subdirectory of the repo, you'll need to specify `:files' in
+the `:recipe':
 #+begin_src elisp :tangle no
 (package! this-package
  :recipe (:host github :repo "username/repo"
           :files ("some-file.el" "src/lisp/*.el")))
 #+end_src
 
-If you'd like to disable a package included with Doom, you can do so here
-with the `:disable' property:
+If you'd like to disable a package included with Doom, you can do so here with
+the `:disable' property:
 #+begin_src elisp :tangle no
 (package! builtin-package :disable t)
 #+end_src
 
-You can override the recipe of a built in package without having to specify
-all the properties for `:recipe'. These will inherit the rest of its recipe
-from Doom or MELPA/ELPA/Emacsmirror:
+You can override the recipe of a built in package without having to specify all
+the properties for `:recipe'. These will inherit the rest of its recipe from
+Doom or MELPA/ELPA/Emacsmirror:
 #+begin_src elisp :tangle no
 (package! builtin-package :recipe (:nonrecursive t))
 (package! builtin-package-2 :recipe (:repo "myfork/package"))
 #+end_src
 
-Specify a `:branch' to install a package from a particular branch or tag.
-This is required for some packages whose default branch isn't 'master' (which
-our package manager can't deal with; see raxod502/straight.el#279)
+Specify a `:branch' to install a package from a particular branch or tag. This
+is required for some packages whose default branch isn't 'master' (which our
+package manager can't deal with; see raxod502/straight.el#279)
+#+begin_src elisp :tangle no
 (package! builtin-package :recipe (:branch "develop"))
+#+end_src
 
 Use `:pin' to specify a particular commit to install.
 #+begin_src elisp :tangle no
@@ -491,13 +507,16 @@ Doom's packages are pinned to a specific commit and updated from release to
 release. The `unpin!' macro allows you to unpin single packages...
 #+begin_src elisp :tangle no
 (unpin! pinned-package)
+#+end_src
 ...or multiple packages
+#+begin_src elisp :tangle no
 (unpin! pinned-package another-pinned-package)
+#+end_src
 ...Or *all* packages (NOT RECOMMENDED; will likely break things)
+#+begin_src elisp :tangle no
 (unpin! t)
 #+end_src
 
-** Heading
 ** magit-delta
 #+begin_src elisp :tangle packages.el
 (package! magit-delta)
@@ -518,10 +537,10 @@ release. The `unpin!' macro allows you to unpin single packages...
 * CLI Requirement
 ** git-delta
 The Delta binary. It’s packaged for some distributions but I installed it with
-#+BEGIN_SRC sh :tangle no
+#+BEGIN_SRC fish :tangle no
 cargo install git-delta
 #+END_SRC
 Or on macOS,
-#+BEGIN_SRC sh :tangle no
+#+BEGIN_SRC fish :tangle no
 brew install git-delta
 #+END_SRC
