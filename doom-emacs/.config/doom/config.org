@@ -181,6 +181,21 @@ Replace which-key prefix `evil-*` and `evilem-motion-` by symbols
    ))
 #+end_src
 
+*** blamer
+GitLen-like git blame message provided by [[https://github.com/Artawower/blamer.el][blamer.el]]
+#+begin_src elisp
+(use-package! blamer
+  :bind (("s-i" . blamer-show-posframe-commit-info))
+  :config
+  (setq blamer-author-formatter " ✎ %s "
+        blamer-datetime-formatter "[%s]"
+        blamer-max-commit-message-length 60
+        ;; blamer-idle-time 0.5
+        ;; blamer-type 'posframe-popup
+        blamer--overlay-popup-position 'smart)
+  (global-blamer-mode 1))
+#+end_src
+
 *** magit-delta-mode
 #+begin_src elisp
 (use-package! magit-delta
@@ -415,13 +430,21 @@ Install Java17
 *** Lombok
 Install [[https://projectlombok.org/download][lombok.jar]] and assign java vmargs.
 #+begin_src elisp
-(setq lombok-jar-path (expand-file-name "~/.vscode/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar"))
+(setq lombok-jar-path (expand-file-name "~/code/lombok.jar"))
 (setq lsp-java-vmargs `("-XX:+UseParallelGC"
                         "-XX:GCTimeRatio=4"
                         "-XX:AdaptiveSizePolicyWeight=90"
                         "-Dsun.zip.disableMemoryMapping=true"
                         "-Xmx1G" "-Xms100m"
                         ,(concat "-javaagent:" lombok-jar-path)))
+#+end_src
+** JSON
+*** jsonian
+#+begin_src elisp
+;; To enable jsonian to work with flycheck
+(after! (jsonian flycheck) (jsonian-enable-flycheck))
+;; To diasable so-long mode overrides
+(after! (jsonian so-long) (jsonian-no-so-long-mode))
 #+end_src
 
 * Key Bindings
@@ -516,22 +539,32 @@ release. The `unpin!' macro allows you to unpin single packages...
 #+begin_src elisp :tangle no
 (unpin! t)
 #+end_src
-
-** magit-delta
+** Git-related Packages
+*** magit-delta
 #+begin_src elisp :tangle packages.el
 (package! magit-delta)
 #+end_src
-** gitignore-snippets
+*** gitignore-snippets
 #+begin_src elisp :tangle packages.el
 (package! gitignore-snippets)
 #+end_src
-** counsel-tramp
+*** blamer
+#+begin_src elisp :tangle packages.el
+(package! blamer)
+#+end_src
+** Other Packages
+*** counsel-tramp
 #+begin_src elisp :tangle packages.el
 (package! counsel-tramp)
 #+end_src
-** company-tabnine
+*** company-tabnine
 #+begin_src elisp :tangle packages.el
 (package! company-tabnine)
+#+end_src
+*** jsonian
+#+begin_src elisp :tangle packages.el
+(package! jsonian :recipe (:host github :repo "iwahbe/jsonian"))
+(package! json-mode :disable t)
 #+end_src
 
 * CLI Requirement
