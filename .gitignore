@@ -14,3 +14,4 @@
 
 /doom-emacs/.config/doom/config.el
 /doom-emacs/.config/doom/packages.el
+*.DS_Store
