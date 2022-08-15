@@ -5,6 +5,23 @@
 * Main Config
 Place your private configuration here! Remember, you do not need to run 'doom
 sync' after modifying this file!
+
+Here are some additional functions/macros that could help you configure Doom:
+- `load!' for loading external *.el files relative to this one
+- `use-package!' for configuring packages
+- `after!' for running code after a package has loaded
+- `add-load-path!' for adding directories to the `load-path', relative to
+  this file. Emacs searches the `load-path' when you load packages with
+  `require' or `use-package'.
+- `map!' for binding new keys
+
+To get information about any of these functions/macros, move the cursor over
+the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
+This will open documentation for it, including demos of how they are used.
+
+You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
+they are implemented.
+
 ** lexical-binding
 Make this file run (slightly) faster with lexical binding (see this blog post
 for more info).
@@ -43,33 +60,12 @@ clients, file templates and snippets.
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
-
-;; Here are some additional functions/macros that could help you configure Doom:
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
 #+end_src
 ** Org Mode
 If you use `org' and don't want your org files in the default location below,
 change `org-directory'. It must be set before org loads!
 #+begin_src elisp
 (setq org-directory "~/org/")
-#+end_src
-
-*** org-roam
-#+begin_src elisp
 (setq org-roam-directory "~/org/roam")
 #+end_src
 
@@ -150,9 +146,7 @@ Then, we'll pull up ~projectile-find-file~
 #+begin_src elisp
 (defadvice! prompt-for-buffer (&rest _)
   :after '(evil-window-split evil-window-vsplit)
-  ;; (+ivy/switch-buffer))
-  ;; (+ivy/projectile-find-file))
-  (projectile-find-file))
+  (consult-find))
 #+end_src
 Oh, and previews are nice
 #+begin_src elisp :tangle no
@@ -199,7 +193,7 @@ GitLen-like git blame message provided by [[https://github.com/Artawower/blamer.
 *** magit-delta-mode
 #+begin_src elisp
 (use-package! magit-delta
-  :hook (magit-mode . magit-delta-mode))
+  :hook (magit-mode-hook . magit-delta-mode))
 #+end_src
 
 ** Completion
@@ -410,11 +404,38 @@ with Xwidgets support):
 #+end_src
 
 * Programming
+** Rust
+#+begin_src elisp
+(use-package! dap-mode
+  :config
+  (require 'dap-lldb)
+  (require 'dap-gdb-lldb)
+  (setq lsp-rust-analyzer-server-display-inlay-hints t)
+  ;; installs .extension/vscode
+  (dap-gdb-lldb-setup)
+  (dap-register-debug-template
+   "Rust::GDB Run Configuration"
+   (list :type "gdb"
+         :request "launch"
+         :name "GDB::Run"
+         :gdbpath "rust-gdb"
+         :target nil
+         :cwd nil))
+  (dap-register-debug-template
+   "Rust::LLDB Run Configuration"
+   (list :type "lldb"
+         :request "launch"
+         :name "LLDB::Run"
+         :gdbpath "rust-lldb"
+         :target nil
+         :cwd nil)))
+#+end_src
+
 ** Java
 *** Install Java
 **** asdf
 #+begin_src sh :tangle no
-asdf install java microsoft-17.0.3
+asdf install java microsoft-17.0.4
 #+end_src
 **** sdkman
 #+begin_src sh :tangle no
@@ -424,7 +445,7 @@ sdk install java 17.0.0-ms
 Install Java17
 #+begin_src elisp
 (setq lsp-java-configuration-runtimes
-      '[(:name "JavaSE-17" :path "~/.asdf/installs/java/microsoft-17.0.3" :default t)
+      '[(:name "JavaSE-17" :path "~/.asdf/installs/java/microsoft-17.0.4" :default t)
         (:name "JavaSE-11" :path "~/.asdf/installs/java/microsoft-11.0.15")])
 #+end_src
 *** Lombok
@@ -440,11 +461,18 @@ Install [[https://projectlombok.org/download][lombok.jar]] and assign java vmarg
 #+end_src
 ** JSON
 *** jsonian
+To enable jsonian to work with flycheck
 #+begin_src elisp
-;; To enable jsonian to work with flycheck
 (after! (jsonian flycheck) (jsonian-enable-flycheck))
-;; To diasable so-long mode overrides
+#+end_src
+To diasable so-long mode overrides
+#+begin_src elisp
 (after! (jsonian so-long) (jsonian-no-so-long-mode))
+#+end_src
+** splash
+#+begin_src elisp
+(after! doom
+  (setq fancy-splash-image "~/.config/doom/images/emacs-bufferfly.png"))
 #+end_src
 
 * Key Bindings
@@ -566,7 +594,6 @@ release. The `unpin!' macro allows you to unpin single packages...
 (package! jsonian :recipe (:host github :repo "iwahbe/jsonian"))
 (package! json-mode :disable t)
 #+end_src
-
 * CLI Requirement
 ** git-delta
 The Delta binary. It’s packaged for some distributions but I installed it with

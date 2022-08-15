@@ -21,7 +21,7 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       company           ; the ultimate code completion backend
+       (company +childframe +tng)    ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;ivy               ; a search engine for love and life
@@ -36,21 +36,23 @@
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        hydra
        indent-guides     ; highlighted indent columns
-       (ligatures +hasklig +extra) ; ligatures and symbols to make your code pretty again
+       (ligatures +hasklig +extra)   ; ligatures and symbols to make your code pretty again
        minimap           ; show a map of the code on the side
        modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink cursor line after big motions
        ;;neotree           ; a project drawer, like NERDTree for vim
        ophints           ; highlight the region an operation acts on
-       (popup +defaults)   ; tame sudden yet inevitable temporary windows
+       (popup +defaults) ; tame sudden yet inevitable temporary windows
        tabs              ; a tab bar for Emacs
        (treemacs +lsp)   ; a project drawer, like neotree but cooler
        unicode           ; extended unicode support for various languages
-       vc-gutter         ; vcs diff in the fringe
+       (vc-gutter
+        ;; +diff-hl
+        +pretty) ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        (window-select +numbers)     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
-       ;;zen               ; distraction-free coding or writing
+       zen               ; distraction-free coding or writing
 
        :editor
        (evil +everywhere); come to the dark side, we have cookies
@@ -67,8 +69,7 @@
        word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
-       (dired +ranger
-              +icons)    ; making dired pretty [functional]
+       (dired +ranger +icons)    ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
        (ibuffer +icons)  ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
@@ -81,14 +82,15 @@
        vterm             ; the best terminal emulation in Emacs
 
        :checkers
-       syntax              ; tasing you for every semicolon you forget
-       ;;(spell +flyspell) ; tasing you for misspelling mispelling
+       (syntax +childframe) ; tasing you for every semicolon you forget
+       (spell +everywhere
+              +flyspell) ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools
        ansible
        ;;biblio            ; Writes a PhD for you (citation needed)
-       debugger          ; FIXME stepping through code, to help you add bugs
+       (debugger +lsp)   ; FIXME stepping through code, to help you add bugs
        direnv
        (docker +lsp)
        editorconfig      ; let someone else argue about tabs vs spaces
@@ -112,7 +114,7 @@
 
        :os
        (:if IS-MAC macos)  ; improve compatibility with macOS
-       ;;tty               ; improve the terminal Emacs experience
+       (tty +osc)        ; improve the terminal Emacs experience
 
        :lang
        ;;agda              ; types of types of types of types...
@@ -123,7 +125,7 @@
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
-       ;;data              ; config/data formats
+       data              ; config/data formats
        ;;(dart +flutter)   ; paint ui and not much else
        ;;dhall
        ;;elixir            ; erlang done right
@@ -167,8 +169,8 @@
        ;;purescript        ; javascript, but functional
        (python +lsp
                +tree-sitter
-               +pyenv
-               +poetry)  ; beautiful is better than ugly
+               +poetry
+               +pyenv)   ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
@@ -183,7 +185,7 @@
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       web               ; the tubes
+       (web +lsp +tree-sitter)        ; the tubes
        (yaml +lsp)       ; JSON, but readable
        ;;zig               ; C, but simpler
 
