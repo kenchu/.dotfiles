@@ -46,9 +46,8 @@
        tabs              ; a tab bar for Emacs
        (treemacs +lsp)   ; a project drawer, like neotree but cooler
        unicode           ; extended unicode support for various languages
-       (vc-gutter
-        ;; +diff-hl
-        +pretty) ; vcs diff in the fringe
+       (vc-gutter +diff-hl
+                  +pretty) ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        (window-select +numbers)     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
@@ -84,8 +83,8 @@
        :checkers
        (syntax +childframe) ; tasing you for every semicolon you forget
        (spell +everywhere
-              +flyspell) ; tasing you for misspelling mispelling
-       ;;grammar           ; tasing grammar mistake every you make
+              +hunspell)    ; tasing you for misspelling mispelling
+       grammar              ; tasing grammar mistake every you make
 
        :tools
        ansible
