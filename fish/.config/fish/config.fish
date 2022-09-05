@@ -1,4 +1,4 @@
-# with both ampersand-nobg-in-token and qmark-noglob, this argument has no special characters anymore
+# https://fishshell.com/docs/current/language.html
 set -x fish_features ampersand-nobg-in-token qmark-noglob
 
 # set environment variables
@@ -24,7 +24,14 @@ end
 fish_vi_key_bindings
 
 # https://github.com/PatrickF1/fzf.fish/wiki/Migration-Guides#v7
-fzf_configure_bindings --directory=\cf
+if type -q fzf_configure_bindings
+    fzf_configure_bindings --directory=\cf
+end
+
+if not set -q fifc_keybinding
+    set -Ux fifc_keybinding \ct
+    set -S fifc_keybinding # show variable
+end
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
