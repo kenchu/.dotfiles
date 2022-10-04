@@ -10,7 +10,7 @@ set -x JAVA_HOME $HOME/.asdf/installs/java/microsoft-17.0.4
 # set fish_user_paths
 # fish_add_path /usr/local/bin
 fish_add_path /usr/local/opt/uutils-coreutils/libexec/uubin
-fish_add_path $HOME/.emacs.d/bin
+fish_add_path $XDG_CONFIG_HOME/emacs/bin
 fish_add_path $HOME/.anyenv/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path $GOPATH/bin
