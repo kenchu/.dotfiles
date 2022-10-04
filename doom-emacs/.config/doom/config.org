@@ -410,6 +410,7 @@ with Xwidgets support):
   :config
   (require 'dap-lldb)
   (require 'dap-gdb-lldb)
+  (require 'dap-cpptools)
   (setq lsp-rust-analyzer-server-display-inlay-hints t)
   ;; installs .extension/vscode
   (dap-gdb-lldb-setup)
