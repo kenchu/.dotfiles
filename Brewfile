@@ -10,6 +10,7 @@ brew "lolcat"
 
 # Rust
 brew "bat"
+brew "bandwhich"
 brew "broot"
 brew "chafa"
 brew "choose"
@@ -41,12 +42,21 @@ brew "fasd"
 brew "asdf"
 
 # cask
+cask "iterm2"
+cask "raycast"
+cask "stats"
+cask "notion"
 cask "docker"
 cask "ngrok"
 cask "postman"
-cask "raycast"
-cask "stats"
+cask "visual-studio-code"
 
-# tap "jimeh/emacs-builds"
-# cask "emacs-app-good"
+# cask (optional)
+cask "slack"
 
+# Quick Look Plugins
+cask "qlmarkdown",       args: { "no-quarantine": true }
+cask "syntax-highlight", args: { "no-quarantine": true }
+
+tap "jimeh/emacs-builds"
+cask "emacs-app-good"
