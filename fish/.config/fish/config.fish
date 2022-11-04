@@ -5,7 +5,7 @@ set -x fish_features ampersand-nobg-in-token qmark-noglob
 # https://www.reddit.com/r/fishshell/comments/govh0k/recommended_way_of_setting_environment_vars_in/
 set -x XDG_CONFIG_HOME $HOME/.config
 set -x GOPATH $HOME/go
-set -x JAVA_HOME $HOME/.asdf/installs/java/microsoft-17.0.4
+set -x JAVA_HOME $HOME/.asdf/installs/java/microsoft-17.0.5
 
 # set fish_user_paths
 # fish_add_path /usr/local/bin
