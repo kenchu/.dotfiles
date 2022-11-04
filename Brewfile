@@ -1,34 +1,52 @@
 tap "homebrew/cask"
 
 # required
-brew stow
+brew "stow"
+brew "fisher"
 
 # Optional
-brew figlet
-brew lolcat
+brew "figlet"
+brew "lolcat"
 
 # Rust
-brew bat
-brew broot
-brew chafa
-brew exa
-brew fd
-brew git-delta
-brew hexyl
-brew procs
-brew ripgrep
-
-# Go
-brew fasd
-brew fzf
+brew "bat"
+brew "broot"
+brew "chafa"
+brew "choose"
+brew "exa"
+brew "fd"
+brew "git-delta"
+brew "hexyl"
+brew "navi"
+brew "procs"
+brew "ripgrep"
+brew "sd"
+brew "starship"
+brew "xh"
+brew "zoxide"
 
 # Python
-brew httpie
+# brew "ansible"
+brew "glances"
+
+# Go
+brew "direnv"
+brew "dive"
+brew "fzf"
+brew "jid"
+brew "rclone"
+
+# Shell
+brew "fasd"
+brew "asdf"
 
 # cask
-cask docker
-cask "google-chrome", greedy: true
-cask firefox, greedy: true
-cask postman
-cask ngrok
-# cask sdkman
+cask "docker"
+cask "ngrok"
+cask "postman"
+cask "raycast"
+cask "stats"
+
+# tap "jimeh/emacs-builds"
+# cask "emacs-app-good"
+
