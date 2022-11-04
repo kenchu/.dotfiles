@@ -38,7 +38,7 @@ if status is-interactive
     starship init fish | source
     zoxide init fish | source
     navi widget fish | source
-    source (nodenv init -|psub)
+    # source (nodenv init -|psub)
 end
 
 # pyenv
