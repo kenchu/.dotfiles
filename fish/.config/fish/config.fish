@@ -10,10 +10,11 @@ set -x JAVA_HOME $HOME/.asdf/installs/java/microsoft-17.0.5
 # set fish_user_paths
 # fish_add_path /usr/local/bin
 fish_add_path /usr/local/opt/uutils-coreutils/libexec/uubin
-fish_add_path $XDG_CONFIG_HOME/emacs/bin
+fish_add_path $HOME/.asdf/shims
 fish_add_path $HOME/.anyenv/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path $GOPATH/bin
+fish_add_path $XDG_CONFIG_HOME/emacs/bin
 
 # https://github.com/jimeh/emacs-builds
 if test -d /Applications/Emacs.app/Contents/MacOS/bin
