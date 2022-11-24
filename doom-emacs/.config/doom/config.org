@@ -50,6 +50,11 @@ clients, file templates and snippets.
 (setq mouse-wheel-flip-direction t
       mouse-wheel-tilt-scroll t)
 #+end_src
+*** Evil Kill On Visual Paste
+This makes it very easy to paste the same text multiple times or to paste text copied from outside DOOM Emacs.
+#+begin_src elisp
+(setq evil-kill-on-visual-paste nil)
+#+end_src
 *** Evil Collection - unimpaired-vim
 #+begin_src elisp
 (setq evil-collection-want-unimpaired-p t)
