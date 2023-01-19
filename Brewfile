@@ -29,8 +29,10 @@ brew "xh"
 brew "zoxide"
 
 # Python
-# brew "ansible"
 brew "glances"
+brew "ansible"
+brew "ansible-lint"
+brew "ansible-language-server"
 
 # Go
 brew "direnv"
@@ -38,19 +40,29 @@ brew "dive"
 brew "fzf"
 brew "jid"
 brew "rclone"
+brew "goaccess"
 
 # Shell
 brew "fasd"
 brew "asdf"
+brew "git-flow-avh"
 
 # cask
 cask "iterm2"
 cask "raycast"
 cask "stats"
 cask "notion"
-
-cask "docker"
 cask "visual-studio-code"
+
+# Container tools
+cask "docker"
+brew "lazydocker"
+brew "k9s"
+
+# Container tools (optional)
+tap "kdash-rs/kdash"
+brew "kdash"
+brew "kind"
 
 # cask (optional)
 cask "postman"
