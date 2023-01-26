@@ -1,25 +1,32 @@
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
-tap "jimeh/emacs-builds"
+
+# font
+cask "font-jetbrains-mono-nerd-font"
 
 # required
 brew "stow"
+brew "fish"
 brew "fisher"
 
-# Optional
-brew "figlet"
-brew "lolcat"
+# Go
+brew "direnv"
+brew "dive"
+brew "fzf"
+brew "jid"
+brew "rclone"
 
 # Rust
-brew "bat"
 brew "bandwhich"
+brew "bat"
 brew "broot"
 brew "chafa"
-brew "choose"
+brew "choose-rust"
 brew "exa"
 brew "fd"
 brew "git-delta"
 brew "hexyl"
+brew "lnav"
 brew "navi"
 brew "procs"
 brew "ripgrep"
@@ -28,19 +35,18 @@ brew "starship"
 brew "xh"
 brew "zoxide"
 
+# Ruby
+brew "lolcat"
+
+# C / C++
+brew "figlet"
+# brew "goaccess"
+
 # Python
 brew "glances"
 brew "ansible"
 brew "ansible-lint"
 brew "ansible-language-server"
-
-# Go
-brew "direnv"
-brew "dive"
-brew "fzf"
-brew "jid"
-brew "rclone"
-brew "goaccess"
 
 # Shell
 brew "fasd"
@@ -58,27 +64,22 @@ cask "visual-studio-code"
 cask "docker"
 brew "lazydocker"
 brew "k9s"
+brew "kdash-rs/kdash/kdash"
+# brew "kind"
 
-# Container tools (optional)
-tap "kdash-rs/kdash"
-brew "kdash"
-brew "kind"
-
-# cask (optional)
-cask "postman"
-cask "ngrok"
-cask "slack"
+# # cask (optional)
+# cask "postman"
+# cask "ngrok"
+# cask "slack"
 
 # Quick Look Plugins
 cask "qlmarkdown",       args: { "no-quarantine": true }
 cask "syntax-highlight", args: { "no-quarantine": true }
 
 # emacs
-cask "emacs-app-good"
+cask "jimeh/emacs-builds/emacs-app-good"
 
 # doom emacs deps
 brew "dbus"
 brew "cmake"
 
-# font
-cask "font-jetbrains-mono-nerd-font"
