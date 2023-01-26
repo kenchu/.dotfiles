@@ -1,10 +1,13 @@
+# https://stackoverflow.com/questions/48956984/how-to-remap-escape-insert-mode-to-jk-in-fish-shell
+set fish_key_bindings fish_user_key_bindings
+
 # https://fishshell.com/docs/current/language.html
 set -x fish_features ampersand-nobg-in-token qmark-noglob
 
 # set environment variables
 # https://www.reddit.com/r/fishshell/comments/govh0k/recommended_way_of_setting_environment_vars_in/
 set -x XDG_CONFIG_HOME $HOME/.config
-set -x GOPATH $HOME/go
+#set -x GOPATH $HOME/go
 set -x JAVA_HOME $HOME/.asdf/installs/java/microsoft-17.0.5
 
 # set fish_user_paths
@@ -12,8 +15,8 @@ set -x JAVA_HOME $HOME/.asdf/installs/java/microsoft-17.0.5
 fish_add_path /usr/local/opt/uutils-coreutils/libexec/uubin
 fish_add_path $HOME/.asdf/shims
 fish_add_path $HOME/.anyenv/bin
-fish_add_path $HOME/.cargo/bin
-fish_add_path $GOPATH/bin
+#fish_add_path $HOME/.cargo/bin
+#fish_add_path $GOPATH/bin
 fish_add_path $XDG_CONFIG_HOME/emacs/bin
 
 # https://github.com/jimeh/emacs-builds
@@ -45,3 +48,5 @@ end
 # pyenv
 # status is-login; and pyenv init --path | source
 # status is-interactive; and pyenv init - | source
+
+test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
