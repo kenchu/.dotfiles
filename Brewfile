@@ -30,6 +30,7 @@ brew "lnav"
 brew "navi"
 brew "procs"
 brew "ripgrep"
+brew "rust-analyzer"
 brew "sd"
 brew "starship"
 brew "xh"
@@ -55,16 +56,17 @@ brew "git-flow-avh"
 
 # cask
 cask "iterm2"
-cask "raycast"
-cask "stats"
+cask "firefox",            greedy: true, args: { "no-quarantine": true }
+cask "raycast",            greedy: true, args: { "no-quarantine": true }
+cask "stats",              greedy: true, args: { "no-quarantine": true }
+cask "visual-studio-code", greedy: true, args: { "no-quarantine": true }
 cask "notion"
-cask "visual-studio-code"
 
 # Container tools
 cask "docker"
 brew "lazydocker"
 brew "k9s"
-brew "kdash-rs/kdash/kdash"
+# brew "kdash-rs/kdash/kdash"
 # brew "kind"
 
 # # cask (optional)
@@ -76,10 +78,12 @@ brew "kdash-rs/kdash/kdash"
 cask "qlmarkdown",       args: { "no-quarantine": true }
 cask "syntax-highlight", args: { "no-quarantine": true }
 
-# emacs
-cask "jimeh/emacs-builds/emacs-app-good"
-
 # doom emacs deps
-brew "dbus"
 brew "cmake"
-
+brew "dbus" #, restart_service: true
+# cask "jimeh/emacs-builds/emacs-app-good"
+tap "d12frosted/emacs-plus"
+brew "emacs-plus@30", 
+    args: [ "with-dbus", "with-xwidgets", "with-native-comp", "with-poll", "with-memeplex-slim-icon" ], 
+    # restart_service: true,
+    link: true
