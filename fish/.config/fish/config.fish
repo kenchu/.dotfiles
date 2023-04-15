@@ -1,3 +1,5 @@
+fish_config theme choose "Dracula Official"
+
 # https://fishshell.com/docs/current/language.html
 set fish_features ampersand-nobg-in-token qmark-noglob
 # https://stackoverflow.com/questions/48956984/how-to-remap-escape-insert-mode-to-jk-in-fish-shell
@@ -36,7 +38,10 @@ set -x XDG_CONFIG_HOME $HOME/.config
 set -x JAVA_HOME $HOME/.asdf/installs/java/microsoft-17.0.6
 
 # set fish_user_paths
+fish_add_path $HOME/.docker/bin
 fish_add_path $HOME/.anyenv/bin
 fish_add_path $XDG_CONFIG_HOME/emacs/bin
+fish_add_path (go env GOPATH)/bin
 
 abbr -a emacs emacsclient -nw
+abbr -a ldk lazydocker
