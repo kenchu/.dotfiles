@@ -98,14 +98,15 @@ string. You generally only need these two:
       doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font Mono" :size 13))
 #+end_src
 #+begin_src elisp
-(setq doom-font (font-spec :family "JetbrainsMono Nerd Font Mono" :size 12)
-      doom-variable-pitch-font (font-spec :family "JetbrainsMono Nerd Font Mono" :size 12))
+(setq doom-font (font-spec :family "JetbrainsMono Nerd Font" :size 12)
+      doom-variable-pitch-font (font-spec :family "JetbrainsMono Nerd Font" :size 12))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-dracula)
-(setq doom-theme 'doom-snazzy)
+;; (setq doom-theme 'doom-snazzy)
+(setq doom-theme 'doom-tokyo-night)
 #+end_src
 
 *** Modeline
@@ -189,7 +190,7 @@ GitLen-like git blame message provided by [[https://github.com/Artawower/blamer.
   (setq blamer-author-formatter " ✎ %s "
         blamer-datetime-formatter "[%s]"
         blamer-max-commit-message-length 60
-        ;; blamer-idle-time 0.5
+        blamer-idle-time 1.5
         ;; blamer-type 'posframe-popup
         blamer--overlay-popup-position 'smart)
   (global-blamer-mode 1))
