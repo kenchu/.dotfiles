@@ -15,6 +15,7 @@ brew "dive"
 brew "fzf"
 brew "jid"
 brew "rclone"
+brew "lazygit"
 
 # Rust
 brew "bandwhich"
@@ -26,31 +27,31 @@ brew "exa"
 brew "fd"
 brew "git-delta"
 brew "hexyl"
-brew "lnav"
 brew "navi"
 brew "procs"
 brew "ripgrep"
-brew "rust-analyzer"
 brew "sd"
 brew "starship"
 brew "xh"
 brew "zoxide"
+brew "zellij"
 
 # Ruby
 brew "lolcat"
 
 # C / C++
 brew "figlet"
+brew "lnav"
 # brew "goaccess"
 
 # Python
 brew "glances"
 brew "ansible"
-brew "ansible-lint"
-brew "ansible-language-server"
+# brew "ansible-lint"
+# brew "ansible-language-server"
 
 # Shell
-brew "fasd"
+# brew "fasd"
 brew "asdf"
 brew "git-flow-avh"
 
@@ -84,6 +85,9 @@ brew "dbus" #, restart_service: true
 # cask "jimeh/emacs-builds/emacs-app-good"
 tap "d12frosted/emacs-plus"
 brew "emacs-plus@30", 
+    # args: [ "with-dbus", "with-xwidgets", "with-native-comp", "with-poll" ], 
     args: [ "with-dbus", "with-xwidgets", "with-native-comp", "with-poll", "with-memeplex-slim-icon" ], 
     # restart_service: true,
     link: true
+
+brew "neovim"
