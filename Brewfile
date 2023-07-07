@@ -69,7 +69,7 @@ cask "notion",             greedy: true, args: { "no-quarantine": true }
 cask "docker",             greedy: true, args: { "no-quarantine": true }
 brew "lazydocker"
 brew "k9s"
-brew "kdash-rs/kdash/kdash"
+# brew "kdash-rs/kdash/kdash"
 # brew "kind"
 
 # # cask (optional)

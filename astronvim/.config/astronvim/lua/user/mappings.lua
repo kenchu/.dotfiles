@@ -13,8 +13,8 @@ return {
     ["<leader>bn"] = { "]b", desc = "Next Buffer" },
 
     -- Tab Mappings
-    ["<leader>Tn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
-    ["<leader>Tc"] = { "<cmd>tabclose<cr>", desc = "Close tab" },
+    ["<leader><tab>n"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+    ["<leader><tab>c"] = { "<cmd>tabclose<cr>", desc = "Close tab" },
     -- a table with the `name` key will register with which-key if it's available
     -- this an easy way to add menu titles in which-key
     ["<leader>T"] = { name = "Tab" },
