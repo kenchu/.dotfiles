@@ -1,5 +1,3 @@
-fish_config theme choose "Dracula Official"
-
 # https://fishshell.com/docs/current/language.html
 set fish_features ampersand-nobg-in-token qmark-noglob
 # https://stackoverflow.com/questions/48956984/how-to-remap-escape-insert-mode-to-jk-in-fish-shell
@@ -19,7 +17,6 @@ end
 if status is-interactive
     # Commands to run in interactive sessions can go here
     # source (/opt/homebrew/bin/brew shellenv -|psub)
-    # fish_add_path -U $HOMEBREW_PREFIX/bin
     starship init fish | source
     zoxide init fish | source
     navi widget fish | source
@@ -35,13 +32,16 @@ test -e $HOME/.iterm2_shell_integration.fish; and source $HOME/.iterm2_shell_int
 # https://www.reddit.com/r/fishshell/comments/govh0k/recommended_way_of_setting_environment_vars_in/
 set -x LANG en_US.UTF-8
 set -x XDG_CONFIG_HOME $HOME/.config
-set -x JAVA_HOME $HOME/.asdf/installs/java/microsoft-17.0.6
+set -x JAVA_HOME $HOME/.asdf/installs/java/graalvm-22.3.1+java17
 
 # set fish_user_paths
-fish_add_path $HOME/.docker/bin
-fish_add_path $HOME/.anyenv/bin
+fish_add_path $HOME/.asdf/shims
+# fish_add_path $HOME/.docker/bin
+# fish_add_path $HOME/.anyenv/bin
 fish_add_path $XDG_CONFIG_HOME/emacs/bin
-fish_add_path (go env GOPATH)/bin
+# fish_add_path (go env GOPATH)/bin
 
-abbr -a emacs emacsclient -nw
+# abbr -a emacs emacsclient -nw
 abbr -a ldk lazydocker
+abbr -a lgit lazygit
+abbr -a nv neovide
