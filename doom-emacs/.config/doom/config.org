@@ -386,7 +386,7 @@ Git gutter:
 ** Projectile
 Set projectile search path.
 #+begin_src elisp
-(setq projectile-project-search-path '(("~/code" . 2)))
+(setq projectile-project-search-path '(("~/repo" . 2)))
 #+end_src
 
 ** Word Wrap
