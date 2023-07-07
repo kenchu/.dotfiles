@@ -13,9 +13,10 @@ brew "fisher"
 brew "direnv"
 brew "dive"
 brew "fzf"
+brew "glow"
 brew "jid"
-brew "rclone"
 brew "lazygit"
+brew "rclone"
 
 # Rust
 brew "bandwhich"
@@ -49,8 +50,6 @@ brew "lnav"
 # Python
 brew "glances"
 brew "ansible"
-# brew "ansible-lint"
-# brew "ansible-language-server"
 
 # Shell
 brew "asdf"
