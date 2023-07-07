@@ -1,4 +1,4 @@
-tap "homebrew/cask"
+# tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 
 # font
@@ -26,11 +26,13 @@ brew "choose-rust"
 brew "exa"
 brew "fd"
 brew "git-delta"
+brew "gitui"
 brew "hexyl"
 brew "navi"
 brew "procs"
 brew "ripgrep"
 brew "sd"
+brew "sk"
 brew "starship"
 brew "xh"
 brew "zoxide"
@@ -51,23 +53,23 @@ brew "ansible"
 # brew "ansible-language-server"
 
 # Shell
-# brew "fasd"
 brew "asdf"
 brew "git-flow-avh"
 
 # cask
-cask "iterm2"
+cask "iterm2",             greedy: true, args: { "no-quarantine": true }
+cask "warp",               greedy: true, args: { "no-quarantine": true }
 cask "firefox",            greedy: true, args: { "no-quarantine": true }
 cask "raycast",            greedy: true, args: { "no-quarantine": true }
 cask "stats",              greedy: true, args: { "no-quarantine": true }
 cask "visual-studio-code", greedy: true, args: { "no-quarantine": true }
-cask "notion"
+cask "notion",             greedy: true, args: { "no-quarantine": true }
 
 # Container tools
-cask "docker"
+cask "docker",             greedy: true, args: { "no-quarantine": true }
 brew "lazydocker"
 brew "k9s"
-# brew "kdash-rs/kdash/kdash"
+brew "kdash-rs/kdash/kdash"
 # brew "kind"
 
 # # cask (optional)
@@ -84,9 +86,9 @@ brew "cmake"
 brew "dbus" #, restart_service: true
 # cask "jimeh/emacs-builds/emacs-app-good"
 tap "d12frosted/emacs-plus"
-brew "emacs-plus@30", 
-    # args: [ "with-dbus", "with-xwidgets", "with-native-comp", "with-poll" ], 
-    args: [ "with-dbus", "with-xwidgets", "with-native-comp", "with-poll", "with-memeplex-slim-icon" ], 
+brew "emacs-plus@30",
+    # args: [ "with-dbus", "with-xwidgets", "with-native-comp", "with-poll" ],
+    args: [ "with-dbus", "with-xwidgets", "with-native-comp", "with-poll", "with-memeplex-slim-icon" ],
     # restart_service: true,
     link: true
 
