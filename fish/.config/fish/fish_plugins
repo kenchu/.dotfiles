@@ -13,7 +13,6 @@ oh-my-fish/plugin-direnv
 oh-my-fish/plugin-errno
 oh-my-fish/plugin-gi
 oh-my-fish/plugin-localhost
-rstacruz/fish-asdf
 wfxr/forgit
 meaningful-ooo/sponge
 nickeb96/puffer-fish
