@@ -1,18 +1,14 @@
 return {
 
 	{
-		"charludo/projectmgr.nvim",
-		lazy = false,
-		keys = {
-			{ "<leader>fP", "<cmd>ProjectMgr<cr>", desc = "Open ProjectMgr panel" },
-		},
-	},
-
-	{
 		"telescope.nvim",
 		keys = {
 			{ "<leader>fs", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Find current buffer" },
 		},
+	},
+
+	{
+		"natecraddock/telescope-zf-native.nvim",
 	},
 
 	{
@@ -46,6 +42,14 @@ return {
 		end,
 		keys = {
 			{ "<leader>fp", "<cmd>Telescope repo list search_dirs=~/repo<cr>", desc = "Find projects" },
+		},
+	},
+
+	{
+		"charludo/projectmgr.nvim",
+		lazy = false,
+		keys = {
+			{ "<leader>fP", "<cmd>ProjectMgr<cr>", desc = "Open ProjectMgr panel" },
 		},
 	},
 
