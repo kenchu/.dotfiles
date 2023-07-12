@@ -17,6 +17,7 @@ brew "glow"
 brew "jid"
 brew "lazygit"
 brew "rclone"
+brew "yq"
 
 # Rust
 brew "bandwhich"
@@ -36,6 +37,7 @@ brew "sd"
 brew "sk"
 brew "starship"
 brew "xh"
+brew "xplr"
 brew "zoxide"
 brew "zellij"
 
