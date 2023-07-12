@@ -1,3 +1,3 @@
--- return "tokyonight"
 return "catppuccin"
 -- return "dracula"
+-- return "tokyonight"

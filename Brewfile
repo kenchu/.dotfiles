@@ -44,6 +44,7 @@ brew "lolcat"
 
 # C / C++
 brew "figlet"
+brew "jq"
 brew "lnav"
 # brew "goaccess"
 
@@ -58,7 +59,7 @@ brew "git-flow-avh"
 # cask
 cask "iterm2",             greedy: true, args: { "no-quarantine": true }
 cask "warp",               greedy: true, args: { "no-quarantine": true }
-cask "firefox",            greedy: true, args: { "no-quarantine": true }
+# cask "firefox",            greedy: true, args: { "no-quarantine": true }
 cask "raycast",            greedy: true, args: { "no-quarantine": true }
 cask "stats",              greedy: true, args: { "no-quarantine": true }
 cask "visual-studio-code", greedy: true, args: { "no-quarantine": true }
