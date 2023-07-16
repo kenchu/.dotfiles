@@ -32,6 +32,7 @@ return {
 	{ import = "astrocommunity.diagnostics.trouble-nvim" },
 	{ import = "astrocommunity.editing-support.nvim-regexplainer" },
 	{ import = "astrocommunity.editing-support.suda-vim" },
+	{ import = "astrocommunity.git.diffview-nvim" },
 	{ import = "astrocommunity.git.git-blame-nvim" },
 	{ import = "astrocommunity.git.neogit" },
 	{ import = "astrocommunity.indent.indent-blankline-nvim" },
