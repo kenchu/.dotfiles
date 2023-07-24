@@ -15,7 +15,7 @@ return {
 		"m4xshen/smartcolumn.nvim",
 		opts = {
 			colorcolumn = "120",
-			disabled_filetypes = { "NvimTree", "lazy", "mason", "help", "text", "markdown", "NeogitLogView" },
+			disabled_filetypes = { "alpha", "lazy", "mason", "help", "text", "markdown", "NvimTree", "NeogitLogView" },
 			scope = "window",
 		},
 	},
@@ -73,8 +73,8 @@ return {
 	{ import = "astrocommunity.syntax.vim-easy-align" },
 
 	{ import = "astrocommunity.utility.neodim" },
-	{ import = "astrocommunity.utility.nvim-toggler" },
 	{ import = "astrocommunity.utility.noice-nvim" },
+	{ import = "astrocommunity.utility.nvim-toggler" },
 	{ import = "astrocommunity.utility.transparent-nvim" },
 
 	{ import = "astrocommunity.pack.ansible" },
