@@ -5,6 +5,22 @@ return {
 	-- available plugins can be found at https://github.com/AstroNvim/astrocommunity
 
 	{ import = "astrocommunity.colorscheme.catppuccin" },
+	{
+		"catppuccin",
+		opts = {
+			integrations = {
+				telescope = {
+					enabled = true,
+					style = "nvchad",
+				},
+				indent_blankline = {
+					enabled = true,
+					colored_indent_levels = true,
+				},
+				lsp_trouble = true,
+			},
+		},
+	},
 	{ import = "astrocommunity.colorscheme.dracula-nvim" },
 	{ import = "astrocommunity.colorscheme.tokyonight-nvim" },
 
@@ -15,13 +31,25 @@ return {
 		"m4xshen/smartcolumn.nvim",
 		opts = {
 			colorcolumn = "120",
-			disabled_filetypes = { "alpha", "lazy", "mason", "help", "text", "markdown", "NvimTree", "NeogitLogView" },
+			disabled_filetypes = {
+				"NeogitLogView",
+				"Trouble",
+				"alpha",
+				"help",
+				"lazy",
+				"lspinfo",
+				"markdown",
+				"mason",
+				"neo-tree",
+				"text",
+			},
 			scope = "window",
 		},
 	},
 	{ import = "astrocommunity.bars-and-lines.vim-illuminate" },
 
 	{ import = "astrocommunity.code-runner.compiler-nvim" },
+	{ import = "astrocommunity.code-runner.overseer-nvim" },
 	{ import = "astrocommunity.code-runner.sniprun" },
 
 	{ import = "astrocommunity.color.ccc-nvim" },
@@ -39,11 +67,13 @@ return {
 	{ import = "astrocommunity.diagnostics.trouble-nvim" },
 
 	{ import = "astrocommunity.editing-support.hypersonic-nvim" },
-	{ import = "astrocommunity.editing-support.multicursors-nvim", enabled = false },
+	{ import = "astrocommunity.editing-support.multicursors-nvim" },
+	{ import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
 	{ import = "astrocommunity.editing-support.nvim-regexplainer" },
 	{ import = "astrocommunity.editing-support.suda-vim" },
 	{ import = "astrocommunity.editing-support.telescope-undo-nvim" },
-	{ import = "astrocommunity.editing-support.refactoring-nvim" },
+	{ import = "astrocommunity.editing-support.suda-vim" },
+	{ import = "astrocommunity.editing-support.text-case-nvim" },
 	{ import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
 
 	{ import = "astrocommunity.git.diffview-nvim" },
