@@ -14,11 +14,15 @@ M.setup = function()
 		vim.keymap.set({ "n", "v", "i" }, "<D-s>", "<cmd>write<CR>") -- Save
 		vim.keymap.set({ "n", "v", "i" }, "<D-S-z>", "<cmd>redo<cr>") -- Paste normal and visual mode
 		vim.keymap.set({ "n", "v", "i" }, "<D-z>", "<cmd>undo<cr>") -- Paste normal and visual mode
+		vim.keymap.set("n", "<D-a>", "ggVG") -- Select all normal mode
+		vim.keymap.set({ "v", "i" }, "<D-a>", "<esc>ggVG") -- Select all insert mode
 		vim.keymap.set("n", "<D-c>", '"+yy') -- Copy line
 		vim.keymap.set("v", "<D-c>", '"+y') -- Copy
 		vim.keymap.set({ "n", "v" }, "<D-v>", '"+P') -- Paste normal and visual mode
-		vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
 		vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
+		vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
+		vim.keymap.set("c", "<D-BS>", "<C-u>") -- Paste command mode
+		vim.keymap.set("c", "<A-BS>", "<C-w>") -- Paste command mode
 
 		-- zoom in and out
 		vim.g.neovide_scale_factor = 1.0

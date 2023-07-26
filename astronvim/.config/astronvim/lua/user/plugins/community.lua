@@ -18,6 +18,7 @@ return {
 					colored_indent_levels = true,
 				},
 				lsp_trouble = true,
+				flash = false,
 			},
 		},
 	},
@@ -90,7 +91,6 @@ return {
 	{ import = "astrocommunity.motion.mini-basics" },
 	{ import = "astrocommunity.motion.mini-move" },
 	{ import = "astrocommunity.motion.mini-surround" },
-	-- { import = "astrocommunity.motion.nvim-surround" },
 	{ import = "astrocommunity.motion.nvim-spider" },
 
 	{ import = "astrocommunity.project.nvim-spectre" },
@@ -105,6 +105,17 @@ return {
 
 	{ import = "astrocommunity.utility.neodim" },
 	{ import = "astrocommunity.utility.noice-nvim" },
+	{
+		"folke/noice.nvim",
+		cond = {},
+		opts = {
+			presets = {
+				bottom_search = false,
+				inc_rename = true,
+				lsp_doc_border = true,
+			},
+		},
+	},
 	{ import = "astrocommunity.utility.nvim-toggler" },
 	{ import = "astrocommunity.utility.transparent-nvim" },
 
@@ -112,6 +123,7 @@ return {
 	{ import = "astrocommunity.pack.docker" },
 	{ import = "astrocommunity.pack.go" },
 	{ import = "astrocommunity.pack.html-css" },
+
 	{ import = "astrocommunity.pack.java" },
 	{ import = "astrocommunity.pack.json" },
 	{ import = "astrocommunity.pack.kotlin" },

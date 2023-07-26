@@ -4,24 +4,39 @@
 -- local ui = require "astronvim.utils.ui"
 --
 return {
-  n = {
-    -- ["<leader>fa"] = {
-    --   "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>",
-    --   desc = "Find Files +hidden",
-    -- },
+	n = {
+		-- ["<leader>fa"] = {
+		--   "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>",
+		--   desc = "Find Files +hidden",
+		-- },
 
-    ["<leader>bn"] = { "]b", desc = "Next Buffer" },
+		-- core
+		["<leader>bn"] = { "]b", desc = "Next Buffer" },
 
-    -- Tab Mappings
-    ["<leader><tab>n"] = { "<cmd>tabnew<cr>", desc = "New tab" },
-    ["<leader><tab>c"] = { "<cmd>tabclose<cr>", desc = "Close tab" },
-    -- a table with the `name` key will register with which-key if it's available
-    -- this an easy way to add menu titles in which-key
-    ["<leader>T"] = { name = "Tab" },
-  },
+		-- Tab Mappings
+		-- a table with the `name` key will register with which-key if it's available
+		-- this an easy way to add menu titles in which-key
+		["<leader>T"] = { name = "Tab" },
+		["<leader><tab>n"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+		["<leader><tab>c"] = { "<cmd>tabclose<cr>", desc = "Close tab" },
 
-  c = {
-    ["<C-j>"] = { "<Down>" },
-    ["<C-k>"] = { "<Up>" },
-  },
+		-- Overseer
+		["<leader>:"] = { name = "Overseer" },
+		["<leader>::"] = { "<cmd>OverseerRun<cr>", desc = "OverseerRun" },
+		["<leader>:c"] = { "<cmd>OverseerClose<cr>", desc = "OverseerClose" },
+		["<leader>:o"] = { "<cmd>OverseerOpen<cr>", desc = "OverseerOpen" },
+		["<leader>:t"] = { "<cmd>OverseerToggle<cr>", desc = "OverseerToggle" },
+		["<leader>:i"] = { "<cmd>OverseerInfo<cr>", desc = "OverseerInfo" },
+	},
+
+	c = {
+		["<C-p>"] = { "<Down>" },
+		["<C-n>"] = { "<Up>" },
+		["<C-j>"] = function()
+			require("cmp").select_next_item()
+		end,
+		["<C-k>"] = function()
+			require("cmp").select_prev_item()
+		end,
+	},
 }
