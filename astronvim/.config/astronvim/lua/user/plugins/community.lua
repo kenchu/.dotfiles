@@ -36,6 +36,7 @@ return {
 			colorcolumn = "120",
 			disabled_filetypes = {
 				"NeogitLogView",
+				"NeogitGitCommandHistory",
 				"Trouble",
 				"alpha",
 				"help",
