@@ -1,5 +1,3 @@
-local actions = require("telescope.actions")
-
 return {
 
 	{
@@ -8,22 +6,36 @@ return {
 			"natecraddock/telescope-zf-native.nvim",
 			"nvim-telescope/telescope-file-browser.nvim",
 			"nvim-telescope/telescope-frecency.nvim",
+			"nvim-telescope/telescope-media-files.nvim",
 			"nvim-telescope/telescope-project.nvim",
 			"olacin/telescope-cc.nvim",
 		},
 		keys = {
-			{ "<leader>fs", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Find current buffer" },
-			{ "<leader>fp", "<cmd>Telescope project<cr>", desc = "Find project" },
+			{ "<leader><space>", "<cmd>Telescope frecency<cr>", desc = "Find frecency" },
+			{ "<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
+			-- { "<leader>fe", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "File browser" },
+			{ "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Find git files" },
+			{ "<leader>fp", "<cmd>Telescope project<cr>", desc = "Find projects" },
+			{ "<leader>fs", "<cmd>Telescope scope buffers<cr>", desc = "Find scope buffers" },
+			{ "<leader>fM", "<cmd>Telescope media_files<cr>", desc = "Find media files" },
 		},
 		opts = {
 			defaults = {
 				mappings = {
 					i = {
-						["<esc>"] = actions.close,
+						["<esc>"] = require("telescope.actions").close,
+						["<A-p>"] = require("telescope.actions.layout").toggle_preview,
+					},
+					n = {
+						["<A-p>"] = require("telescope.actions.layout").toggle_preview,
 					},
 				},
 			},
 			extensions = {
+				media_files = {
+					-- filetypes = { "png", "webp", "gif", "jpg", "jpeg", "mp4", "webm", "pdf" },
+					find_cmd = "rg",
+				},
 				project = {
 					base_dirs = {
 						{ path = "~/repo", max_depth = 1 },
@@ -77,10 +89,17 @@ return {
 		config = function()
 			require("telescope").load_extension("file_browser")
 		end,
-		keys = {
-			{ "<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
-			-- { "<leader>fe", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "File browser" },
-		},
+		-- keys = {
+		-- 	{ "<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
+		-- 	-- { "<leader>fe", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "File browser" },
+		-- },
+	},
+
+	{
+		"nvim-telescope/telescope-media-files.nvim",
+		config = function()
+			require("telescope").load_extension("media_files")
+		end,
 	},
 
 	{

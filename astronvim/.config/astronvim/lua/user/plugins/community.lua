@@ -22,10 +22,12 @@ return {
 			},
 		},
 	},
-	{ import = "astrocommunity.colorscheme.dracula-nvim" },
-	{ import = "astrocommunity.colorscheme.tokyonight-nvim" },
-
+	{ import = "astrocommunity.colorscheme.dracula-nvim", enabled = false },
+	{ import = "astrocommunity.colorscheme.tokyonight-nvim", enabled = true },
+	{ import = "astrocommunity.bars-and-lines.bufferline-nvim" },
 	{ import = "astrocommunity.bars-and-lines.dropbar-nvim" },
+	-- { import = "astrocommunity.bars-and-lines.feline-nvim" },
+	{ import = "astrocommunity.bars-and-lines.heirline-mode-text-statusline" },
 	{ import = "astrocommunity.bars-and-lines.scope-nvim" },
 	{ import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
 	{
@@ -75,6 +77,7 @@ return {
 	{ import = "astrocommunity.editing-support.telescope-undo-nvim" },
 	{ import = "astrocommunity.editing-support.suda-vim" },
 	{ import = "astrocommunity.editing-support.text-case-nvim" },
+	{ import = "astrocommunity.editing-support.yanky-nvim" },
 	{ import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
 
 	{ import = "astrocommunity.git.diffview-nvim" },
@@ -123,7 +126,6 @@ return {
 	{ import = "astrocommunity.pack.docker" },
 	{ import = "astrocommunity.pack.go" },
 	{ import = "astrocommunity.pack.html-css" },
-
 	{ import = "astrocommunity.pack.java" },
 	{ import = "astrocommunity.pack.json" },
 	{ import = "astrocommunity.pack.kotlin" },

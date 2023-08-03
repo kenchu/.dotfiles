@@ -1,1 +1,2 @@
-return require("user.neovide").setup()
+require("user.autocmd")
+require("user.neovide").setup()

@@ -6,23 +6,20 @@ M.setup = function()
 
 		vim.g.neovide_profiler = false
 
-		vim.o.guifont = "JetBrainsMono Nerd Font:h13" -- text below applies for VimScript
-
 		vim.g.neovide_input_macos_alt_is_meta = true
 		vim.g.neovide_input_use_logo = true -- true on macOS
-		vim.keymap.set({ "n", "v", "i" }, "<D-w>", "<cmd>quit<cr>") -- Paste normal and visual mode
-		vim.keymap.set({ "n", "v", "i" }, "<D-s>", "<cmd>write<CR>") -- Save
-		vim.keymap.set({ "n", "v", "i" }, "<D-S-z>", "<cmd>redo<cr>") -- Paste normal and visual mode
-		vim.keymap.set({ "n", "v", "i" }, "<D-z>", "<cmd>undo<cr>") -- Paste normal and visual mode
-		vim.keymap.set("n", "<D-a>", "ggVG") -- Select all normal mode
-		vim.keymap.set({ "v", "i" }, "<D-a>", "<esc>ggVG") -- Select all insert mode
+		vim.keymap.set({ "n", "v", "i" }, "<D-w>", "<cmd>quit<cr>")
+		vim.keymap.set({ "n", "v", "i" }, "<D-s>", "<cmd>write<cr>")
+		vim.keymap.set({ "n", "v", "i" }, "<D-S-z>", "<cmd>redo<cr>")
+		vim.keymap.set({ "n", "v", "i" }, "<D-z>", "<cmd>undo<cr>")
+		vim.keymap.set({ "n", "v", "i" }, "<D-a>", "<esc>ggVG") -- Select all insert mode
 		vim.keymap.set("n", "<D-c>", '"+yy') -- Copy line
 		vim.keymap.set("v", "<D-c>", '"+y') -- Copy
 		vim.keymap.set({ "n", "v" }, "<D-v>", '"+P') -- Paste normal and visual mode
 		vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
 		vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
-		vim.keymap.set("c", "<D-BS>", "<C-u>") -- Paste command mode
-		vim.keymap.set("c", "<A-BS>", "<C-w>") -- Paste command mode
+		vim.keymap.set("c", "<D-BS>", "<C-u>") -- Delete whole line in commmand mode
+		vim.keymap.set("c", "<A-BS>", "<C-w>") -- Delete word backward in command mode
 
 		-- zoom in and out
 		vim.g.neovide_scale_factor = 1.0

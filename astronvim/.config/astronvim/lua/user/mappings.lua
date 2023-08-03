@@ -5,25 +5,28 @@
 --
 return {
 	n = {
-		-- ["<leader>fa"] = {
-		--   "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>",
-		--   desc = "Find Files +hidden",
-		-- },
-
-		-- core
+		-- buffer
+		["<S-h>"] = { "<cmd>bprevious<cr>", desc = "Previous Buffer" },
+		["<S-l>"] = { "<cmd>bnext<cr>", desc = "Next Buffer" },
 		["<leader>bn"] = { "]b", desc = "Next Buffer" },
 
 		-- Tab Mappings
 		-- a table with the `name` key will register with which-key if it's available
 		-- this an easy way to add menu titles in which-key
-		["<leader>T"] = { name = "Tab" },
+		["<leader><tab>"] = { name = "Tab" },
 		["<leader><tab>n"] = { "<cmd>tabnew<cr>", desc = "New tab" },
 		["<leader><tab>c"] = { "<cmd>tabclose<cr>", desc = "Close tab" },
+
+		-- UI
+		["<leader>ur"] = {
+			"<cmd>nohlsearch<bar>diffupdate<bar>normal! <C-L><cr>",
+			desc = "Redraw / clear hlsearch / diff update",
+		},
 
 		-- Overseer
 		["<leader>:"] = { name = "Overseer" },
 		["<leader>::"] = { "<cmd>OverseerRun<cr>", desc = "OverseerRun" },
-		["<leader>:c"] = { "<cmd>OverseerClose<cr>", desc = "OverseerClose" },
+		["<leader>:c"] = { "<cmd>OverseerClearCache<cr>", desc = "OverseerClearCache" },
 		["<leader>:o"] = { "<cmd>OverseerOpen<cr>", desc = "OverseerOpen" },
 		["<leader>:t"] = { "<cmd>OverseerToggle<cr>", desc = "OverseerToggle" },
 		["<leader>:i"] = { "<cmd>OverseerInfo<cr>", desc = "OverseerInfo" },
@@ -38,5 +41,9 @@ return {
 		["<C-k>"] = function()
 			require("cmp").select_prev_item()
 		end,
+	},
+
+	t = {
+		["<C-/>"] = { "<cmd>close<cr>", desc = "Close terminal" },
 	},
 }
