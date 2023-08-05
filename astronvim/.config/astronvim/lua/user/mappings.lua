@@ -14,8 +14,12 @@ return {
 		-- a table with the `name` key will register with which-key if it's available
 		-- this an easy way to add menu titles in which-key
 		["<leader><tab>"] = { name = "Tab" },
-		["<leader><tab>n"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+		["<leader><tab><tab>"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+		["<leader><tab>n"] = { "<cmd>tabnext<cr>", desc = "Next tab" },
+		["<leader><tab>p"] = { "<cmd>tabprevious<cr>", desc = "Previous tab" },
 		["<leader><tab>c"] = { "<cmd>tabclose<cr>", desc = "Close tab" },
+		["<leader><tab>f"] = { "<cmd>tabfirst<cr>", desc = "First tab" },
+		["<leader><tab>l"] = { "<cmd>tablast<cr>", desc = "Last tab" },
 
 		-- UI
 		["<leader>ur"] = {
