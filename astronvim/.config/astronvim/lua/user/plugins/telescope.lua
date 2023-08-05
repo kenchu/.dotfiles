@@ -89,10 +89,6 @@ return {
 		config = function()
 			require("telescope").load_extension("file_browser")
 		end,
-		-- keys = {
-		-- 	{ "<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
-		-- 	-- { "<leader>fe", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "File browser" },
-		-- },
 	},
 
 	{
@@ -123,12 +119,4 @@ return {
 			{ "<leader>gm", "<cmd>Telescope conventional_commits<cr>", desc = "Conventional commit" },
 		},
 	},
-
-	-- {
-	--   "nvim-telescope/telescope.nvim",
-	--   config = function() require("telescope").load_extension "scope" end,
-	--   keys = {
-	--     { "<leader>fs", "<cmd>Telescope scope buffer<cr>", { noremap = true, silent = true }, desc = "Scope" },
-	--   },
-	-- },
 }
