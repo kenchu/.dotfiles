@@ -37,8 +37,8 @@ return {
 	},
 
 	c = {
-		["<C-p>"] = { "<Down>" },
-		["<C-n>"] = { "<Up>" },
+		["<C-p>"] = { "<Up>" },
+		["<C-n>"] = { "<Down>" },
 		["<C-j>"] = function()
 			require("cmp").select_next_item()
 		end,
