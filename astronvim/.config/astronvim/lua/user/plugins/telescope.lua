@@ -11,16 +11,18 @@ return {
 			"olacin/telescope-cc.nvim",
 		},
 		keys = {
-			{ "<leader><space>", "<cmd>Telescope frecency<cr>", desc = "Find frecency" },
+			{ "<leader><space>", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Find frecency" },
 			{ "<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
 			-- { "<leader>fe", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "File browser" },
 			{ "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Find git files" },
 			{ "<leader>fp", "<cmd>Telescope project<cr>", desc = "Find projects" },
 			{ "<leader>fs", "<cmd>Telescope scope buffers<cr>", desc = "Find scope buffers" },
 			{ "<leader>fM", "<cmd>Telescope media_files<cr>", desc = "Find media files" },
+			{ "<leader>gm", "<cmd>Telescope conventional_commits<cr>", desc = "Conventional commit" },
 		},
 		opts = {
 			defaults = {
+				-- prompt_prefix = "󰭎 ",
 				mappings = {
 					i = {
 						["<esc>"] = require("telescope.actions").close,
@@ -104,9 +106,6 @@ return {
 		config = function()
 			require("telescope").load_extension("frecency")
 		end,
-		keys = {
-			{ "<leader><leader>", "<cmd>Telescope frecency<cr>", desc = "Find frecency" },
-		},
 	},
 
 	{
@@ -115,8 +114,5 @@ return {
 		config = function()
 			require("telescope").load_extension("conventional_commits")
 		end,
-		keys = {
-			{ "<leader>gm", "<cmd>Telescope conventional_commits<cr>", desc = "Conventional commit" },
-		},
 	},
 }
