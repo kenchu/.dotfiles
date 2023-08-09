@@ -1,1 +1,9 @@
-return { VimIcon = "" }
+return {
+	BufferClose = "",
+	Ellipsis = "",
+	FoldClosed = "",
+	FoldOpened = "",
+	GitUntracked = "󱕅",
+	-- Selected = "󰓾",
+	-- Selected = "",
+}
