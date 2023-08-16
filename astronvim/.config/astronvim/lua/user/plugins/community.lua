@@ -26,7 +26,6 @@ return {
 	{ import = "astrocommunity.colorscheme.tokyonight-nvim", enabled = true },
 	-- { import = "astrocommunity.bars-and-lines.bufferline-nvim" },
 	{ import = "astrocommunity.bars-and-lines.dropbar-nvim" },
-	-- { import = "astrocommunity.bars-and-lines.feline-nvim" },
 	{ import = "astrocommunity.bars-and-lines.heirline-mode-text-statusline" },
 	{ import = "astrocommunity.bars-and-lines.scope-nvim" },
 	{ import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
@@ -110,7 +109,7 @@ return {
 	{ import = "astrocommunity.utility.noice-nvim" },
 	{
 		"folke/noice.nvim",
-		cond = {},
+		cond = {}, -- remove astronvim conditional check
 		opts = {
 			presets = {
 				bottom_search = false,
@@ -139,4 +138,5 @@ return {
 
 	{ import = "astrocommunity.programming-language-support.nvim-jqx" },
 	{ import = "astrocommunity.programming-language-support.rest-nvim", enabled = false },
+	{ import = "astrocommunity.programming-language-support.rest-nvim" },
 }
