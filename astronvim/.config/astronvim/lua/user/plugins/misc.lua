@@ -10,4 +10,8 @@ return {
 		"abecodes/tabout.nvim",
 		lazy = false,
 	},
+	{
+		"FabijanZulj/blame.nvim",
+		lazy = false,
+	},
 }
