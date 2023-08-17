@@ -77,6 +77,7 @@ return {
 	{ import = "astrocommunity.editing-support.suda-vim" },
 	{ import = "astrocommunity.editing-support.text-case-nvim" },
 	{ import = "astrocommunity.editing-support.yanky-nvim" },
+	{ import = "astrocommunity.file-explorer.mini-files", enabled = false },
 	{ import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
 
 	{ import = "astrocommunity.git.diffview-nvim" },
@@ -95,15 +96,18 @@ return {
 	{ import = "astrocommunity.motion.mini-surround" },
 	{ import = "astrocommunity.motion.nvim-spider" },
 
+	{ import = "astrocommunity.note-taking.neorg" },
+
 	{ import = "astrocommunity.project.nvim-spectre" },
 	-- { import = "astrocommunity.project.project-nvim" },
 	{ import = "astrocommunity.project.projectmgr-nvim" },
 
 	{ import = "astrocommunity.scrolling.satellite-nvim" },
-
 	{ import = "astrocommunity.split-and-window.edgy-nvim" },
-
 	{ import = "astrocommunity.syntax.vim-easy-align" },
+
+	{ import = "astrocommunity.test.neotest" },
+	{ import = "astrocommunity.test.nvim-coverage" },
 
 	{ import = "astrocommunity.utility.neodim" },
 	{ import = "astrocommunity.utility.noice-nvim" },
@@ -137,6 +141,6 @@ return {
 	{ import = "astrocommunity.pack.yaml" },
 
 	{ import = "astrocommunity.programming-language-support.nvim-jqx" },
-	{ import = "astrocommunity.programming-language-support.rest-nvim", enabled = false },
 	{ import = "astrocommunity.programming-language-support.rest-nvim" },
+	{ import = "astrocommunity.programming-language-support.web-tools-nvim" },
 }
