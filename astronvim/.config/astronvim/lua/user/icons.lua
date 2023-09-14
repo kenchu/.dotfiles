@@ -5,7 +5,7 @@ return {
 	-- FoldOpened = "",
 	-- FoldClosed = "",
 	-- FoldOpened = "",
-	GitUntracked = "󱕅",
+	-- GitUntracked = "󱕅",
 	-- Selected = "󰓾",
 	-- Selected = "",
 }
