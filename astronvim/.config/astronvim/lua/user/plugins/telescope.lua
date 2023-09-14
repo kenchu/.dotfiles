@@ -20,7 +20,6 @@ return {
 
 			-- require telescope and load extensions as necessary
 			local telescope = require("telescope")
-			telescope.load_extension("media_files")
 			telescope.load_extension("conventional_commits")
 			telescope.load_extension("file_browser")
 			telescope.load_extension("frecency")
@@ -30,8 +29,8 @@ return {
 		end,
 		keys = {
 			{ "<leader><space>", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Find frecency" },
-			{ "<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
 			-- { "<leader>fe", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "File browser" },
+			{ "<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
 			{ "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Find git files" },
 			{ "<leader>fp", "<cmd>Telescope project<cr>", desc = "Find projects" },
 			{ "<leader>fs", "<cmd>Telescope scope buffers<cr>", desc = "Find scope buffers" },
@@ -40,26 +39,35 @@ return {
 		},
 		opts = {
 			defaults = {
+				-- prompt_prefix = "🔍 ",
 				-- prompt_prefix = "󰭎 ",
 				mappings = {
+					n = {
+						["<A-p>"] = require("telescope.actions.layout").toggle_preview,
+					},
 					i = {
 						["<esc>"] = require("telescope.actions").close,
 						["<A-p>"] = require("telescope.actions.layout").toggle_preview,
-					},
-					n = {
-						["<A-p>"] = require("telescope.actions.layout").toggle_preview,
+						["<D-BS>"] = function()
+							local current_picker = require("telescope.actions.state").get_current_picker()
+							current_picker:set_prompt_text("")
+						end,
 					},
 				},
 			},
 			extensions = {
+				frecency = {
+					show_scores = true,
+					show_unindexed = true,
+					ignore_patterns = { "*.git/*", "*/tmp/*" },
+				},
 				media_files = {
 					-- filetypes = { "png", "webp", "gif", "jpg", "jpeg", "mp4", "webm", "pdf" },
 					find_cmd = "rg",
 				},
 				project = {
 					base_dirs = {
-						{ path = "~/repo", max_depth = 1 },
-						{ path = "~/repo/work", max_depth = 2 },
+						{ path = "~/repo", max_depth = 2 },
 						{ path = "~/ghq", max_depth = 3 },
 					},
 					hidden_files = true, -- default: false
