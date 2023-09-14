@@ -64,6 +64,7 @@ cask "warp",               greedy: true, args: { "no-quarantine": true }
 # cask "firefox",            greedy: true, args: { "no-quarantine": true }
 cask "raycast",            greedy: true, args: { "no-quarantine": true }
 cask "stats",              greedy: true, args: { "no-quarantine": true }
+cask "neovide",            greedy: true, args: { "no-quarantine": true }
 cask "visual-studio-code", greedy: true, args: { "no-quarantine": true }
 cask "notion",             greedy: true, args: { "no-quarantine": true }
 
