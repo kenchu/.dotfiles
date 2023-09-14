@@ -18,12 +18,13 @@ return {
 					colored_indent_levels = true,
 				},
 				lsp_trouble = true,
-				flash = false,
 			},
 		},
 	},
 	{ import = "astrocommunity.colorscheme.dracula-nvim", enabled = false },
 	{ import = "astrocommunity.colorscheme.tokyonight-nvim", enabled = true },
+	{ import = "astrocommunity.color.transparent-nvim" },
+
 	-- { import = "astrocommunity.bars-and-lines.bufferline-nvim" },
 	{ import = "astrocommunity.bars-and-lines.dropbar-nvim" },
 	{ import = "astrocommunity.bars-and-lines.heirline-mode-text-statusline" },
@@ -77,7 +78,7 @@ return {
 	{ import = "astrocommunity.editing-support.suda-vim" },
 	{ import = "astrocommunity.editing-support.text-case-nvim" },
 	{ import = "astrocommunity.editing-support.yanky-nvim" },
-	{ import = "astrocommunity.file-explorer.mini-files", enabled = false },
+	{ import = "astrocommunity.file-explorer.mini-files", enabled = true },
 	{ import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
 
 	{ import = "astrocommunity.git.diffview-nvim" },
@@ -123,7 +124,6 @@ return {
 		},
 	},
 	{ import = "astrocommunity.utility.nvim-toggler" },
-	{ import = "astrocommunity.utility.transparent-nvim" },
 
 	{ import = "astrocommunity.pack.ansible" },
 	{ import = "astrocommunity.pack.docker" },
