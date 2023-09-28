@@ -88,7 +88,8 @@ return {
 	{ import = "astrocommunity.indent.indent-blankline-nvim" },
 	{ import = "astrocommunity.indent.indent-tools-nvim" },
 	{ import = "astrocommunity.indent.mini-indentscope" },
-
+	{ import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
+	{ import = "astrocommunity.markdown-and-latex.peek-nvim" },
 	{ import = "astrocommunity.motion.flash-nvim" },
 	{ import = "astrocommunity.motion.marks-nvim" },
 	{ import = "astrocommunity.motion.mini-ai" },
