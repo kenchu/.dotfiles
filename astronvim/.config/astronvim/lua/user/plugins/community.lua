@@ -23,7 +23,6 @@ return {
 	},
 	{ import = "astrocommunity.colorscheme.dracula-nvim", enabled = false },
 	{ import = "astrocommunity.colorscheme.tokyonight-nvim", enabled = true },
-	{ import = "astrocommunity.color.transparent-nvim" },
 
 	-- { import = "astrocommunity.bars-and-lines.bufferline-nvim" },
 	{ import = "astrocommunity.bars-and-lines.dropbar-nvim" },
@@ -58,7 +57,9 @@ return {
 
 	{ import = "astrocommunity.color.ccc-nvim" },
 	{ import = "astrocommunity.color.headlines-nvim" },
-	{ import = "astrocommunity.color.modes-nvim", enabled = true },
+	{ import = "astrocommunity.color.modes-nvim" },
+	{ import = "astrocommunity.color.tint-nvim" },
+	{ import = "astrocommunity.color.transparent-nvim" },
 	{ import = "astrocommunity.color.twilight-nvim" },
 
 	{ import = "astrocommunity.completion.cmp-cmdline" },
