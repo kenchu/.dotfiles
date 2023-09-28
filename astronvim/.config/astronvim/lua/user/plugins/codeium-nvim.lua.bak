@@ -1,0 +1,40 @@
+return {
+	{
+		"jcdickinson/codeium.nvim",
+		-- commit = "b83db625a5009b2c6691d52641001091b2af1891",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			{
+				"jcdickinson/http.nvim",
+				build = "cargo build --workspace --release",
+			},
+			{
+				"hrsh7th/nvim-cmp",
+				opts = function(_, opts)
+					-- require("plugins.configs.cmp")(plugin, opts)
+					local cmp = require("cmp")
+					opts.sources = {
+						{ name = "codeium" },
+					}
+					-- opts.sources = cmp.config.sources(
+					-- 	vim.list_extend(opts.sources, {
+					-- 	-- { name = "codeium", group_index = 2 },
+					-- 	{ name = "codeium" },
+					-- }))
+					-- formatting = {
+					-- 	format = require("lspkind").cmp_format({
+					-- 		mode = "symbol",
+					-- 		maxwidth = 50,
+					-- 		ellipsis_char = "...",
+					-- 		symbol_map = { Codeium = "" },
+					-- 	}),
+					-- },
+					return opts
+				end,
+			},
+		},
+		config = function()
+			require("codeium").setup({})
+		end,
+	},
+}
