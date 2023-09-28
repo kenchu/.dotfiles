@@ -9,6 +9,7 @@ return {
 		"catppuccin",
 		opts = {
 			integrations = {
+				flash = false,
 				telescope = {
 					enabled = true,
 					style = "nvchad",
