@@ -42,12 +42,12 @@ end, { noremap = true, silent = true })
 vim.keymap.set("n", "<S-F7>", "<cmd>CompilerToggleResults<cr>", { noremap = true, silent = true })
 
 -- Overseer keymap
-vim.keymap.set("n", "<leader>o", "", { desc = "Overseer" })
-vim.keymap.set("n", "<leader>o:", "<cmd>OverseerRun<cr>", { desc = "OverseerRun" })
-vim.keymap.set("n", "<leader>oc", "<cmd>OverseerClearCache<cr>", { desc = "OverseerClearCache" })
-vim.keymap.set("n", "<leader>oo", "<cmd>OverseerOpen<cr>", { desc = "OverseerOpen" })
-vim.keymap.set("n", "<leader>ot", "<cmd>OverseerToggle<cr>", { desc = "OverseerToggle" })
-vim.keymap.set("n", "<leader>oi", "<cmd>OverseerInfo<cr>", { desc = "OverseerInfo" })
+vim.keymap.set("n", "<leader>:", "", { desc = "Overseer" })
+vim.keymap.set("n", "<leader>::", "<cmd>OverseerRun<cr>", { desc = "OverseerRun" })
+vim.keymap.set("n", "<leader>:c", "<cmd>OverseerClearCache<cr>", { desc = "OverseerClearCache" })
+vim.keymap.set("n", "<leader>:o", "<cmd>OverseerOpen<cr>", { desc = "OverseerOpen" })
+vim.keymap.set("n", "<leader>:t", "<cmd>OverseerToggle<cr>", { desc = "OverseerToggle" })
+vim.keymap.set("n", "<leader>:i", "<cmd>OverseerInfo<cr>", { desc = "OverseerInfo" })
 
 -- neovide setup
 local neovide = {}
