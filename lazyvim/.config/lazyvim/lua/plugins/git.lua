@@ -9,6 +9,11 @@ return {
   },
 
   {
+    "f-person/git-blame.nvim",
+    event = "BufReadPre",
+  },
+
+  {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim", -- required
