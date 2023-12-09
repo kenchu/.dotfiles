@@ -29,6 +29,7 @@ return {
   { "echasnovski/mini.comment", version = false, enabled = false },
   {
     "numToStr/Comment.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     keys = {
       { "gc", mode = { "n", "v" }, desc = "Comment toggle linewise" },
       { "gb", mode = { "n", "v" }, desc = "Comment toggle blockwise" },
