@@ -17,46 +17,61 @@ return {
   { "gbprod/substitute.nvim", event = "LazyFile" },
 
   {
-    "nguyenvukhang/nvim-toggler",
-    keys = { { "<leader>i", desc = "Toggle CursorWord" } },
+    "nat-418/boole.nvim",
     opts = {
-      inverses = {
-        ["vim"] = "emacs",
-        ["top"] = "bottom",
-        ["ascending"] = "descending",
-        ["horizontal"] = "vertical",
+      mappings = {
+        increment = "<C-a>",
+        decrement = "<C-x>",
+      },
+      -- User defined loops
+      additions = {
+        { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" },
+        { "asc", "desc" },
+        { "top", "bottom" },
+        { "vim", "emacs" },
+      },
+      allow_caps_additions = {
+        { "enable", "disable" },
+        -- enable → disable
+        -- Enable → Disable
+        -- ENABLE → DISABLE
       },
     },
   },
 
   {
     "chrisgrieser/nvim-spider",
-    keys = {
-      {
-        "w",
-        "<cmd>lua require('spider').motion('w')<CR>",
-        mode = { "n", "x", "o" },
-        desc = "Next word",
-      },
-      {
-        "e",
-        "<cmd>lua require('spider').motion('e')<CR>",
-        mode = { "n", "x", "o" },
-        desc = "Next end of word",
-      },
-      {
-        "b",
-        "<cmd>lua require('spider').motion('b')<CR>",
-        mode = { "n", "x", "o" },
-        desc = "Previous word",
-      },
-      {
-        "ge",
-        "<cmd>lua require('spider').motion('ge')<CR>",
-        mode = { "n", "x", "o" },
-        desc = "Previous end of word",
-      },
-    },
-    opts = {},
+    lazy = false,
   },
+
+  -- {
+  --   "chrisgrieser/nvim-spider",
+  --   keys = {
+  --     {
+  --       "w",
+  --       "<cmd>lua require('spider').motion('w')<CR>",
+  --       desc = "Next word",
+  --       mode = { "n", "x", "o" },
+  --     },
+  --     {
+  --       "e",
+  --       "<cmd>lua require('spider').motion('e')<CR>",
+  --       desc = "Next end of word",
+  --       mode = { "n", "x", "o" },
+  --     },
+  --     {
+  --       "b",
+  --       "<cmd>lua require('spider').motion('b')<CR>",
+  --       desc = "Previous word",
+  --       mode = { "n", "x", "o" },
+  --     },
+  --     {
+  --       "ge",
+  --       "<cmd>lua require('spider').motion('ge')<CR>",
+  --       desc = "Previous end of word",
+  --       mode = { "n", "x", "o" },
+  --     },
+  --   },
+  --   opts = {},
+  -- },
 }

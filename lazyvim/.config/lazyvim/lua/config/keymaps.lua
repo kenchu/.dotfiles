@@ -2,10 +2,14 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+vim.keymap.set("n", "<leader>h", "<cmd>Dashboard<cr>", { desc = "Dashboard" })
+
 -- basic keymap
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr><esc>", { desc = "Write File" })
 vim.keymap.set("n", "<leader>ws", "<cmd>sp<cr><esc>", { desc = "Window Split" })
 vim.keymap.set("n", "<leader>wv", "<cmd>vsp<cr><esc>", { desc = "Window Vertical Split" })
+-- TODO: no work
+vim.keymap.set("i", "<A-BS>", "<esc>dbi", { desc = "Delete Word Backward" })
 
 -- substitute exchange keymap
 vim.keymap.set("n", "sx", require("substitute.exchange").operator, { desc = "Substitute Operator" })
@@ -63,8 +67,8 @@ neovide.setup = function()
     vim.g.neovide_input_macos_alt_is_meta = true
     vim.g.neovide_input_use_logo = true -- true on macOS
 
-    -- quit, write, undo, redo, seleect-all
-    vim.keymap.set({ "n", "v", "i" }, "<D-w>", "<cmd>quit<cr>")
+    -- quit, write, undo, redo, select-all
+    vim.keymap.set({ "n", "v", "i" }, "<D-w>", "<cmd>close<cr>")
     vim.keymap.set({ "n", "v", "i" }, "<D-s>", "<cmd>write<cr>")
     vim.keymap.set({ "n", "v", "i" }, "<D-z>", "<cmd>undo<cr>")
     vim.keymap.set({ "n", "v", "i" }, "<D-S-z>", "<cmd>redo<cr>")
