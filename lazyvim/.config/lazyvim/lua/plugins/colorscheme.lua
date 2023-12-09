@@ -5,6 +5,7 @@ return {
       colorscheme = "catppuccin",
     },
   },
+
   {
     "catppuccin",
     opts = {

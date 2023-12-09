@@ -3,8 +3,8 @@ return {
   opts = {
     colorcolumn = "120",
     disabled_filetypes = {
-      "NeogitLogView",
       "NeogitGitCommandHistory",
+      "NeogitLogView",
       "Trouble",
       "dashboard",
       "help",
@@ -13,6 +13,7 @@ return {
       "markdown",
       "mason",
       "neo-tree",
+      "noice",
       "text",
     },
     scope = "window",
