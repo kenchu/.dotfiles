@@ -103,7 +103,7 @@ map <leader>wJ <Action>(MoveTabDown)
 map <leader>ww <Action>(Switcher)
 
 """ manage Tool Windows
-map <D-S-.> <Action>(ActivateCdeiumChatToolWindow)
+map <D-S-.> <Action>(ActivateCodeiumChatToolWindow)
 map <leader>ue <Action>(ActivateProjectToolWindow)
 map <leader>ug <Action>(ActivateGradleToolWindow)
 map <leader>un <Action>(ActivateNotificationsToolWindow)
