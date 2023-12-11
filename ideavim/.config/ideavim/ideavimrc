@@ -1,0 +1,152 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Common settings -------------------------
+set showmode
+set number
+set relativenumber
+set ignorecase
+set smartcase
+set clipboard+=unnamed   """ system clipboard
+
+""" Idea specific settings ------------------
+set ideajoin
+""" set ideastatusicon=gray
+set idearefactormode=keep
+
+""" Plugins  --------------------------------
+set ReplaceWithRegister
+set argtextobj
+set commentary
+"set easymotion
+set exchange
+set matchit
+set multiple-cursors
+set surround
+set textobj-entire
+set textobj-indent
+set NERDTree
+
+""" Plugin settings -------------------------
+"""Plug 'jdhao/better-escape.vim'   """ no work
+"""let g:better_escape_shortcut = ['jk', 'kj']
+let g:argtextobj_pairs="[:],(:),<:>"
+
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
+
+""" core keymap
+set timeoutlen=500
+inoremap jk <Esc>
+inoremap kj <Esc>
+imap <C-j> <C-n>
+imap <C-k> <C-p>
+
+""" vim exchange keymap
+nmap sx <Plug>(Exchange)
+xmap X <Plug>(Exchange)
+nmap sxc <Plug>(ExchangeClear)
+nmap sxx <Plug>(ExchangeLine)
+
+map <leader><leader> <Action>(GotoFile)
+""" map <leader>e <Action>(SelectInProjectView)
+
+""" manage buffers / windows
+map <C-l> <C-w>l
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+nmap H <Action>(PreviousTab)
+nmap L <Action>(NextTab)
+map <leader>bd <Action>(CloseEditor)
+map <leader>ws <Action>(SplitHorizontally)
+map <leader>wv <Action>(SplitVertically)
+map <leader>wr <Action>(ChangeSplitOrientation)
+map <leader>wL <Action>(MoveTabRight)
+map <leader>wH <Action>(MoveEditorToOppositeTabGroup)
+map <leader>wJ <Action>(MoveTabDown)
+map <leader>ww <Action>(Switcher)
+
+""" manage Tool Windows
+map <D-S-.> <Action>(ActivateCdeiumChatToolWindow)
+map <leader>ue <Action>(ActivateProjectToolWindow)
+map <leader>ug <Action>(ActivateGradleToolWindow)
+map <leader>un <Action>(ActivateNotificationsToolWindow)
+
+""" file/find
+map <leader>fr <Action>(RecentFiles)
+map <leader>ss <Action>(GotoSymbol)
+
+""" git keymap
+map <leader>gg <Action>(ActivateVersionControlToolWindow)
+map <leader>gs <Action>(ActivateCommitToolWindow)
+
+""" debug keymap
+map <leader>db <Action>(ToggleLineBreakpoint)
+map <leader>dc <Action>(Resume)
+map <leader>dd <Action>(Debug)
+map <leader>dx <Action>(Stop)
+map <leader>du <Action>(ActivateDebugToolWindow)
+
+""" problem keymap
+map <leader>xn <Action>(GotoNextError)
+map <leader>xp <Action>(GotoPreviousError)
+map <leader>xx <Action>(ActivateProblemsViewToolWindow)
+
+""" code keymap
+map <leader>cf <Action>(ReformatCode)
+map <leader>ci <Action>(OptimizeImports)
+map <leader>cr <Action>(RenameElement)
+map <leader>cc <Action>(NewClass)
+
+""" editing keymap
+map <C-s> <Action>(SaveAll)
+map <M-j> <Action>(MoveStatementDown)
+map <M-k> <Action>(MoveStatementUp)
+map za <Action>(CollapseSelection)
+
+""' NERDTree keymap
+map <leader>e :NERDTreeToggle<CR>
+
+""" DBNavigator keymap
+map <leader>ud <Action>(DBNavigator.Actions.MainMenu.DatabaseBrowser)
+map <leader>DD <Action>(DBNavigator.Actions.MainMenu.OpenSQLConsole)
+
+""" other keymap
+map <Leader>z <Action>(ToggleDistractionFreeMode)
+map <leader>: <Action>(tasks.and.contexts)
