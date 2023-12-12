@@ -77,44 +77,39 @@ inoremap kj <Esc>
 imap <C-j> <C-n>
 imap <C-k> <C-p>
 
+map <C-l> <C-w>l
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+
 """ vim exchange keymap
 nmap sx <Plug>(Exchange)
 xmap X <Plug>(Exchange)
 nmap sxc <Plug>(ExchangeClear)
 nmap sxx <Plug>(ExchangeLine)
 
-map <leader><leader> <Action>(GotoFile)
-""" map <leader>e <Action>(SelectInProjectView)
-
-""" manage buffers / windows
-map <C-l> <C-w>l
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
 nmap H <Action>(PreviousTab)
 nmap L <Action>(NextTab)
 map <leader>bd <Action>(CloseEditor)
-map <leader>ws <Action>(SplitHorizontally)
-map <leader>wv <Action>(SplitVertically)
-map <leader>wr <Action>(ChangeSplitOrientation)
-map <leader>wL <Action>(MoveTabRight)
-map <leader>wH <Action>(MoveEditorToOppositeTabGroup)
-map <leader>wJ <Action>(MoveTabDown)
-map <leader>ww <Action>(Switcher)
 
-""" manage Tool Windows
+""" editing keymap
+map <C-s> <Action>(SaveAll)
+map <M-j> <Action>(MoveLineDown)
+map <M-k> <Action>(MoveLineUp)
+map za <Action>(CollapseSelection)
+
+""" ai
 map <D-S-.> <Action>(ActivateCodeiumChatToolWindow)
-map <leader>ue <Action>(ActivateProjectToolWindow)
-map <leader>ug <Action>(ActivateGradleToolWindow)
-map <leader>un <Action>(ActivateNotificationsToolWindow)
 
-""" file/find
+""" code keymap
+map <leader>cf <Action>(ReformatCode)
+map <leader>co <Action>(OptimizeImports)
+map <leader>cr <Action>(RenameElement)
+
+""" file keymap
+map <leader><leader> <Action>(GotoFile)
 map <leader>fr <Action>(RecentFiles)
-map <leader>ss <Action>(GotoSymbol)
-
-""" git keymap
-map <leader>gg <Action>(ActivateVersionControlToolWindow)
-map <leader>gs <Action>(ActivateCommitToolWindow)
+map <leader>fn <Action>(Kotlin.NewFile)
 
 """ debug keymap
 map <leader>db <Action>(ToggleLineBreakpoint)
@@ -123,24 +118,36 @@ map <leader>dd <Action>(Debug)
 map <leader>dx <Action>(Stop)
 map <leader>du <Action>(ActivateDebugToolWindow)
 
+""" git keymap
+map <leader>gg <Action>(ActivateVersionControlToolWindow)
+map <leader>gs <Action>(ActivateCommitToolWindow)
+map <leader>gb <Action>(Annotate)
+
+""" search
+map <leader>ss <Action>(GotoSymbol)
+
+""" manage Tool Windows
+map <leader>ue <Action>(ActivateProjectToolWindow)
+map <leader>ug <Action>(ActivateGradleToolWindow)
+map <leader>us <Action>(ActivateStructureToolWindow)
+map <leader>un <Action>(ActivateNotificationsToolWindow)
+
+""" windows keymap
+map <leader>ws <Action>(SplitHorizontally)
+map <leader>wv <Action>(SplitVertically)
+map <leader>wr <Action>(ChangeSplitOrientation)
+map <leader>wL <Action>(MoveTabRight)
+map <leader>wH <Action>(MoveEditorToOppositeTabGroup)
+map <leader>wJ <Action>(MoveTabDown)
+map <leader>ww <Action>(Switcher)
+""" map <leader>e <Action>(SelectInProjectView)
+
 """ problem keymap
 map <leader>xn <Action>(GotoNextError)
 map <leader>xp <Action>(GotoPreviousError)
 map <leader>xx <Action>(ActivateProblemsViewToolWindow)
 
-""" code keymap
-map <leader>cf <Action>(ReformatCode)
-map <leader>ci <Action>(OptimizeImports)
-map <leader>cr <Action>(RenameElement)
-map <leader>cc <Action>(NewClass)
-
-""" editing keymap
-map <C-s> <Action>(SaveAll)
-map <M-j> <Action>(MoveStatementDown)
-map <M-k> <Action>(MoveStatementUp)
-map za <Action>(CollapseSelection)
-
-""' NERDTree keymap
+""" NERDTree keymap
 map <leader>e :NERDTreeToggle<CR>
 
 """ DBNavigator keymap
