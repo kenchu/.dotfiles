@@ -8,8 +8,9 @@ vim.keymap.set("n", "<leader>h", "<cmd>Dashboard<cr>", { desc = "Dashboard" })
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr><esc>", { desc = "Write File" })
 vim.keymap.set("n", "<leader>ws", "<cmd>sp<cr><esc>", { desc = "Window Split" })
 vim.keymap.set("n", "<leader>wv", "<cmd>vsp<cr><esc>", { desc = "Window Vertical Split" })
+vim.keymap.set("n", "<leader>wm", "<C-w>o", { desc = "Window Maximize" })
 -- TODO: no work
-vim.keymap.set("i", "<A-BS>", "<esc>dbi", { desc = "Delete Word Backward" })
+-- vim.keymap.set("i", "<A-BS>", "<esc>dbi", { desc = "Delete Word Backward" })
 
 -- substitute exchange keymap
 vim.keymap.set("n", "sx", require("substitute.exchange").operator, { desc = "Substitute Operator" })
