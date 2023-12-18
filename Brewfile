@@ -20,7 +20,7 @@ brew "rclone"
 brew "yq"
 
 # Rust
-brew "bandwhich"
+# brew "bandwhich"
 brew "bat"
 brew "broot"
 brew "chafa"
@@ -60,13 +60,16 @@ brew "git-flow-avh"
 
 # cask
 cask "iterm2",             greedy: true, args: { "no-quarantine": true }
-cask "warp",               greedy: true, args: { "no-quarantine": true }
-# cask "firefox",            greedy: true, args: { "no-quarantine": true }
+cask "neovide",            greedy: true, args: { "no-quarantine": true }
+cask "notion",             greedy: true, args: { "no-quarantine": true }
 cask "raycast",            greedy: true, args: { "no-quarantine": true }
 cask "stats",              greedy: true, args: { "no-quarantine": true }
-cask "neovide",            greedy: true, args: { "no-quarantine": true }
 cask "visual-studio-code", greedy: true, args: { "no-quarantine": true }
-cask "notion",             greedy: true, args: { "no-quarantine": true }
+# cask "warp",               greedy: true, args: { "no-quarantine": true }
+
+# Quick Look Plugins
+cask "qlmarkdown",         greedy: true, args: { "no-quarantine": true }
+cask "syntax-highlight",   greedy: true, args: { "no-quarantine": true }
 
 # Container tools
 cask "docker",             greedy: true, args: { "no-quarantine": true }
@@ -76,13 +79,10 @@ brew "k9s"
 # brew "kind"
 
 # # cask (optional)
+# cask "firefox",            greedy: true, args: { "no-quarantine": true }
 # cask "postman"
 # cask "ngrok"
 # cask "slack"
-
-# Quick Look Plugins
-cask "qlmarkdown",       args: { "no-quarantine": true }
-cask "syntax-highlight", args: { "no-quarantine": true }
 
 # doom emacs deps
 brew "cmake"
@@ -95,4 +95,3 @@ brew "emacs-plus@30",
     # restart_service: true,
     link: true
 
-brew "neovim"
