@@ -29,6 +29,7 @@ return {
     },
     opts = function()
       local actions = require("telescope.actions")
+      local actions_state = require("telescope.actions.state")
       local actions_layout = require("telescope.actions.layout")
       return {
         defaults = {
@@ -45,15 +46,23 @@ return {
           },
           mappings = {
             n = {
+              ["<A-d>"] = actions.delete_buffer,
               ["<A-p>"] = actions_layout.toggle_preview,
             },
             i = {
-              ["<A-p>"] = actions_layout.toggle_preview,
-              ["<esc>"] = actions.close,
+              ["<ESC>"] = actions.close,
               ["<C-n>"] = actions.cycle_history_next,
               ["<C-p>"] = actions.cycle_history_prev,
               ["<C-j>"] = actions.move_selection_next,
               ["<C-k>"] = actions.move_selection_previous,
+              ["<A-d>"] = actions.delete_buffer,
+              ["<A-p>"] = actions_layout.toggle_preview,
+              ["<A-BS>"] = function(prompt_bufnr)
+                local current_line = actions_state.get_current_line()
+                local current_picker = actions_state.get_current_picker(prompt_bufnr)
+                current_line = current_line:match("(.*%w)%W+%w*$") or ""
+                current_picker:set_prompt(current_line)
+              end,
             },
           },
         },
@@ -66,7 +75,7 @@ return {
             hidden_files = false, -- default: false
             theme = "dropdown",
             order_by = "asc",
-            display_type = "full",
+            -- display_type = "full",
             search_by = { "title", "path" },
             sync_with_nvim_tree = true, -- default false
             -- default for on_project_selected = find project files
