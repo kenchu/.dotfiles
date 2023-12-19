@@ -9,16 +9,6 @@ brew "stow"
 brew "fish"
 brew "fisher"
 
-# Go
-brew "direnv"
-brew "dive"
-brew "fzf"
-brew "glow"
-brew "jid"
-brew "lazygit"
-brew "rclone"
-brew "yq"
-
 # Rust
 # brew "bandwhich"
 brew "bat"
@@ -41,6 +31,17 @@ brew "xplr"
 brew "zoxide"
 brew "zellij"
 
+# Go
+brew "direnv"
+brew "dive"
+brew "fzf"
+brew "gh"
+brew "glow"
+brew "jid"
+brew "lazygit"
+brew "rclone"
+brew "yq"
+
 # Ruby
 brew "lolcat"
 
@@ -58,7 +59,7 @@ brew "ansible"
 brew "asdf"
 brew "git-flow-avh"
 
-# cask
+# Cask
 cask "iterm2",             greedy: true, args: { "no-quarantine": true }
 cask "neovide",            greedy: true, args: { "no-quarantine": true }
 cask "notion",             greedy: true, args: { "no-quarantine": true }
@@ -71,27 +72,27 @@ cask "visual-studio-code", greedy: true, args: { "no-quarantine": true }
 cask "qlmarkdown",         greedy: true, args: { "no-quarantine": true }
 cask "syntax-highlight",   greedy: true, args: { "no-quarantine": true }
 
-# Container tools
+# Container Tools
 cask "docker",             greedy: true, args: { "no-quarantine": true }
 brew "lazydocker"
 brew "k9s"
 # brew "kdash-rs/kdash/kdash"
 # brew "kind"
 
-# # cask (optional)
+# Cask (optional)
 # cask "firefox",            greedy: true, args: { "no-quarantine": true }
-# cask "postman"
+cask "postman",            greedy: true, args: { "no-quarantine": true }
 # cask "ngrok"
 # cask "slack"
 
-# doom emacs deps
-brew "cmake"
-brew "dbus" #, restart_service: true
-# cask "jimeh/emacs-builds/emacs-app-good"
-tap "d12frosted/emacs-plus"
-brew "emacs-plus@30",
-    # args: [ "with-dbus", "with-xwidgets", "with-native-comp", "with-poll" ],
-    args: [ "with-dbus", "with-xwidgets", "with-native-comp", "with-poll", "with-memeplex-slim-icon" ],
-    # restart_service: true,
-    link: true
+# # doom emacs deps
+# brew "cmake"
+# brew "dbus" #, restart_service: true
+# # cask "jimeh/emacs-builds/emacs-app-good"
+# tap "d12frosted/emacs-plus"
+# brew "emacs-plus@30",
+#     # args: [ "with-dbus", "with-xwidgets", "with-native-comp", "with-poll" ],
+#     args: [ "with-dbus", "with-xwidgets", "with-native-comp", "with-poll", "with-memeplex-slim-icon" ],
+#     # restart_service: true,
+#     link: true
 
