@@ -10,6 +10,7 @@ return {
       "dharmx/telescope-media.nvim",
       "olacin/telescope-cc.nvim",
       "ThePrimeagen/refactoring.nvim",
+      { "johmsalas/text-case.nvim", config = true },
     },
     config = function(_, opts)
       local telescope = require("telescope")
@@ -20,12 +21,14 @@ return {
       telescope.load_extension("media")
       telescope.load_extension("conventional_commits")
       telescope.load_extension("refactoring")
+      telescope.load_extension("textcase")
     end,
     keys = {
       { "<leader>fo", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
       { "<leader>fp", "<cmd>Telescope project<cr>", desc = "Find projects" },
       { "<leader>fz", "<cmd>Telescope zoxide list<cr>", desc = "Zoxide list" },
       { "<leader>gm", "<cmd>Telescope conventional_commits<cr>", desc = "Conventional commit" },
+      { "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "v" }, desc = "Text Case Open Telescope" },
     },
     opts = function()
       local actions = require("telescope.actions")
