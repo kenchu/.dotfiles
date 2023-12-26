@@ -14,7 +14,13 @@ return {
     },
   },
 
-  { "gbprod/substitute.nvim", event = "LazyFile" },
+  {
+    "gbprod/substitute.nvim",
+    event = "LazyFile",
+    opts = {
+      on_substitute = require("yanky.integration").substitute(),
+    },
+  },
 
   {
     "nat-418/boole.nvim",
