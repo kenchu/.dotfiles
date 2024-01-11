@@ -63,8 +63,42 @@ end
 
 return {
   "smoka7/hydra.nvim",
+  dependencies = {
+    { "chrisgrieser/nvim-spider", lazy = false },
+  },
   config = function()
     M.side_scroll()
     M.nvim_spider()
   end,
 }
+
+-- {
+--   "chrisgrieser/nvim-spider",
+--   keys = {
+--     {
+--       "w",
+--       "<cmd>lua require('spider').motion('w')<CR>",
+--       desc = "Next word",
+--       mode = { "n", "x", "o" },
+--     },
+--     {
+--       "e",
+--       "<cmd>lua require('spider').motion('e')<CR>",
+--       desc = "Next end of word",
+--       mode = { "n", "x", "o" },
+--     },
+--     {
+--       "b",
+--       "<cmd>lua require('spider').motion('b')<CR>",
+--       desc = "Previous word",
+--       mode = { "n", "x", "o" },
+--     },
+--     {
+--       "ge",
+--       "<cmd>lua require('spider').motion('ge')<CR>",
+--       desc = "Previous end of word",
+--       mode = { "n", "x", "o" },
+--     },
+--   },
+--   opts = {},
+-- },
