@@ -17,6 +17,7 @@ return {
       telescope.setup(opts)
       telescope.load_extension("file_browser")
       telescope.load_extension("project")
+      telescope.load_extension("zf-native")
       telescope.load_extension("zoxide")
       telescope.load_extension("media")
       telescope.load_extension("conventional_commits")
@@ -86,6 +87,26 @@ return {
             -- 	require("telescope._extensions.project.actions").change_working_directory(prompt_bufnr, false)
             -- 	require("harpoon.ui").nav_file(1)
             -- end,
+          },
+          ["zf-native"] = {
+            -- options for sorting file-like items
+            file = {
+              -- override default telescope file sorter
+              enable = true,
+              -- highlight matching text in results
+              highlight_results = true,
+              -- enable zf filename match priority
+              match_filename = true,
+            },
+            -- options for sorting all other items
+            generic = {
+              -- override default telescope generic item sorter
+              enable = true,
+              -- highlight matching text in results
+              highlight_results = true,
+              -- disable zf filename match priority
+              match_filename = false,
+            },
           },
         },
       }
