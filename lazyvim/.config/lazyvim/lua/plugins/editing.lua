@@ -1,11 +1,5 @@
 return {
   {
-    "lambdalisue/suda.vim",
-    keys = { { "<leader>W", ":SudaWrite<CR>", desc = "Suda Write" } },
-    cmd = { "SudaRead", "SudaWrite" },
-  },
-
-  {
     "max397574/better-escape.nvim",
     event = "InsertCharPre",
     opts = {
@@ -15,10 +9,29 @@ return {
   },
 
   {
+    "lambdalisue/suda.vim",
+    keys = { { "<leader>W", ":SudaWrite<CR>", desc = "Suda Write" } },
+    cmd = { "SudaRead", "SudaWrite" },
+  },
+
+  {
     "gbprod/substitute.nvim",
     event = "LazyFile",
     opts = {
       on_substitute = require("yanky.integration").substitute(),
+    },
+  },
+
+  {
+    "smjonas/inc-rename.nvim",
+    config = true,
+    keys = {
+      {
+        "<leader>cr",
+        function()
+          return ":IncRename " .. vim.fn.expand("<cword>")
+        end,
+      },
     },
   },
 
@@ -44,40 +57,4 @@ return {
       },
     },
   },
-
-  {
-    "chrisgrieser/nvim-spider",
-    lazy = false,
-  },
-
-  -- {
-  --   "chrisgrieser/nvim-spider",
-  --   keys = {
-  --     {
-  --       "w",
-  --       "<cmd>lua require('spider').motion('w')<CR>",
-  --       desc = "Next word",
-  --       mode = { "n", "x", "o" },
-  --     },
-  --     {
-  --       "e",
-  --       "<cmd>lua require('spider').motion('e')<CR>",
-  --       desc = "Next end of word",
-  --       mode = { "n", "x", "o" },
-  --     },
-  --     {
-  --       "b",
-  --       "<cmd>lua require('spider').motion('b')<CR>",
-  --       desc = "Previous word",
-  --       mode = { "n", "x", "o" },
-  --     },
-  --     {
-  --       "ge",
-  --       "<cmd>lua require('spider').motion('ge')<CR>",
-  --       desc = "Previous end of word",
-  --       mode = { "n", "x", "o" },
-  --     },
-  --   },
-  --   opts = {},
-  -- },
 }
