@@ -44,13 +44,13 @@ return {
       "nvim-telescope/telescope.nvim", -- optional
       "sindrets/diffview.nvim", -- optional
     },
-    -- config = true,
-    opts = {
-      telescope_sorter = function()
-        -- return require("telescope").extensions.fzy_native.native_fzy_sorter()
-        return require("telescope").extensions.zf_native.native_zf_scorer()
-      end,
-    },
+    config = true,
+    -- opts = {
+    --   telescope_sorter = function()
+    --     -- return require("telescope").extensions.fzy_native.native_fzy_sorter()
+    --     return require("telescope").extensions.zf_native.native_zf_scorer()
+    --   end,
+    -- },
     keys = {
       { prefix .. "n", desc = "Neogit" },
       { prefix .. "nt", "<cmd>Neogit<cr>", desc = "Open Neogit Tab Page" },
