@@ -118,6 +118,10 @@ map <leader>dd <Action>(Debug)
 map <leader>dx <Action>(Stop)
 map <leader>du <Action>(ActivateDebugToolWindow)
 
+""" error keymap
+map <leader>en <Action>(GotoNextError)
+map <leader>ep <Action>(GotoPreviousError)
+
 """ git keymap
 map <leader>gg <Action>(ActivateVersionControlToolWindow)
 map <leader>gs <Action>(ActivateCommitToolWindow)
@@ -148,7 +152,7 @@ map <leader>xp <Action>(GotoPreviousError)
 map <leader>xx <Action>(ActivateProblemsViewToolWindow)
 
 """ NERDTree keymap
-map <leader>e :NERDTreeToggle<CR>
+map <leader>fe :NERDTreeToggle<CR>
 
 """ DBNavigator keymap
 map <leader>ud <Action>(DBNavigator.Actions.MainMenu.DatabaseBrowser)
@@ -157,3 +161,12 @@ map <leader>DD <Action>(DBNavigator.Actions.MainMenu.OpenSQLConsole)
 """ other keymap
 map <Leader>z <Action>(ToggleDistractionFreeMode)
 map <leader>: <Action>(tasks.and.contexts)
+map <tab> <Action>(BraceOrQuoteOut)
+
+map gI <Action>(GotoImplementation)
+map gr <Action>(GotoReference)
+map gu <Action>(ShowUsages)
+map <leader>su <Action>(FindUsages)
+
+map ]g <Action>(JumpToNextChange)
+map [g <Action>(JumpToLastChange)
