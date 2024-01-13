@@ -51,6 +51,7 @@ return {
     --     return require("telescope").extensions.zf_native.native_zf_scorer()
     --   end,
     -- },
+    cmd = { "Neogit" },
     keys = {
       { prefix .. "n", desc = "Neogit" },
       { prefix .. "nt", "<cmd>Neogit<cr>", desc = "Open Neogit Tab Page" },
