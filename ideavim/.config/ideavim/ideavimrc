@@ -3,18 +3,6 @@
 " You can find a list of commands here: https://jb.gg/h38q75
 " Find more examples here: https://jb.gg/share-ideavimrc
 
-
-"" -- Suggested options --
-" Show a few lines of context around the cursor. Note that this makes the
-" text scroll if you mouse-click near the start or end of the window.
-set scrolloff=5
-
-" Do incremental searching.
-set incsearch
-
-" Don't use Ex mode, use Q for formatting.
-map Q gq
-
 " --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
 
 " Highlight copied text
@@ -23,26 +11,16 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-commentary'
 
 
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
-"" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
-
-"" Map <leader>d to start debug
-"map <leader>d <Action>(Debug)
-
-"" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint)
-
-""" Map leader to space ---------------------
-let mapleader=" "
-
 """ Common settings -------------------------
+set scrolloff=5
 set showmode
 set number
 set relativenumber
 set ignorecase
+set incsearch
 set smartcase
 set clipboard+=unnamed   """ system clipboard
+set timeoutlen=500
 
 """ Idea specific settings ------------------
 set ideajoin
@@ -50,17 +28,17 @@ set ideajoin
 set idearefactormode=keep
 
 """ Plugins  --------------------------------
+set NERDTree
 set ReplaceWithRegister
 set argtextobj
 set commentary
-"set easymotion
+" set easymotion
 set exchange
 set matchit
 set multiple-cursors
 set surround
 set textobj-entire
 set textobj-indent
-set NERDTree
 
 """ Plugin settings -------------------------
 """Plug 'jdhao/better-escape.vim'   """ no work
@@ -70,12 +48,17 @@ let g:argtextobj_pairs="[:],(:),<:>"
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapJumpParent='h'
 
+""" Map leader to space ---------------------
+let mapleader=" "
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
 """ core keymap
-set timeoutlen=500
 inoremap jk <Esc>
 inoremap kj <Esc>
-imap <C-j> <C-n>
-imap <C-k> <C-p>
+inoremap <C-j> <C-n>
+inoremap <C-k> <C-p>
 
 map <C-l> <C-w>l
 map <C-h> <C-w>h
@@ -92,51 +75,51 @@ nmap H <Action>(PreviousTab)
 nmap L <Action>(NextTab)
 map <leader>bd <Action>(CloseEditor)
 
-""" editing keymap
+""" Editing Keymap
 map <C-s> <Action>(SaveAll)
 map <M-j> <Action>(MoveLineDown)
 map <M-k> <Action>(MoveLineUp)
 map za <Action>(CollapseSelection)
 
-""" ai
+""" AI
 map <D-S-.> <Action>(ActivateCodeiumChatToolWindow)
 
-""" code keymap
+""" Code Keymap
 map <leader>cf <Action>(ReformatCode)
 map <leader>co <Action>(OptimizeImports)
 map <leader>cr <Action>(RenameElement)
 
-""" file keymap
+""" File Keymap
 map <leader><leader> <Action>(GotoFile)
 map <leader>fr <Action>(RecentFiles)
 map <leader>fn <Action>(Kotlin.NewFile)
 
-""" debug keymap
+""" Debug Keymap
 map <leader>db <Action>(ToggleLineBreakpoint)
 map <leader>dc <Action>(Resume)
+map <leader>dr <Action>(Run)
 map <leader>dd <Action>(Debug)
 map <leader>dx <Action>(Stop)
 map <leader>du <Action>(ActivateDebugToolWindow)
 
-""" error keymap
-map <leader>en <Action>(GotoNextError)
-map <leader>ep <Action>(GotoPreviousError)
-
-""" git keymap
+""" Git Keymap
 map <leader>gg <Action>(ActivateVersionControlToolWindow)
 map <leader>gs <Action>(ActivateCommitToolWindow)
 map <leader>gb <Action>(Annotate)
 
-""" search
+""" Search
 map <leader>ss <Action>(GotoSymbol)
 
-""" manage Tool Windows
+""" UI
 map <leader>ue <Action>(ActivateProjectToolWindow)
 map <leader>ug <Action>(ActivateGradleToolWindow)
-map <leader>us <Action>(ActivateStructureToolWindow)
 map <leader>un <Action>(ActivateNotificationsToolWindow)
+map <leader>us <Action>(ActivateStructureToolWindow)
+map <leader>up <Action>(TogglePresentationMode)
+map <leader>uz <Action>(ToggleDistractionFreeMode)
 
-""" windows keymap
+""" Window Keymap
+map <leader>wm <Action>(HideAllWindows)
 map <leader>ws <Action>(SplitHorizontally)
 map <leader>wv <Action>(SplitVertically)
 map <leader>wr <Action>(ChangeSplitOrientation)
@@ -146,20 +129,21 @@ map <leader>wJ <Action>(MoveTabDown)
 map <leader>ww <Action>(Switcher)
 """ map <leader>e <Action>(SelectInProjectView)
 
-""" problem keymap
+""" Error Keymap
+map <leader>en <Action>(GotoNextError)
+map <leader>ep <Action>(GotoPreviousError)
 map <leader>xn <Action>(GotoNextError)
 map <leader>xp <Action>(GotoPreviousError)
 map <leader>xx <Action>(ActivateProblemsViewToolWindow)
 
-""" NERDTree keymap
+""" NERDTree Keymap
 map <leader>fe :NERDTreeToggle<CR>
 
-""" DBNavigator keymap
+""" DBNavigator Keymap
 map <leader>ud <Action>(DBNavigator.Actions.MainMenu.DatabaseBrowser)
 map <leader>DD <Action>(DBNavigator.Actions.MainMenu.OpenSQLConsole)
 
-""" other keymap
-map <Leader>z <Action>(ToggleDistractionFreeMode)
+""" Other Keymap
 map <leader>: <Action>(tasks.and.contexts)
 map <tab> <Action>(BraceOrQuoteOut)
 
@@ -170,3 +154,4 @@ map <leader>su <Action>(FindUsages)
 
 map ]g <Action>(JumpToNextChange)
 map [g <Action>(JumpToLastChange)
+
