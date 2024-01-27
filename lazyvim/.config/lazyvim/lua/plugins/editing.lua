@@ -37,6 +37,7 @@ return {
 
   {
     "nat-418/boole.nvim",
+    event = "BufReadPre",
     opts = {
       mappings = {
         increment = "<C-a>",
@@ -55,6 +56,19 @@ return {
         -- Enable → Disable
         -- ENABLE → DISABLE
       },
+    },
+  },
+
+  {
+    "Wansmer/treesj",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    keys = {
+      "<space>m",
+      "<space>j",
+      "<space>s",
+    },
+    opts = {
+      use_default_keymaps = true,
     },
   },
 }
