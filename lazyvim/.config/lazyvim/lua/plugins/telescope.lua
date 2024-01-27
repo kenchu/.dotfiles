@@ -29,7 +29,7 @@ return {
       { "<leader>fp", "<cmd>Telescope project<cr>", desc = "Find projects" },
       { "<leader>fz", "<cmd>Telescope zoxide list<cr>", desc = "Zoxide list" },
       { "<leader>gm", "<cmd>Telescope conventional_commits<cr>", desc = "Conventional commit" },
-      { "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "v" }, desc = "Text Case Open Telescope" },
+      { "ga.", "<cmd>TextCaseOpenTelescope<cr>", mode = { "n", "v" }, desc = "Text Case Open Telescope" },
     },
     opts = function()
       local actions = require("telescope.actions")
