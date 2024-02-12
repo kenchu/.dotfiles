@@ -5,6 +5,7 @@ return {
       "nvim-telescope/telescope-file-browser.nvim",
       -- "nvim-telescope/telescope-media-files.nvim",
       "nvim-telescope/telescope-project.nvim",
+      { "agoodshort/telescope-git-submodules.nvim", dependencies = "akinsho/toggleterm.nvim" },
       "natecraddock/telescope-zf-native.nvim",
       "jvgrootveld/telescope-zoxide",
       "dharmx/telescope-media.nvim",
@@ -17,6 +18,7 @@ return {
       telescope.setup(opts)
       telescope.load_extension("file_browser")
       telescope.load_extension("project")
+      telescope.load_extension("git_submodules")
       telescope.load_extension("zf-native")
       telescope.load_extension("zoxide")
       telescope.load_extension("media")
@@ -29,7 +31,7 @@ return {
       { "<leader>fp", "<cmd>Telescope project<cr>", desc = "Find projects" },
       { "<leader>fz", "<cmd>Telescope zoxide list<cr>", desc = "Zoxide list" },
       { "<leader>gm", "<cmd>Telescope conventional_commits<cr>", desc = "Conventional commit" },
-      { "ga.", "<cmd>TextCaseOpenTelescope<cr>", mode = { "n", "v" }, desc = "Text Case Open Telescope" },
+      { "ga.", "<cmd>TextCaseOpenTelescope<cr>", mode = { "n", "v" }, desc = "Telescope text case" },
     },
     opts = function()
       local actions = require("telescope.actions")
