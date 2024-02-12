@@ -87,6 +87,10 @@ neovide.setup = function()
     vim.keymap.set({ "i", "c" }, "<D-BS>", "<C-u>") -- Delete whole line
     vim.keymap.set({ "i", "c" }, "<A-BS>", "<C-w>") -- Delete word backward
 
+    vim.keymap.set({ "n", "v" }, "<D-.>", function()
+      vim.lsp.buf.code_action()
+    end)
+
     -- zoom in and out
     vim.g.neovide_scale_factor = 1.0
     local change_scale_factor = function(delta)
