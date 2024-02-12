@@ -10,7 +10,7 @@ return {
 
   {
     "lambdalisue/suda.vim",
-    keys = { { "<leader>W", ":SudaWrite<CR>", desc = "Suda Write" } },
+    keys = { { "<leader>W", "<cmd>SudaWrite<cr>", desc = "Suda Write" } },
     cmd = { "SudaRead", "SudaWrite" },
   },
 
