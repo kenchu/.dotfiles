@@ -62,13 +62,25 @@ return {
   {
     "Wansmer/treesj",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    keys = {
-      "<space>m",
-      "<space>j",
-      "<space>s",
-    },
     opts = {
-      use_default_keymaps = true,
+      use_default_keymaps = false,
+    },
+    keys = {
+      { "<leader>j", desc = "Join / split lines" },
+      {
+        "<leader>jj",
+        function()
+          require("treesj").toggle()
+        end,
+        desc = "Treesj Join",
+      },
+      {
+        "<leader>js",
+        function()
+          require("treesj").split({ spilt = { recursive = true } })
+        end,
+        desc = "Treesj Join (recursive)",
+      },
     },
   },
 }
