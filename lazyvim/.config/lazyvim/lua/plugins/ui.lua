@@ -9,4 +9,16 @@ return {
       },
     },
   },
+
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    main = "rainbow-delimiters.setup",
+    event = "BufEnter",
+    opts = {
+      query = {
+        [""] = "rainbow-delimiters",
+        lua = "rainbow-blocks",
+      },
+    },
+  },
 }
