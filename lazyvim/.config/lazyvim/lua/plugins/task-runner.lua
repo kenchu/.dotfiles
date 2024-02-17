@@ -5,11 +5,11 @@ return {
     dependencies = { "stevearc/overseer.nvim" },
     opts = {},
   },
-  { -- The task runner we use
+
+  {
     "stevearc/overseer.nvim",
-    commit = "400e762648b70397d0d315e5acaf0ff3597f2d8b",
+    commit = "68a2d344cea4a2e11acfb5690dc8ecd1a1ec0ce0",
     cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
-    event = "VeryLazy",
     opts = {
       task_list = {
         direction = "bottom",
@@ -18,5 +18,18 @@ return {
         default_detail = 1,
       },
     },
+  },
+
+  {
+    "michaelb/sniprun",
+    branch = "master",
+    build = "sh install.sh",
+    -- do 'sh install.sh 1' if you want to force compile locally
+    -- (instead of fetching a binary from the github release). Requires Rust >= 1.65
+    config = function()
+      require("sniprun").setup({
+        -- your options
+      })
+    end,
   },
 }
