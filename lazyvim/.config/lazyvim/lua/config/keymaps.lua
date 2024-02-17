@@ -4,21 +4,16 @@
 
 vim.keymap.set("n", "<leader>h", "<cmd>Dashboard<cr>", { desc = "Dashboard" })
 
--- window keymap
+-- window management
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr><esc>", { desc = "Write File" })
 vim.keymap.set("n", "<leader>ws", "<cmd>sp<cr><esc>", { desc = "Window Split" })
 vim.keymap.set("n", "<leader>wv", "<cmd>vsp<cr><esc>", { desc = "Window Vertical Split" })
 vim.keymap.set("n", "<leader>wm", "<C-w>o", { desc = "Window Maximize" })
 
--- TODO: no work
--- vim.keymap.set("i", "<A-BS>", "<esc>dbi", { desc = "Delete Word Backward" })
 vim.keymap.set("n", "<M-CR>", "o<esc>k", { desc = "New Line Down" })
 vim.keymap.set("n", "<M-S-CR>", "O<esc>j", { desc = "New Line Up" })
 
--- telescope keymap
-vim.keymap.set("n", "<leader>'", require("telescope.builtin").resume, { silent = true, desc = "Telescope Resume" })
-
--- substitute exchange keymap
+-- substitute exchange
 vim.keymap.set("n", "sx", require("substitute.exchange").operator, { desc = "Substitute Operator" })
 vim.keymap.set("n", "sxx", require("substitute.exchange").line, { desc = "Substitute Line" })
 vim.keymap.set("n", "sxc", require("substitute.exchange").cancel, { desc = "Substitute Cancel" })

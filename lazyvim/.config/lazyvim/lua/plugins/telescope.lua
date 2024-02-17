@@ -29,6 +29,13 @@ return {
     end,
     keys = {
       {
+        "<leader>'",
+        function()
+          require("telescope.builtin").resume()
+        end,
+        desc = "Telescope Resume",
+      },
+      {
         "<leader><space>",
         function()
           require("search").open()
