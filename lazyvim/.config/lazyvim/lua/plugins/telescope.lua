@@ -2,6 +2,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
+      "FabianWirth/search.nvim",
       "nvim-telescope/telescope-file-browser.nvim",
       -- "nvim-telescope/telescope-media-files.nvim",
       "nvim-telescope/telescope-project.nvim",
@@ -27,6 +28,13 @@ return {
       telescope.load_extension("textcase")
     end,
     keys = {
+      {
+        "<leader><space>",
+        function()
+          require("search").open()
+        end,
+        desc = "File browser",
+      },
       { "<leader>fo", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
       { "<leader>fp", "<cmd>Telescope project<cr>", desc = "Find projects" },
       { "<leader>fz", "<cmd>Telescope zoxide list<cr>", desc = "Zoxide list" },
