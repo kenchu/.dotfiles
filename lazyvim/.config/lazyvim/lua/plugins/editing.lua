@@ -20,6 +20,41 @@ return {
     opts = {
       on_substitute = require("yanky.integration").substitute(),
     },
+    keys = {
+      {
+        "sx",
+        function()
+          require("substitute.exchange").operator()
+        end,
+        desc = "Substitute Operator",
+      },
+      {
+        "sx",
+        mode = { "x" },
+        function()
+          require("substitute.exchange").visual()
+        end,
+        desc = "Substitute Visual",
+      },
+      {
+        "sxx",
+        function()
+          require("substitute.exchange").line()
+        end,
+        desc = "Substitute Line",
+      },
+      {
+        "sxc",
+        function()
+          require("substitute.exchange").cancel()
+        end,
+        desc = "Substitute Cancel",
+      },
+    },
+    -- vim.keymap.set("n", "sx", require("substitute.exchange").operator, { desc = "Substitute Operator" })
+    -- vim.keymap.set("n", "sxx", require("substitute.exchange").line, { desc = "Substitute Line" })
+    -- vim.keymap.set("n", "sxc", require("substitute.exchange").cancel, { desc = "Substitute Cancel" })
+    -- vim.keymap.set("x", "sx", require("substitute.exchange").visual, { desc = "Substitute Visual" })
   },
 
   {
@@ -82,5 +117,12 @@ return {
         desc = "Treesj Join (recursive)",
       },
     },
+  },
+
+  {
+    "altermo/ultimate-autopair.nvim",
+    event = { "InsertEnter", "CmdlineEnter" },
+    branch = "v0.6", --recomended as each new version will have breaking changes
+    opts = {},
   },
 }

@@ -13,12 +13,6 @@ vim.keymap.set("n", "<leader>wm", "<C-w>o", { desc = "Window Maximize" })
 vim.keymap.set("n", "<M-CR>", "o<esc>k", { desc = "New Line Down" })
 vim.keymap.set("n", "<M-S-CR>", "O<esc>j", { desc = "New Line Up" })
 
--- substitute exchange
-vim.keymap.set("n", "sx", require("substitute.exchange").operator, { desc = "Substitute Operator" })
-vim.keymap.set("n", "sxx", require("substitute.exchange").line, { desc = "Substitute Line" })
-vim.keymap.set("n", "sxc", require("substitute.exchange").cancel, { desc = "Substitute Cancel" })
-vim.keymap.set("x", "sx", require("substitute.exchange").visual, { desc = "Substitute Visual" })
-
 -- refactoring
 vim.keymap.set("x", "<leader>re", ":Refactor extract ")
 vim.keymap.set("x", "<leader>rf", ":Refactor extract_to_file ")
