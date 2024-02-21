@@ -2,6 +2,19 @@ local prefix = "<leader>g"
 
 return {
   {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      word_diff = true,
+      current_line_blame = true,
+      current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> • <summary>",
+      current_line_blame_opts = {
+        virt_text_pos = "right_align", -- 'eol' | 'overlay' | 'right_align'
+        delay = 200,
+      },
+    },
+  },
+
+  {
     "NeogitOrg/neogit",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = true,
@@ -46,7 +59,7 @@ return {
     "emmanueltouzery/agitator.nvim",
     keys = {
       {
-        prefix .. "B",
+        prefix .. "b",
         function()
           require("agitator").git_blame_toggle({
             -- formatter = function(r)
@@ -67,20 +80,17 @@ return {
   },
 
   -- git time machine
-  {
-    "fredeeb/tardis.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    event = "VeryLazy",
-    config = true,
-  },
-
-  -- git commit on visual line
-  { "f-person/git-blame.nvim", event = "BufReadPre" },
+  -- {
+  --   "fredeeb/tardis.nvim",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   event = "VeryLazy",
+  --   config = true,
+  -- },
 
   {
     "FabijanZulj/blame.nvim",
     keys = {
-      { prefix .. "b", "<cmd>ToggleBlame virtual<cr>", desc = "Git Blame (virtual)" },
+      { prefix .. "B", "<cmd>ToggleBlame virtual<cr>", desc = "Git Blame (virtual)" },
     },
     opts = {
       merge_consecutive = false,
