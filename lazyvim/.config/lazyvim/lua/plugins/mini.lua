@@ -1,4 +1,92 @@
 return {
+  {
+    "echasnovski/mini.clue",
+    version = false,
+    -- dependencies = { "folke/which-key.nvim", enabled = false },
+    opts = function()
+      local miniclue = require("mini.clue")
+      return {
+        triggers = {
+          -- Leader triggers
+          { mode = "n", keys = "<Leader>" },
+          { mode = "x", keys = "<Leader>" },
+
+          -- Built-in completion
+          { mode = "i", keys = "<C-x>" },
+
+          -- `g` key
+          { mode = "n", keys = "g" },
+          { mode = "x", keys = "g" },
+
+          -- Marks
+          { mode = "n", keys = "'" },
+          { mode = "n", keys = "`" },
+          { mode = "x", keys = "'" },
+          { mode = "x", keys = "`" },
+
+          -- Registers
+          { mode = "n", keys = '"' },
+          { mode = "x", keys = '"' },
+          { mode = "i", keys = "<C-r>" },
+          { mode = "c", keys = "<C-r>" },
+
+          -- Window commands
+          { mode = "n", keys = "<C-w>" },
+
+          -- `z` key
+          { mode = "n", keys = "z" },
+          { mode = "x", keys = "z" },
+        },
+
+        clues = {
+          -- Enhance this by adding descriptions for <Leader> mapping groups
+          miniclue.gen_clues.builtin_completion(),
+          miniclue.gen_clues.g(),
+          miniclue.gen_clues.z(),
+          miniclue.gen_clues.marks(),
+          miniclue.gen_clues.registers(),
+          miniclue.gen_clues.windows({
+            submode_move = true,
+            submode_navigate = true,
+            submode_resize = true,
+          }),
+
+          -- normal mode clues
+          { mode = "n", keys = "<leader><tab>", desc = "+tab" },
+          { mode = "n", keys = "<leader>:", desc = "+overseer" },
+          { mode = "n", keys = "<leader>b", desc = "+buffer" },
+          { mode = "n", keys = "<leader>c", desc = "+code" },
+          { mode = "n", keys = "<leader>d", desc = "+debug" },
+          { mode = "n", keys = "<leader>f", desc = "+find" },
+          { mode = "n", keys = "<leader>g", desc = "+git" },
+          { mode = "n", keys = "<leader>gh", desc = "+git hunk" },
+          { mode = "n", keys = "<leader>o", desc = "+ollama" },
+          { mode = "n", keys = "<leader>q", desc = "+quit / session" },
+          { mode = "n", keys = "<leader>r", desc = "+refactor" },
+          { mode = "n", keys = "<leader>s", desc = "+search" },
+          { mode = "n", keys = "<leader>t", desc = "+toggle" },
+          { mode = "n", keys = "<leader>u", desc = "+ui" },
+          { mode = "n", keys = "<leader>x", desc = "+diagnostics / quickfix" },
+
+          -- visual mode clues
+          { mode = "x", keys = "<leader>c", desc = "+code" },
+          { mode = "x", keys = "<leader>d", desc = "+debug" },
+          { mode = "x", keys = "<leader>g", desc = "+git" },
+          { mode = "x", keys = "<leader>gh", desc = "+git hunk" },
+          { mode = "x", keys = "<leader>o", desc = "+ollama" },
+          { mode = "x", keys = "<leader>r", desc = "+refactor" },
+          { mode = "x", keys = "<leader>s", desc = "+search" },
+        },
+        window = {
+          delay = 200,
+          config = {
+            width = "auto",
+            -- border = "double",
+          },
+        },
+      }
+    end,
+  },
   { "echasnovski/mini.align", version = false, event = "LazyFile" },
   { "echasnovski/mini.move", version = false, event = "LazyFile" },
   {
@@ -23,20 +111,5 @@ return {
         suffix_next = "n", -- Suffix to search with "next" method
       },
     },
-  },
-
-  -- TODO: alternative plugin
-  { "echasnovski/mini.comment", version = false, enabled = false },
-  {
-    "numToStr/Comment.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    keys = {
-      { "gc", mode = { "n", "v" }, desc = "Comment toggle linewise" },
-      { "gb", mode = { "n", "v" }, desc = "Comment toggle blockwise" },
-    },
-    opts = function()
-      local commentstring_avail, commentstring = pcall(require, "ts_context_commentstring.integrations.comment_nvim")
-      return commentstring_avail and commentstring and { pre_hook = commentstring.create_pre_hook() } or {}
-    end,
   },
 }
