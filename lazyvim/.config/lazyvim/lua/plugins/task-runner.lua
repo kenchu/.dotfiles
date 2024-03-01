@@ -2,14 +2,13 @@ return {
   {
     "Zeioth/compiler.nvim",
     cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
-    dependencies = { "stevearc/overseer.nvim" },
+    dependencies = { "stevearc/overseer.nvim", commmit = "68a2d344cea4a2e11acfb5690dc8ecd1a1ec0ce0" },
     opts = {},
   },
 
   {
     "stevearc/overseer.nvim",
-    commit = "68a2d344cea4a2e11acfb5690dc8ecd1a1ec0ce0",
-    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+    cmd = { "OverseerRun", "OverseerToggle", "OverseerOpen", "OverseerClose" },
     opts = {
       task_list = {
         direction = "bottom",
@@ -26,6 +25,7 @@ return {
     build = "sh install.sh",
     -- do 'sh install.sh 1' if you want to force compile locally
     -- (instead of fetching a binary from the github release). Requires Rust >= 1.65
+    event = "VeryLazy",
     config = function()
       require("sniprun").setup({
         -- your options
