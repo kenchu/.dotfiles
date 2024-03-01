@@ -30,15 +30,6 @@ return {
   },
 
   {
-    "smjonas/inc-rename.nvim",
-    config = true,
-    keys = {
-      -- stylua: ignore
-      {"<leader>cr", function() return ":IncRename " .. vim.fn.expand("<cword>") end},
-    },
-  },
-
-  {
     "nat-418/boole.nvim",
     event = "BufReadPre",
     opts = {
@@ -57,18 +48,6 @@ return {
       allow_caps_additions = {
         { "enable", "disable" },
       },
-    },
-  },
-
-  {
-    "Wansmer/treesj",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    opts = {
-      use_default_keymaps = false,
-    },
-    -- stylua: ignore
-    keys = {
-      {"<leader>j", function() require("treesj").toggle() end, desc = "Join / Split"},
     },
   },
 }
