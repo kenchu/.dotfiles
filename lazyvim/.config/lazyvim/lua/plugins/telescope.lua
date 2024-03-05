@@ -95,7 +95,7 @@ return {
             },
             hidden_files = false, -- default: false
             theme = "dropdown",
-            order_by = "asc",
+            order_by = "recent", -- asc | desc | recent
             -- display_type = "full",
             search_by = { "title", "path" },
             sync_with_nvim_tree = true, -- default false
