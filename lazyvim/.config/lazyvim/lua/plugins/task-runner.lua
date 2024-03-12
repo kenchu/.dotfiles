@@ -8,7 +8,7 @@ return {
 
   {
     "stevearc/overseer.nvim",
-    cmd = { "OverseerRun", "OverseerToggle", "OverseerOpen", "OverseerClose" },
+    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
     opts = {
       task_list = {
         direction = "bottom",
