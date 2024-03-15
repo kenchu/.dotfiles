@@ -38,6 +38,7 @@ return {
       { "<leader>fp", "<cmd>Telescope project<cr>", desc = "Find projects" },
       { "<leader>fz", "<cmd>Telescope zoxide list<cr>", desc = "Zoxide list" },
       { "<leader>gm", "<cmd>Telescope conventional_commits<cr>", desc = "Conventional commit" },
+      { "<leader>rr", "<cmd>Telescope refactoring refactors<cr>", desc = "Telescope Refactor" },
       { "ga.", "<cmd>TextCaseOpenTelescope<cr>", mode = { "n", "v" }, desc = "Telescope text case" },
     },
     opts = function()
