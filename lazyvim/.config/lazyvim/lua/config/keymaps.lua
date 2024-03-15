@@ -25,27 +25,6 @@ vim.keymap.set({ "n", "x" }, "<leader>rr", function()
   require("telescope").extensions.refactoring.refactors()
 end, { desc = "Telescope Refactor" })
 
---- compiler keymap
--- Open compiler
-vim.keymap.set("n", "<F6>", "<cmd>CompilerOpen<cr>", { noremap = true, silent = true })
-
--- Redo last selected option
-vim.keymap.set("n", "<S-F6>", function()
-  vim.cmd("CompilerStop") -- (Optional, to dispose all tasks before redo)
-  vim.cmd("CompilerRedo")
-end, { noremap = true, silent = true })
-
--- Toggle compiler results
-vim.keymap.set("n", "<S-F7>", "<cmd>CompilerToggleResults<cr>", { noremap = true, silent = true })
-
--- Overseer keymap
-vim.keymap.set("n", "<leader>:", "", { desc = "Overseer" })
-vim.keymap.set("n", "<leader>::", "<cmd>OverseerRun<cr>", { desc = "OverseerRun" })
-vim.keymap.set("n", "<leader>:c", "<cmd>OverseerClearCache<cr>", { desc = "OverseerClearCache" })
-vim.keymap.set("n", "<leader>:o", "<cmd>OverseerOpen<cr>", { desc = "OverseerOpen" })
-vim.keymap.set("n", "<leader>:t", "<cmd>OverseerToggle<cr>", { desc = "OverseerToggle" })
-vim.keymap.set("n", "<leader>:i", "<cmd>OverseerInfo<cr>", { desc = "OverseerInfo" })
-
 -- neovide setup
 local neovide = {}
 

@@ -1,14 +1,24 @@
 return {
   {
     "Zeioth/compiler.nvim",
-    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
     dependencies = { "stevearc/overseer.nvim", commmit = "68a2d344cea4a2e11acfb5690dc8ecd1a1ec0ce0" },
+    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+    -- stylua: ignore
+    keys = {
+      { "<leader>::", "<cmd>CompilerOpen<cr>", desc = "Compiler Open" },
+      { "<leader>:r", "<cmd>CompilerRedo<cr>", desc = "Compiler Redo" },
+      { "<leader>:x", "<cmd>CompilerStop<cr>", desc = "Compiler Stop" },
+      { "<leader>:t", "<cmd>CompilerToggleResults<cr>", desc = "Compiler Toggle Results" },
+    },
     opts = {},
   },
 
   {
     "stevearc/overseer.nvim",
-    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+    cmd = { "OverseerInfo", "OverseerRun" },
+    keys = {
+      { "<leader>:i", "<cmd>OverseerInfo<cr>", desc = "OverseerInfo" },
+    },
     opts = {
       task_list = {
         direction = "bottom",
