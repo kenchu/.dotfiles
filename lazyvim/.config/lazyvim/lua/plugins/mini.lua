@@ -18,6 +18,18 @@ return {
           { mode = "n", keys = "g" },
           { mode = "x", keys = "g" },
 
+          -- `z` key
+          { mode = "n", keys = "z" },
+          { mode = "x", keys = "z" },
+
+          -- `,` key
+          { mode = "n", keys = "," },
+          { mode = "x", keys = "," },
+
+          -- `]` & `[` key
+          { mode = "n", keys = "]" },
+          { mode = "n", keys = "[" },
+
           -- Marks
           { mode = "n", keys = "'" },
           { mode = "n", keys = "`" },
@@ -32,10 +44,6 @@ return {
 
           -- Window commands
           { mode = "n", keys = "<C-w>" },
-
-          -- `z` key
-          { mode = "n", keys = "z" },
-          { mode = "x", keys = "z" },
         },
 
         clues = {
@@ -50,6 +58,28 @@ return {
             submode_navigate = true,
             submode_resize = true,
           }),
+
+          -- submode for horizontal movements ←/→
+          { mode = "n", keys = "zh", postkeys = "z" },
+          { mode = "n", keys = "zl", postkeys = "z" },
+          { mode = "x", keys = "zh", postkeys = "z" },
+          { mode = "x", keys = "zl", postkeys = "z" },
+
+          -- submode for horizontal movements ←/→ (half screen)
+          { mode = "n", keys = "zH", postkeys = "z" },
+          { mode = "n", keys = "zL", postkeys = "z" },
+          { mode = "x", keys = "zH", postkeys = "z" },
+          { mode = "x", keys = "zL", postkeys = "z" },
+
+          -- submode for spider movements
+          { mode = "n", keys = ",w", postkeys = "," },
+          { mode = "n", keys = ",b", postkeys = "," },
+          { mode = "x", keys = ",e", postkeys = "," },
+          { mode = "x", keys = ",ge", postkeys = "," },
+
+          -- submode for next/prev git hunk
+          { mode = "n", keys = "]h", postkeys = "]" },
+          { mode = "n", keys = "[h", postkeys = "[" },
 
           -- normal mode clues
           { mode = "n", keys = "<leader><tab>", desc = "+tab" },
