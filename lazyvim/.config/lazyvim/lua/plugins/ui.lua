@@ -23,6 +23,14 @@ return {
   },
 
   {
+    "brenoprata10/nvim-highlight-colors",
+    opts = {
+      render = "virtual",
+      enable_tailwind = false,
+    },
+  },
+
+  {
     "m4xshen/smartcolumn.nvim",
     opts = {
       scope = "window",
