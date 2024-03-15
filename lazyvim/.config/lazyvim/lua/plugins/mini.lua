@@ -94,7 +94,7 @@ return {
           { mode = "n", keys = "<leader>q", desc = "+quit / session" },
           { mode = "n", keys = "<leader>r", desc = "+refactor" },
           { mode = "n", keys = "<leader>s", desc = "+search" },
-          { mode = "n", keys = "<leader>t", desc = "+toggle" },
+          { mode = "n", keys = "<leader>t", desc = "+test" },
           { mode = "n", keys = "<leader>u", desc = "+ui" },
           { mode = "n", keys = "<leader>x", desc = "+diagnostics / quickfix" },
 
