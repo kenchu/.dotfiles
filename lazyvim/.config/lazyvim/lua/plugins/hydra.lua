@@ -1,104 +1,102 @@
 local M = {}
 
-M.side_scroll = function()
+M.git_hydra = function()
   local Hydra = require("hydra")
-  -- local cmd = require("hydra.keymap-util").cmd
-  Hydra({
-    name = "Side scroll",
-    mode = "n",
-    body = "z",
-    heads = {
-      { "h", "5zh" },
-      { "l", "5zl", { desc = "←/→" } },
-      { "H", "zH" },
-      { "L", "zL", { desc = "half screen ←/→" } },
-    },
-  })
-end
+  local gitsigns = require("gitsigns")
 
-M.nvim_spider = function()
-  local Hydra = require("hydra")
-  local spider = require("spider")
+  local hint = [[
+ _J_: next hunk   _s_: stage hunk        _d_: show deleted   _b_: blame line
+ _K_: prev hunk   _u_: undo last stage   _p_: preview hunk   _B_: blame show full 
+ ^ ^              _S_: stage buffer      ^ ^                 _/_: show base file
+ ^
+ ^ ^              _<Enter>_: Neogit              _q_: exit
+]]
+
+  local bufnr = vim.api.nvim_get_current_buf()
+
   Hydra({
-    name = "nvim-spider",
-    -- config = {
-    --   color = "pink",
-    --   -- hint = "statusline",
-    -- },
-    mode = { "n", "x", "o" },
-    body = ",",
+    name = "Git",
+    hint = hint,
+    config = {
+      buffer = bufnr,
+      color = "pink",
+      invoke_on_body = true,
+      hint = {
+        border = "rounded",
+      },
+      on_enter = function()
+        vim.cmd("mkview")
+        vim.cmd("silent! %foldopen!")
+        vim.bo.modifiable = false
+        gitsigns.toggle_signs(true)
+        gitsigns.toggle_linehl(true)
+      end,
+      on_exit = function()
+        local cursor_pos = vim.api.nvim_win_get_cursor(0)
+        vim.cmd("loadview")
+        vim.api.nvim_win_set_cursor(0, cursor_pos)
+        vim.cmd("normal zv")
+        gitsigns.toggle_signs(false)
+        gitsigns.toggle_linehl(false)
+        gitsigns.toggle_deleted(false)
+      end,
+    },
+    mode = { "n", "x" },
+    body = "<leader>gv",
     heads = {
       {
-        "w",
+        "J",
         function()
-          spider.motion("w")
+          if vim.wo.diff then
+            return "]c"
+          end
+          vim.schedule(function()
+            gitsigns.next_hunk()
+          end)
+          return "<Ignore>"
         end,
-        { desc = "Spider-w" },
+        { expr = true, desc = "next hunk" },
       },
       {
-        "b",
+        "K",
         function()
-          spider.motion("b")
+          if vim.wo.diff then
+            return "[c"
+          end
+          vim.schedule(function()
+            gitsigns.prev_hunk()
+          end)
+          return "<Ignore>"
         end,
-        { desc = "Spider-b" },
+        { expr = true, desc = "prev hunk" },
       },
+      { "s", ":Gitsigns stage_hunk<CR>", { silent = true, desc = "stage hunk" } },
+      { "u", gitsigns.undo_stage_hunk, { desc = "undo last stage" } },
+      { "S", gitsigns.stage_buffer, { desc = "stage buffer" } },
+      { "p", gitsigns.preview_hunk, { desc = "preview hunk" } },
+      { "d", gitsigns.toggle_deleted, { nowait = true, desc = "toggle deleted" } },
+      { "b", gitsigns.blame_line, { desc = "blame" } },
       {
-        "e",
+        "B",
         function()
-          spider.motion("e")
+          gitsigns.blame_line({ full = true })
         end,
-        { desc = "Spider-e" },
+        { desc = "blame show full" },
       },
-      {
-        "ge",
-        function()
-          spider.motion("ge")
-        end,
-        { desc = "Spider-ge" },
-      },
-      { "<esc>", nil, { exit = true, mode = "n" } },
+      { "/", gitsigns.show, { exit = true, desc = "show base file" } }, -- show the base of the file
+      { "<Enter>", "<Cmd>Neogit<CR>", { exit = true, desc = "Neogit" } },
+      { "q", nil, { exit = true, nowait = true, desc = "exit" } },
     },
   })
 end
 
 return {
   "smoka7/hydra.nvim",
+  event = "VeryLazy",
   dependencies = {
-    { "chrisgrieser/nvim-spider", lazy = false },
+    { "lewis6991/gitsigns.nvim", lazy = false },
   },
   config = function()
-    M.side_scroll()
-    M.nvim_spider()
+    M.git_hydra()
   end,
 }
-
--- {
---   "chrisgrieser/nvim-spider",
---   keys = {
---     {
---       "w",
---       "<cmd>lua require('spider').motion('w')<CR>",
---       desc = "Next word",
---       mode = { "n", "x", "o" },
---     },
---     {
---       "e",
---       "<cmd>lua require('spider').motion('e')<CR>",
---       desc = "Next end of word",
---       mode = { "n", "x", "o" },
---     },
---     {
---       "b",
---       "<cmd>lua require('spider').motion('b')<CR>",
---       desc = "Previous word",
---       mode = { "n", "x", "o" },
---     },
---     {
---       "ge",
---       "<cmd>lua require('spider').motion('ge')<CR>",
---       desc = "Previous end of word",
---       mode = { "n", "x", "o" },
---     },
---   },
---   opts = {},
--- },

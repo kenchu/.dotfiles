@@ -9,6 +9,17 @@ return {
   },
 
   {
+    "chrisgrieser/nvim-spider",
+    -- stylua: ignore
+    keys = {
+      { ",b", function() require("spider").motion("b") end, mode = { "n", "o", "x" } },
+      { ",e", function() require("spider").motion("e") end, mode = { "n", "o", "x" } },
+      { ",w", function() require("spider").motion("w") end, mode = { "n", "o", "x" } },
+      { ",ge", function() require("spider").motion("ge") end, mode = { "n", "o", "x" } },
+    },
+  },
+
+  {
     "lambdalisue/suda.vim",
     keys = { { "<leader>W", "<cmd>SudaWrite<cr>", desc = "Suda Write" } },
     cmd = { "SudaRead", "SudaWrite" },
@@ -23,7 +34,7 @@ return {
     -- stylua: ignore
     keys = {
       {"sx", function() require("substitute.exchange").operator() end, desc = "Substitute Operator"},
-      {"sx", mode = {"x"}, function() require("substitute.exchange").visual() end, desc = "Substitute Visual"},
+      {"sx", function() require("substitute.exchange").visual() end, desc = "Substitute Visual", mode = {"x"}},
       {"sxx", function() require("substitute.exchange").line() end, desc = "Substitute Line"},
       {"sxc", function() require("substitute.exchange").cancel() end, desc = "Substitute Cancel"},
     },
