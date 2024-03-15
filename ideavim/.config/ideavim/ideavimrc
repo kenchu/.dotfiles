@@ -20,7 +20,7 @@ set ignorecase
 set incsearch
 set smartcase
 set clipboard+=unnamed   """ system clipboard
-set timeoutlen=500
+set timeoutlen=800
 
 """ Idea specific settings ------------------
 set ideajoin
@@ -71,6 +71,9 @@ xmap X <Plug>(Exchange)
 nmap sxc <Plug>(ExchangeClear)
 nmap sxx <Plug>(ExchangeLine)
 
+""" surround
+nmap sa <Action>(SurroundWith)
+
 nmap H <Action>(PreviousTab)
 nmap L <Action>(NextTab)
 map <leader>bd <Action>(CloseEditor)
@@ -95,10 +98,11 @@ map <leader>fr <Action>(RecentFiles)
 map <leader>fn <Action>(Kotlin.NewFile)
 
 """ Debug Keymap
+map <leader>dD <Action>(RunConfiguration)
 map <leader>db <Action>(ToggleLineBreakpoint)
 map <leader>dc <Action>(Resume)
-map <leader>dr <Action>(Run)
 map <leader>dd <Action>(Debug)
+map <leader>dr <Action>(Run)
 map <leader>dx <Action>(Stop)
 map <leader>du <Action>(ActivateDebugToolWindow)
 
@@ -109,6 +113,7 @@ map <leader>gb <Action>(Annotate)
 
 """ Search
 map <leader>ss <Action>(GotoSymbol)
+map <leader>sj <Action>(FileStructurePopup)
 
 """ UI
 map <leader>ue <Action>(ActivateProjectToolWindow)
@@ -143,6 +148,9 @@ map <leader>fe :NERDTreeToggle<CR>
 map <leader>ud <Action>(DBNavigator.Actions.MainMenu.DatabaseBrowser)
 map <leader>DD <Action>(DBNavigator.Actions.MainMenu.OpenSQLConsole)
 
+""" Toggler
+map <leader>ii <Action>(ToggleActionReverse)
+
 """ Other Keymap
 map <leader>: <Action>(tasks.and.contexts)
 map <tab> <Action>(BraceOrQuoteOut)
@@ -154,4 +162,3 @@ map <leader>su <Action>(FindUsages)
 
 map ]g <Action>(JumpToNextChange)
 map [g <Action>(JumpToLastChange)
-
