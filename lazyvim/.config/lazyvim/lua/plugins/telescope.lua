@@ -3,46 +3,38 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "FabianWirth/search.nvim",
+      "jvgrootveld/telescope-zoxide",
+      "natecraddock/telescope-zf-native.nvim",
+      "nvim-telescope/telescope-project.nvim",
       "nvim-telescope/telescope-file-browser.nvim",
       -- "nvim-telescope/telescope-media-files.nvim",
-      "nvim-telescope/telescope-project.nvim",
-      { "agoodshort/telescope-git-submodules.nvim", dependencies = "akinsho/toggleterm.nvim" },
-      "natecraddock/telescope-zf-native.nvim",
-      "jvgrootveld/telescope-zoxide",
       "dharmx/telescope-media.nvim",
+      "polirritmico/telescope-lazy-plugins.nvim",
       "olacin/telescope-cc.nvim",
-      "ThePrimeagen/refactoring.nvim",
+      -- { "agoodshort/telescope-git-submodules.nvim", dependencies = "akinsho/toggleterm.nvim" },
       { "johmsalas/text-case.nvim", config = true },
+      "ThePrimeagen/refactoring.nvim",
     },
     config = function(_, opts)
       local telescope = require("telescope")
       telescope.setup(opts)
-      telescope.load_extension("file_browser")
-      telescope.load_extension("project")
-      telescope.load_extension("git_submodules")
-      telescope.load_extension("zf-native")
       telescope.load_extension("zoxide")
+      telescope.load_extension("zf-native")
+      telescope.load_extension("project")
+      telescope.load_extension("file_browser")
       telescope.load_extension("media")
+      telescope.load_extension("lazy_plugins")
       telescope.load_extension("conventional_commits")
-      telescope.load_extension("refactoring")
+      -- telescope.load_extension("git_submodules")
       telescope.load_extension("textcase")
+      telescope.load_extension("refactoring")
     end,
+    -- stylua: ignore
     keys = {
-      {
-        "<leader>'",
-        function()
-          require("telescope.builtin").resume()
-        end,
-        desc = "Telescope Resume",
-      },
-      {
-        "<leader><space>",
-        function()
-          require("search").open()
-        end,
-        desc = "File browser",
-      },
+      { "<leader>'", function() require("telescope.builtin").resume() end, desc = "Telescope Resume" },
+      { "<leader><space>", function() require("search").open() end, desc = "File browser" },
       { "<leader>fo", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
+      { "<leader>fl", "<cmd>Telescope lazy_plugins<cr>", desc = "Find Lazy Plugins" },
       { "<leader>fp", "<cmd>Telescope project<cr>", desc = "Find projects" },
       { "<leader>fz", "<cmd>Telescope zoxide list<cr>", desc = "Zoxide list" },
       { "<leader>gm", "<cmd>Telescope conventional_commits<cr>", desc = "Conventional commit" },
@@ -56,14 +48,15 @@ return {
         defaults = {
           -- prompt_prefix = "🔍 ",
           -- selection_caret = "󰭎 ",
-          path_display = { "truncate" },
+          -- path_display = { "truncate" },
           sorting_strategy = "ascending",
           layout_config = {
-            horizontal = { prompt_position = "top", preview_width = 0.55 },
-            vertical = { mirror = false },
-            width = 0.87,
-            height = 0.80,
-            preview_cutoff = 120,
+            horizontal = { prompt_position = "top" },
+            --   horizontal = { prompt_position = "top", preview_width = 0.4 },
+            --   vertical = { mirror = false },
+            --   width = 0.87,
+            --   height = 0.80,
+            --   preview_cutoff = 120,
           },
           mappings = {
             n = {
