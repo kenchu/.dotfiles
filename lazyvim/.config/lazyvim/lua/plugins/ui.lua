@@ -1,5 +1,13 @@
 return {
   {
+    "Bekaboo/dropbar.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+    },
+    event = "LazyFile",
+  },
+
+  {
     "rasulomaroff/reactive.nvim",
     opts = {
       builtin = {
