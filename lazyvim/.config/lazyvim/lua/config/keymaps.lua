@@ -47,6 +47,11 @@ neovide.setup = function()
       vim.lsp.buf.code_action()
     end)
 
+    vim.keymap.set({ "n", "v" }, "<D-/>", function()
+      local api = require("Comment.api")
+      api.toggle.linewise.current()
+    end, { noremap = true, silent = true, desc = "command line" })
+
     -- zoom in and out
     vim.g.neovide_scale_factor = 1.0
     local change_scale_factor = function(delta)
