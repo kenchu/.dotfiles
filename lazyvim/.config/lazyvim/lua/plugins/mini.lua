@@ -118,7 +118,6 @@ return {
     end,
   },
   { "echasnovski/mini.align", version = false, event = "LazyFile" },
-  { "echasnovski/mini.move", version = false, event = "LazyFile" },
   {
     "echasnovski/mini.files",
     opts = {
