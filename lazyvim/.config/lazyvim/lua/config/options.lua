@@ -7,6 +7,9 @@ vim.opt.guifont = "JetBrainsMono Nerd Font:12"
 -- TODO: not sure if it works
 vim.opt.pumblend = vim.g.winblend
 
+-- for eagle.nvim
+vim.o.mousemoveevent = true
+
 if vim.g.neovide then
   -- Put anything you want to happen only in Neovide here
 
