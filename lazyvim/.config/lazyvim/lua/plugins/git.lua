@@ -94,7 +94,7 @@ return {
   {
     "FabijanZulj/blame.nvim",
     keys = {
-      { prefix .. "B", "<cmd>ToggleBlame virtual<cr>", desc = "Git Blame (virtual)" },
+      { prefix .. "B", "<cmd>BlameToggle virtual<cr>", desc = "Git Blame (virtual)" },
     },
     opts = {
       merge_consecutive = false,
