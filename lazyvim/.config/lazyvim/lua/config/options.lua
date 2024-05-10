@@ -2,10 +2,11 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-vim.opt.guifont = "JetBrainsMono Nerd Font:12"
+vim.o.guifont = "JetBrainsMono Nerd Font:h13"
+-- vim.opt.linespace = 4
 
 -- TODO: not sure if it works
-vim.opt.pumblend = vim.g.winblend
+vim.o.pumblend = 15
 
 -- for eagle.nvim
 vim.o.mousemoveevent = true
