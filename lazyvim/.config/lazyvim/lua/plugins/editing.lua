@@ -42,25 +42,26 @@ return {
     },
   },
 
-  {
-    "nat-418/boole.nvim",
-    event = "BufReadPre",
-    opts = {
-      mappings = {
-        increment = "<C-a>",
-        decrement = "<C-x>",
-      },
-      -- User defined loops
-      additions = {
-        { "asc", "desc" },
-        { "top", "bottom" },
-        { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" },
-        { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" },
-      },
-      -- preserve text case
-      allow_caps_additions = {
-        { "enable", "disable" },
-      },
-    },
-  },
+  -- {
+  --   "nat-418/boole.nvim",
+  --   enabled = false,
+  --   event = "BufReadPre",
+  --   opts = {
+  --     mappings = {
+  --       increment = "<C-a>",
+  --       decrement = "<C-x>",
+  --     },
+  --     -- User defined loops
+  --     additions = {
+  --       { "asc", "desc" },
+  --       { "top", "bottom" },
+  --       { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" },
+  --       { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" },
+  --     },
+  --     -- preserve text case
+  --     allow_caps_additions = {
+  --       { "enable", "disable" },
+  --     },
+  --   },
+  -- },
 }
