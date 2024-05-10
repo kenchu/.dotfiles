@@ -1,8 +1,5 @@
 DrPhil/kubectl-fish-abbr
 PatrickF1/colored_man_pages.fish
-PatrickF1/fzf.fish
-dracula/fish
-franciscolourenco/done
 gazorby/fifc
 gazorby/fish-abbreviation-tips
 halostatue/fish-go
@@ -10,12 +7,10 @@ halostatue/fish-rust
 jorgebucaran/autopair.fish
 jorgebucaran/fisher
 lewisacidic/fish-docker
-maralla/venv
 meaningful-ooo/sponge
 nickeb96/puffer-fish
 oh-my-fish/plugin-direnv
 oh-my-fish/plugin-errno
-oh-my-fish/plugin-gi
 oh-my-fish/plugin-localhost
+patrickf1/fzf.fish
 plttn/fish-eza
-wfxr/forgit
