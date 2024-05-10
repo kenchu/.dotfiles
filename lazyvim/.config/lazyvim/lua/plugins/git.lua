@@ -17,13 +17,17 @@ return {
   {
     "NeogitOrg/neogit",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = true,
-    -- opts = {
-    --   telescope_sorter = function()
-    --     -- return require("telescope").extensions.fzy_native.native_fzy_sorter()
-    --     return require("telescope").extensions.zf_native.native_zf_scorer()
-    --   end,
-    -- },
+    -- config = true,
+    opts = {
+      graph_style = "unicode",
+      integrations = {
+        diffview = true,
+      },
+      --   telescope_sorter = function()
+      --     -- return require("telescope").extensions.fzy_native.native_fzy_sorter()
+      --     return require("telescope").extensions.zf_native.native_zf_scorer()
+      --   end,
+    },
     cmd = { "Neogit" },
     keys = {
       { prefix .. "n", desc = "+neogit" },
@@ -48,6 +52,12 @@ return {
       view = {
         default = { winbar_info = true },
         file_history = { winbar_info = true },
+        merge_tool = {
+          -- Config for conflicted files in diff views during a merge or rebase.
+          layout = "diff3_mixed",
+          disable_diagnostics = true, -- Temporarily disable diagnostics for conflict buffers while in the view.
+          winbar_info = true, -- See ':h diffview-config-view.x.winbar_info'
+        },
       },
       hooks = {
         diff_buf_read = function(bufnr)
@@ -59,6 +69,7 @@ return {
 
   { "akinsho/git-conflict.nvim", version = "*", config = true },
 
+  -- feat: git blame and time-machine
   {
     "emmanueltouzery/agitator.nvim",
     keys = {
