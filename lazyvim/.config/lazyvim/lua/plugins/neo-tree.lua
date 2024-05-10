@@ -12,13 +12,13 @@ return {
         local modify = vim.fn.fnamemodify
 
         local vals = {
-          ["BASENAME"] = modify(filename, ":r"),
-          ["EXTENSION"] = modify(filename, ":e"),
-          ["FILENAME"] = filename,
-          ["PATH (CWD)"] = modify(filepath, ":."),
+          ["BASENAME   "] = modify(filename, ":r"),
+          ["EXTENSION  "] = modify(filename, ":e"),
+          ["FILENAME   "] = filename,
+          ["PATH (CWD) "] = modify(filepath, ":."),
           ["PATH (HOME)"] = modify(filepath, ":~"),
-          ["PATH"] = filepath,
-          ["URI"] = vim.uri_from_fname(filepath),
+          ["PATH       "] = filepath,
+          ["URI        "] = vim.uri_from_fname(filepath),
         }
 
         local options = vim.tbl_filter(function(val)
@@ -62,7 +62,7 @@ return {
           state.commands.open(state)
         end
       end,
-      find_in_dir = function(state)
+      find_in_directory = function(state)
         local node = state.tree:get_node()
         local path = node:get_id()
         require("telescope.builtin").find_files({
@@ -75,17 +75,17 @@ return {
         ["<space>"] = false, -- disable space until we figure out which-key disabling
         ["[b"] = "prev_source",
         ["]b"] = "next_source",
-        -- TODO: add checking
-        -- F = utils.is_available "telescope.nvim" and "find_in_dir" or nil,
-        ["F"] = "find_in_dir",
+        -- todo: add checking
+        -- f = utils.is_available "telescope.nvim" and "find_in_dir" or nil,
+        ["F"] = "find_in_directory",
         ["O"] = "system_open",
         ["Y"] = "copy_selector",
         ["h"] = "parent_or_close",
         ["l"] = "child_or_open",
       },
       fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
-        ["<C-j>"] = "move_cursor_down",
-        ["<C-k>"] = "move_cursor_up",
+        ["<c-j>"] = "move_cursor_down",
+        ["<c-k>"] = "move_cursor_up",
       },
       filesystem = {
         follow_current_file = { enabled = true },
