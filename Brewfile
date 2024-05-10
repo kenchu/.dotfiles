@@ -9,13 +9,16 @@ brew "stow"
 brew "fish"
 brew "fisher"
 
+# Zig
+brew "zf"
+
 # Rust
 # brew "bandwhich"
 brew "bat"
 brew "broot"
 brew "chafa"
 brew "choose-rust"
-brew "exa"
+brew "eza"
 brew "fd"
 brew "git-delta"
 brew "gitui"
