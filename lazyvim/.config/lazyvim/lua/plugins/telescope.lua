@@ -36,7 +36,7 @@ return {
       { "<leader>fp", "<cmd>Telescope project<cr>",               desc = "Find projects" },
       { "<leader>fz", "<cmd>Telescope zoxide list<cr>",           desc = "Zoxide list" },
       { "<leader>gm", "<cmd>Telescope conventional_commits<cr>",  desc = "Conventional commit" },
-      { "<leader>k.", "<cmd>Text Case Open Telescope<cr>",        desc = "Telescope Text Case", mode = { "n", "v" } },
+      { "<leader>kk", "<cmd>Telescope textcase<cr>",              desc = "Telescope Text Case", mode = { "n", "v" } },
       { "<leader>sj", "<cmd>Telescope jsonfly<cr>",               desc = "Open json(fly)", mode = "n", ft = "json" },
     },
     opts = function()
