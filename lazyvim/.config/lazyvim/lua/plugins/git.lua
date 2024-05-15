@@ -4,11 +4,11 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     opts = {
-      word_diff = true,
+      word_diff = false,
       current_line_blame = true,
-      current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> • <summary>",
+      current_line_blame_formatter = "\t\t\t<author>, <author_time:%Y-%m-%d> • <summary>",
       current_line_blame_opts = {
-        virt_text_pos = "right_align", -- 'eol' | 'overlay' | 'right_align'
+        virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
         delay = 200,
       },
     },
