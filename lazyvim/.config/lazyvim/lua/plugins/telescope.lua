@@ -2,18 +2,17 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
-      "FabianWirth/search.nvim",
+      -- "FabianWirth/search.nvim",
       "jvgrootveld/telescope-zoxide",
       "natecraddock/telescope-zf-native.nvim",
       "nvim-telescope/telescope-project.nvim",
       "nvim-telescope/telescope-file-browser.nvim",
-      -- "nvim-telescope/telescope-media-files.nvim",
-      "dharmx/telescope-media.nvim",
       "polirritmico/telescope-lazy-plugins.nvim",
       "olacin/telescope-cc.nvim",
       -- { "agoodshort/telescope-git-submodules.nvim", dependencies = "akinsho/toggleterm.nvim" },
-      { "johmsalas/text-case.nvim", config = true },
+      { "johmsalas/text-case.nvim", opts = { prefix = "<leader>k" } },
       "ThePrimeagen/refactoring.nvim",
+      "Myzel394/jsonfly.nvim",
     },
     config = function(_, opts)
       local telescope = require("telescope")
@@ -22,24 +21,23 @@ return {
       telescope.load_extension("zf-native")
       telescope.load_extension("project")
       telescope.load_extension("file_browser")
-      telescope.load_extension("media")
       telescope.load_extension("lazy_plugins")
       telescope.load_extension("conventional_commits")
       -- telescope.load_extension("git_submodules")
       telescope.load_extension("textcase")
-      telescope.load_extension("refactoring")
+      telescope.load_extension("jsonfly")
     end,
     -- stylua: ignore
     keys = {
       { "<leader>'", function() require("telescope.builtin").resume() end, desc = "Telescope Resume" },
-      { "<leader><space>", function() require("search").open() end, desc = "File browser" },
-      { "<leader>fo", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
-      { "<leader>fl", "<cmd>Telescope lazy_plugins<cr>", desc = "Find Lazy Plugins" },
-      { "<leader>fp", "<cmd>Telescope project<cr>", desc = "Find projects" },
-      { "<leader>fz", "<cmd>Telescope zoxide list<cr>", desc = "Zoxide list" },
-      { "<leader>gm", "<cmd>Telescope conventional_commits<cr>", desc = "Conventional commit" },
-      { "<leader>rr", "<cmd>Telescope refactoring refactors<cr>", desc = "Telescope Refactor" },
-      { "ga.", "<cmd>TextCaseOpenTelescope<cr>", mode = { "n", "v" }, desc = "Telescope text case" },
+      -- { "<leader><space>", function() require("search").open() end, desc = "File browser" },
+      { "<leader>fl", "<cmd>Telescope lazy_plugins<cr>",          desc = "Find Lazy Plugins" },
+      { "<leader>fo", "<cmd>Telescope file_browser<cr>",          desc = "File browser" },
+      { "<leader>fp", "<cmd>Telescope project<cr>",               desc = "Find projects" },
+      { "<leader>fz", "<cmd>Telescope zoxide list<cr>",           desc = "Zoxide list" },
+      { "<leader>gm", "<cmd>Telescope conventional_commits<cr>",  desc = "Conventional commit" },
+      { "<leader>k.", "<cmd>Text Case Open Telescope<cr>",        desc = "Telescope Text Case", mode = { "n", "v" } },
+      { "<leader>sj", "<cmd>Telescope jsonfly<cr>",               desc = "Open json(fly)", mode = "n", ft = "json" },
     },
     opts = function()
       local actions = require("telescope.actions")
@@ -52,12 +50,12 @@ return {
           -- path_display = { "truncate" },
           sorting_strategy = "ascending",
           layout_config = {
-            horizontal = { prompt_position = "top" },
-            --   horizontal = { prompt_position = "top", preview_width = 0.4 },
-            --   vertical = { mirror = false },
-            --   width = 0.87,
-            --   height = 0.80,
-            --   preview_cutoff = 120,
+            -- horizontal = { prompt_position = "top" },
+            horizontal = { prompt_position = "top", preview_width = 0.55 },
+            vertical = { mirror = false },
+            width = 0.87,
+            height = 0.80,
+            preview_cutoff = 120,
           },
           mappings = {
             n = {
@@ -82,6 +80,13 @@ return {
           },
         },
         extensions = {
+          fzf = {
+            fuzzy = true, -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+            -- the default case_mode is "smart_case"
+          },
           project = {
             base_dirs = {
               { path = "~/repo", max_depth = 2 },
