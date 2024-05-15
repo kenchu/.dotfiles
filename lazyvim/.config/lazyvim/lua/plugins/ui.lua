@@ -8,6 +8,13 @@ return {
   },
 
   {
+    "chentoast/marks.nvim",
+    opts = {
+      -- builtin_marks = { ".", "<", ">", "^" },
+    },
+  },
+
+  {
     "rasulomaroff/reactive.nvim",
     opts = {
       builtin = {
