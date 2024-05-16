@@ -12,6 +12,12 @@ return {
         delay = 200,
       },
     },
+    keys = {
+      { '<D-">', "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview Hunk" },
+      { "<D-'>", "<cmd>Gitsigns preview_hunk_inline<cr>", desc = "Preview Hunk Inline" },
+      { prefix .. "hP", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview Hunk" },
+      { prefix .. "hh", "<cmd>Gitsigns<cr>", desc = "Gitsigns Select" },
+    },
   },
 
   {
