@@ -117,13 +117,23 @@ return {
       }
     end,
   },
-  { "echasnovski/mini.align", version = false, event = "LazyFile", config = true },
-  { "echasnovski/mini.operators", version = false, event = "LazyFile", config = true },
+  {
+    "echasnovski/mini.align",
+    version = false,
+    event = "LazyFile",
+    config = true,
+  },
   {
     "echasnovski/mini.files",
     opts = {
       windows = { width_preview = 60 },
     },
+  },
+  {
+    "echasnovski/mini.operators",
+    version = false,
+    event = "LazyFile",
+    opts = { exchange = { prefix = "sx" } },
   },
   {
     "echasnovski/mini.surround",
