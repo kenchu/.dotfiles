@@ -6,6 +6,7 @@
 Place your private configuration here! Remember, you do not need to run 'doom
 sync' after modifying this file!
 
+
 Here are some additional functions/macros that could help you configure Doom:
 - `load!' for loading external *.el files relative to this one
 - `use-package!' for configuring packages
@@ -53,6 +54,7 @@ clients, file templates and snippets.
 *** Evil Kill On Visual Paste
 This makes it very easy to paste the same text multiple times or to paste text copied from outside DOOM Emacs.
 #+begin_src elisp
+
 (setq evil-kill-on-visual-paste nil)
 #+end_src
 *** Evil Collection - unimpaired-vim
@@ -98,8 +100,8 @@ string. You generally only need these two:
       doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font Mono" :size 13))
 #+end_src
 #+begin_src elisp
-(setq doom-font (font-spec :family "JetbrainsMono Nerd Font" :size 12)
-      doom-variable-pitch-font (font-spec :family "JetbrainsMono Nerd Font" :size 12))
+(setq doom-font (font-spec :family "JetbrainsMono Nerd Font" :size 13)
+      doom-variable-pitch-font (font-spec :family "JetbrainsMono Nerd Font" :size 13))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
