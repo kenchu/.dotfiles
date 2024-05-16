@@ -1,0 +1,91 @@
+[
+  {
+    "bindings": {
+      "ctrl-j": ["workspace::SendKeystrokes", "down"],
+      "ctrl-k": ["workspace::SendKeystrokes", "up"]
+    }
+  },
+  {
+    "context": "VimControl && !VimWaiting",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock",
+      "space q q": "zed::Quit",
+      "space t n": "workspace::NewTerminal",
+      "space t t": "terminal_panel::ToggleFocus",
+      "space x x": "diagnostics::Deploy"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      "j k": ["vim::SwitchMode", "Normal"],
+      "k j": ["vim::SwitchMode", "Normal"]
+    }
+  },
+  {
+    "context": "Editor && mode == full && inline_completion",
+    "bindings": {
+      "alt-l": "editor::AcceptPartialInlineCompletion"
+    }
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "g v": "editor::UndoSelection",
+      "enter": "editor::SelectLargerSyntaxNode",
+      "shift-enter": "editor::SelectSmallerSyntaxNode",
+      "space b b": "tab_switcher::Toggle",
+      "space b d": "pane::CloseActiveItem",
+      "space c r": "editor::Rename",
+      "space c shift-p": "markdown::OpenPreview",
+      "space c p": "markdown::OpenPreviewToTheSide",
+      "space f p": "projects::OpenRecent",
+      "space g b": "editor::ToggleGitBlame",
+      "space s p": "pane::DeploySearch",
+      "space u h": "editor::ToggleInlayHints",
+      "space w h": "pane::SplitLeft",
+      "space w j": "pane::SplitDown",
+      "space w k": "pane::SplitUp",
+      "space w l": "pane::SplitRight",
+      "space w m": "pane::CloseInactiveItems",
+      // "space w shift-l": "workspace::CloseAllItemsAndPanes",
+      "alt-shift-j": "editor::DuplicateLineDown",
+      "alt-shift-k": "editor::DuplicateLineUp",
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp",
+      "shift-l": "pane::ActivateNextItem",
+      "shift-h": "pane::ActivatePrevItem"
+    }
+  },
+  {
+    "context": "Workspace || (Editor && VimControl)",
+    "bindings": {
+      "space space": "file_finder::Toggle",
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-w shift-j": ["workspace::SwapPaneInDirection", "Down"],
+      "ctrl-w shift-k": ["workspace::SwapPaneInDirection", "Up"],
+      "ctrl-w shift-l": ["workspace::SwapPaneInDirection", "Right"],
+      "ctrl-w shift-h": ["workspace::SwapPaneInDirection", "Left"],
+      "space w d": "pane::CloseActiveItem",
+      "space w v": "pane::SplitRight",
+      "space w s": "pane::SplitDown",
+      "space w j": "pane::SplitDown",
+      "space w k": "pane::SplitUp",
+      "space w l": "pane::SplitRight",
+      "space w h": "pane::SplitLeft",
+      "space w shift-j": ["workspace::SwapPaneInDirection", "Down"],
+      "space w shift-k": ["workspace::SwapPaneInDirection", "Up"],
+      "space w shift-l": ["workspace::SwapPaneInDirection", "Right"],
+      "space w shift-h": ["workspace::SwapPaneInDirection", "Left"]
+    }
+  },
+  {
+    "context": "Editor && VimObject",
+    "bindings": {
+      "q": "vim::DoubleQuotes"
+    }
+  }
+]
