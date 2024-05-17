@@ -45,10 +45,18 @@ neovide.setup = function()
       vim.lsp.buf.code_action()
     end)
 
+    -- toggle comment
+    local api = require("Comment.api")
+    local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
+
     vim.keymap.set({ "n", "v" }, "<D-/>", function()
-      local api = require("Comment.api")
       api.toggle.linewise.current()
-    end, { noremap = true, silent = true, desc = "command line" })
+    end)
+
+    vim.keymap.set("x", "<D-/>", function()
+      vim.api.nvim_feedkeys(esc, "nx", false)
+      api.toggle.linewise(vim.fn.visualmode())
+    end)
 
     -- zoom in and out
     vim.g.neovide_scale_factor = 1.0
