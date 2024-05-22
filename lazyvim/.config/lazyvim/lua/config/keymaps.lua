@@ -18,7 +18,7 @@ neovide.setup = function()
   if vim.g.neovide then
     -- Put anything you want to happen only in Neovide here
 
-    vim.g.neovide_input_macos_alt_is_meta = true
+    vim.g.neovide_input_macos_option_key_is_meta = "only_left"
     vim.g.neovide_input_use_logo = true -- true on macOS
 
     -- quit, write, undo, redo, select-all
