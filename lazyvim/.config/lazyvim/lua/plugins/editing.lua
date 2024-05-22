@@ -8,7 +8,7 @@ return {
     },
   },
 
-  { "NStefan002/visual-surround.nvim", config = true },
+  { "NStefan002/visual-surround.nvim", event = "VeryLazy", config = true },
 
   {
     "chrisgrieser/nvim-spider",
