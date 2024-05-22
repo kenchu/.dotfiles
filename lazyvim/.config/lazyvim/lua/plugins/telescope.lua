@@ -4,34 +4,38 @@ return {
     dependencies = {
       -- "FabianWirth/search.nvim",
       "jvgrootveld/telescope-zoxide",
-      "natecraddock/telescope-zf-native.nvim",
       "nvim-telescope/telescope-project.nvim",
       "nvim-telescope/telescope-file-browser.nvim",
       "polirritmico/telescope-lazy-plugins.nvim",
-      "olacin/telescope-cc.nvim",
+      "tsakirist/telescope-lazy.nvim",
       -- { "agoodshort/telescope-git-submodules.nvim", dependencies = "akinsho/toggleterm.nvim" },
-      { "johmsalas/text-case.nvim", opts = { prefix = "<leader>k" } },
-      "ThePrimeagen/refactoring.nvim",
+      "olacin/telescope-cc.nvim",
+      "olacin/telescope-gitmoji.nvim",
       "Myzel394/jsonfly.nvim",
+      "lpoto/telescope-docker.nvim",
+      { "johmsalas/text-case.nvim", opts = { prefix = "<leader>k" } },
     },
     config = function(_, opts)
       local telescope = require("telescope")
       telescope.setup(opts)
       telescope.load_extension("zoxide")
-      telescope.load_extension("zf-native")
       telescope.load_extension("project")
       telescope.load_extension("file_browser")
       telescope.load_extension("lazy_plugins")
-      telescope.load_extension("conventional_commits")
+      telescope.load_extension("lazy")
       -- telescope.load_extension("git_submodules")
-      telescope.load_extension("textcase")
+      telescope.load_extension("conventional_commits")
+      telescope.load_extension("gitmoji")
       telescope.load_extension("jsonfly")
+      telescope.load_extension("docker")
+      telescope.load_extension("textcase")
     end,
     -- stylua: ignore
     keys = {
       { "<leader>'", function() require("telescope.builtin").resume() end, desc = "Telescope Resume" },
       -- { "<leader><space>", function() require("search").open() end, desc = "File browser" },
       { "<leader>fl", "<cmd>Telescope lazy_plugins<cr>",          desc = "Find Lazy Plugins" },
+      { "<leader>fL", "<cmd>Telescope lazy<cr>",                  desc = "Find Lazy " },
       { "<leader>fo", "<cmd>Telescope file_browser<cr>",          desc = "File browser" },
       { "<leader>fp", "<cmd>Telescope project<cr>",               desc = "Find projects" },
       { "<leader>fz", "<cmd>Telescope zoxide list<cr>",           desc = "Zoxide list" },
@@ -50,7 +54,6 @@ return {
           -- path_display = { "truncate" },
           sorting_strategy = "ascending",
           layout_config = {
-            -- horizontal = { prompt_position = "top" },
             horizontal = { prompt_position = "top", preview_width = 0.55 },
             vertical = { mirror = false },
             width = 0.87,
@@ -79,13 +82,17 @@ return {
             },
           },
         },
+        pickers = {
+          buffers = {
+            theme = "dropdown",
+          },
+        },
         extensions = {
           fzf = {
             fuzzy = true, -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
             override_file_sorter = true, -- override the file sorter
             case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-            -- the default case_mode is "smart_case"
           },
           project = {
             base_dirs = {
@@ -104,25 +111,14 @@ return {
             -- 	require("harpoon.ui").nav_file(1)
             -- end,
           },
-          ["zf-native"] = {
-            -- options for sorting file-like items
-            file = {
-              -- override default telescope file sorter
-              enable = true,
-              -- highlight matching text in results
-              highlight_results = true,
-              -- enable zf filename match priority
-              match_filename = true,
-            },
-            -- options for sorting all other items
-            generic = {
-              -- override default telescope generic item sorter
-              enable = true,
-              -- highlight matching text in results
-              highlight_results = true,
-              -- disable zf filename match priority
-              match_filename = false,
-            },
+          conventional_commits = {
+            theme = "dropdown",
+          },
+          gitmoji = {
+            theme = "dropdown",
+          },
+          docker = {
+            theme = "dropdown",
           },
         },
       }
