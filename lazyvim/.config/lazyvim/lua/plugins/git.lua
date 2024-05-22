@@ -22,10 +22,8 @@ return {
 
   {
     "NeogitOrg/neogit",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    -- config = true,
     opts = {
-      graph_style = "unicode",
+      -- graph_style = "unicode",
       integrations = {
         diffview = true,
       },
@@ -73,7 +71,12 @@ return {
     },
   },
 
-  { "akinsho/git-conflict.nvim", version = "*", config = true },
+  {
+    "akinsho/git-conflict.nvim",
+    version = "*",
+    event = "VeryLazy",
+    config = true,
+  },
 
   -- feat: git blame and time-machine
   {
