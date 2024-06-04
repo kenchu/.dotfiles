@@ -8,7 +8,8 @@ vim.o.guifont = "JetBrainsMono Nerd Font:h13"
 -- vim.opt.linespace = 4
 
 -- TODO: not sure if it works
-vim.o.pumblend = 15
+vim.o.pumblend = 10
+vim.o.winblend = 10
 
 -- for eagle.nvim
 vim.o.mousemoveevent = true
