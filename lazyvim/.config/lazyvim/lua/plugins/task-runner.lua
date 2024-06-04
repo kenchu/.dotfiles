@@ -1,7 +1,6 @@
 return {
   {
     "Zeioth/compiler.nvim",
-    dependencies = { "stevearc/overseer.nvim", commmit = "68a2d344cea4a2e11acfb5690dc8ecd1a1ec0ce0" },
     cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
     -- stylua: ignore
     keys = {
@@ -22,7 +21,7 @@ return {
     opts = {
       task_list = {
         direction = "bottom",
-        min_height = 25,
+        -- min_height = 25,
         max_height = 25,
         default_detail = 1,
       },
