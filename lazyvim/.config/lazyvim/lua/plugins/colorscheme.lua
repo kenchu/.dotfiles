@@ -20,10 +20,9 @@ return {
       },
       integrations = {
         diffview = true,
-        telescope = {
-          enabled = true,
-          style = "nvchad",
-        },
+        -- telescope = {
+        --   style = "nvchad",
+        -- },
         -- indent_blankline = {
         --   enabled = true,
         --   scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
