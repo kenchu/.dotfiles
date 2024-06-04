@@ -9,7 +9,7 @@
     "context": "VimControl && !VimWaiting",
     "bindings": {
       "space e": "workspace::ToggleLeftDock",
-      "space q q": "zed::Quit",
+      "space q q": "workspace::CloseWindow",
       "space t n": "workspace::NewTerminal",
       "space t t": "terminal_panel::ToggleFocus",
       "space x x": "diagnostics::Deploy"
@@ -58,17 +58,9 @@
     }
   },
   {
-    "context": "Workspace || (Editor && VimControl)",
+    "context": "Editor && VimControl && !VimWaiting && !menu || Workspace",
     "bindings": {
       "space space": "file_finder::Toggle",
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-w shift-j": ["workspace::SwapPaneInDirection", "Down"],
-      "ctrl-w shift-k": ["workspace::SwapPaneInDirection", "Up"],
-      "ctrl-w shift-l": ["workspace::SwapPaneInDirection", "Right"],
-      "ctrl-w shift-h": ["workspace::SwapPaneInDirection", "Left"],
       "space w d": "pane::CloseActiveItem",
       "space w v": "pane::SplitRight",
       "space w s": "pane::SplitDown",
@@ -79,7 +71,15 @@
       "space w shift-j": ["workspace::SwapPaneInDirection", "Down"],
       "space w shift-k": ["workspace::SwapPaneInDirection", "Up"],
       "space w shift-l": ["workspace::SwapPaneInDirection", "Right"],
-      "space w shift-h": ["workspace::SwapPaneInDirection", "Left"]
+      "space w shift-h": ["workspace::SwapPaneInDirection", "Left"],
+      "ctrl-w shift-j": ["workspace::SwapPaneInDirection", "Down"],
+      "ctrl-w shift-k": ["workspace::SwapPaneInDirection", "Up"],
+      "ctrl-w shift-l": ["workspace::SwapPaneInDirection", "Right"],
+      "ctrl-w shift-h": ["workspace::SwapPaneInDirection", "Left"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"]
     }
   },
   {
