@@ -1,5 +1,17 @@
 return {
   {
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      local cmp = require("cmp")
+      opts.mapping = vim.tbl_extend("force", opts.mapping, {
+        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-d>"] = cmp.mapping.scroll_docs(4),
+        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+      })
+    end,
+  },
+  {
     "lewis6991/hover.nvim",
     config = function()
       require("hover").setup({
@@ -77,9 +89,9 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
       keymaps = {
-        init_selection = "<C-CR>",
-        node_incremental = "<C-CR>",
-        node_decremental = "<C-S-CR>",
+        init_selection = "<CR>",
+        node_incremental = "<CR>",
+        node_decremental = "<S-CR>",
       },
     },
   },
@@ -93,15 +105,6 @@ return {
     -- stylua: ignore
     keys = {
       {"<leader>j", function() require("treesj").toggle() end, desc = "Join / Split"},
-    },
-  },
-
-  {
-    "smjonas/inc-rename.nvim",
-    config = true,
-    keys = {
-      -- stylua: ignore
-      {"<leader>cr", function() return ":IncRename " .. vim.fn.expand("<cword>") end},
     },
   },
 
