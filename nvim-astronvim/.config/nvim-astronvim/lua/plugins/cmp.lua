@@ -1,95 +1,61 @@
-local M = {}
+-- if true then return {} end
 
--- This is a better implementation of `cmp.confirm`:
---  * check if the completion menu is visible without waiting for running sources
---  * create an undo point before confirming
--- This function is both faster and more reliable.
----@param opts? {select: boolean, behavior: cmp.ConfirmBehavior}
-function M.confirm(opts)
-  local cmp = require "cmp"
-  opts = vim.tbl_extend("force", {
-    select = true,
-    behavior = cmp.ConfirmBehavior.Insert,
-  }, opts or {})
-  return function(fallback)
-    if cmp.core.view:visible() or vim.fn.pumvisible() == 1 then
-      M.create_undo()
-      if cmp.confirm(opts) then return end
-    end
-    return fallback()
-  end
-end
+local cmp = require "cmp"
+local auto_select = false -- prefer auto_select = false for command-mode
 
-function M.create_undo()
-  if vim.api.nvim_get_mode().mode == "i" then
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<c-G>u", true, true, true), "n", false)
-  end
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
 end
 
 return {
   {
     "hrsh7th/nvim-cmp",
-    opts = function(_, opts)
-      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-      local cmp = require "cmp"
-      local defaults = require "cmp.config.default"()
-      local auto_select = true
-      return {
-        auto_brackets = {}, -- configure any filetype to auto add brackets
-        completion = {
-          completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
-        },
-        preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
-        mapping = cmp.mapping.preset.insert {
-          ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s", "c" }),
-          ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s", "c" }),
-          ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-d>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<C-y>"] = M.confirm { select = true },
-          ["<CR>"] = M.confirm { select = auto_select },
-          ["<S-CR>"] = M.confirm { behavior = cmp.ConfirmBehavior.Replace }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          ["<C-CR>"] = function(fallback)
-            cmp.abort()
-            fallback()
+    opts = {
+      completion = {
+        completeopt = "menu,menuone,noinsert,preview" .. (auto_select and "" or ",noselect"),
+      },
+      preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
+      experimental = {
+        ghost_text = true,
+      },
+
+      mapping = {
+        -- If nothing is selected (including preselections) add a newline as usual.
+        -- If something has explicitly been selected by the user, select it.
+        ["<CR>"] = cmp.mapping {
+          i = function(fallback)
+            if cmp.visible() and cmp.get_active_entry() then
+              cmp.confirm { select = false, behavior = cmp.ConfirmBehavior.Replace }
+            else
+              fallback()
+            end
           end,
+          s = cmp.mapping.confirm { select = true },
+          c = cmp.mapping.confirm { select = false, behavior = cmp.ConfirmBehavior.Replace },
         },
-        sources = opts.sources or {},
-        formatting = {
-          format = function(_, item)
-            local icons = "⭕"
-            if icons[item.kind] then item.kind = icons[item.kind] .. item.kind end
-            return item
-          end,
-        },
-        experimental = {
-          ghost_text = {
-            hl_group = "CmpGhostText",
-          },
-        },
-        sorting = defaults.sorting,
-      }
-    end,
-  },
 
-  {
-    "hrsh7th/nvim-cmp",
-    ---@param opts cmp.ConfigSchema
-    opts = function(_, opts)
-      local has_words_before = function()
-        unpack = unpack or table.unpack
-        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
-      end
+        ["<S-CR>"] = cmp.mapping(
+          function() cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true } end,
+          { "i", "s" }
+        ),
 
-      local cmp = require "cmp"
+        ["<C-CR>"] = cmp.mapping(function() cmp.abort() end, { "i", "s" }),
 
-      opts.mapping = vim.tbl_extend("force", opts.mapping, {
+        ["<C-l>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then return cmp.complete_common_string() end
+          fallback()
+        end, { "i", "c" }),
+
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            -- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
-            cmp.confirm { select = true }
+            if cmp.get_active_entry() then
+              cmp.confirm { select = true }
+            else
+              cmp.complete_common_string()
+              cmp.select_next_item()
+            end
           elseif vim.snippet.active { direction = 1 } then
             vim.schedule(function() vim.snippet.jump(1) end)
           elseif has_words_before() then
@@ -97,7 +63,8 @@ return {
           else
             fallback()
           end
-        end, { "i", "s" }),
+        end, { "i", "s", "c" }),
+
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
@@ -107,7 +74,44 @@ return {
             fallback()
           end
         end, { "i", "s" }),
-      })
-    end,
+      },
+
+      formatting = {
+        fields = { "abbr", "kind", "menu" },
+        format = function(entry, vim_item)
+          if vim.tbl_contains({ "path" }, entry.source.name) then
+            local icon, hl_group = require("nvim-web-devicons").get_icon(entry:get_completion_item().label)
+            if icon then
+              vim_item.kind = icon
+              vim_item.kind_hl_group = hl_group
+              return vim_item
+            end
+          end
+
+          -- lspkind cmp format
+          vim_item = require("lspkind").cmp_format {
+            -- preset = "codicons",
+            mode = "symbol_text",
+            maxwidth = 50,
+            show_labelDetails = true,
+          }(entry, vim_item)
+
+          -- lazyvim cmp window format
+          -- ref: https://www.lazyvim.org/plugins/coding
+          local widths = {
+            abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
+            menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
+          }
+
+          for key, width in pairs(widths) do
+            if vim_item[key] and vim.fn.strdisplaywidth(vim_item[key]) > width then
+              vim_item[key] = vim.fn.strcharpart(vim_item[key], 0, width - 1) .. "…"
+            end
+          end
+
+          return vim_item
+        end,
+      },
+    },
   },
 }
