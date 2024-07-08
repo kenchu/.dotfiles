@@ -20,5 +20,25 @@
   },
   "project_panel": {
     "auto_fold_dirs": true
+  },
+  // "assistant": {
+  //   "version": "1",
+  //   "provider": {
+  //     "default_model": {
+  //       "name": "llama3:latest",
+  //       "max_tokens": 2048,
+  //       "keep_alive": "10m"
+  //     },
+  //     "name": "ollama",
+  //     // Recommended setting to allow for model startup
+  //     "low_speed_timeout_in_seconds": null
+  //   }
+  // }
+  "assistant": {
+    "version": "1",
+    "provider": {
+      "default_model": "claude-3-5-sonnet",
+      "name": "anthropic"
+    }
   }
 }
