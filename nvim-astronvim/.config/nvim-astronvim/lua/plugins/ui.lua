@@ -1,14 +1,10 @@
 return {
   {
-    "AstroNvim/astroui",
-    opts = {
-      colorscheme = "catppuccin",
-    },
-  },
-
-  {
     "catppuccin/nvim",
     name = "catppuccin",
+    dependencies = {
+      { "AstroNvim/astroui", opts = { colorscheme = "catppuccin" } },
+    },
     opts = {
       term_colors = true,
       dim_inactive = {
