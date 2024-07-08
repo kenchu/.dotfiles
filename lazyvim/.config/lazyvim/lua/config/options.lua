@@ -2,7 +2,7 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-vim.g.NODEJS_PACKAGE_MANAGER = "yarn"
+vim.g.NODEJS_PACKAGE_MANAGER = "bun"
 
 vim.o.guifont = "JetBrainsMono Nerd Font:h13"
 -- vim.opt.linespace = 4
