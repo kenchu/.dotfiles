@@ -1,54 +1,9 @@
 return {
   {
-    "FabianWirth/search.nvim",
-    keys = {
-      { "<leader>gc", function() require("search").open { collection = "git" } end, desc = "File browser" },
-    },
-    opts = function()
-      local builtin = require "telescope.builtin"
-      local anyBuffer = function() return #vim.fn.getbufinfo { buflisted = 1 } > 0 end
-      return {
-        mappings = {
-          next = { { "L", "n" }, { "<Tab>", "n" }, { "<Tab>", "i" } },
-          prev = { { "H", "n" }, { "<S-Tab>", "n" }, { "<S-Tab>", "i" } },
-        },
-        collections = {
-          files = { -- Define a collection named 'files'
-            tabs = {
-              { name = "Find Files", tele_func = builtin.find_files },
-              { name = "Live Grep", tele_func = builtin.live_grep },
-            },
-          },
-          -- Here the "git" collection is defined. It follows the same configuraton layout as tabs.
-          git = {
-            initial_tab = 2, -- git branches
-            tabs = {
-              { name = "Branches", tele_func = builtin.git_branches },
-              { name = "Commits", tele_func = builtin.git_commits },
-              { name = "Stashes", tele_func = builtin.git_stash },
-            },
-            available = function() return vim.fn.isdirectory ".git" == 1 end,
-          },
-        },
-        -- tabs = {
-        --   { name = "Files", tele_func = builtin.find_files, tele_opts = { no_ignore = true, hidden = true } },
-        -- },
-        append_tabs = { -- append_tabs will add the provided tabs to the default ones
-          { "Buffers", builtin.buffers, available = anyBuffer },
-          { "Symbols", builtin.lsp_document_symbols, available = anyBuffer },
-        },
-      }
-    end,
-  },
-
-  {
     "nvim-telescope/telescope.nvim",
     dependencies = {
-      "FabianWirth/search.nvim",
       "nvim-telescope/telescope-project.nvim",
       "polirritmico/telescope-lazy-plugins.nvim",
-      "tsakirist/telescope-lazy.nvim",
-      -- { "agoodshort/telescope-git-submodules.nvim", dependencies = "akinsho/toggleterm.nvim" },
       "olacin/telescope-cc.nvim",
       "olacin/telescope-gitmoji.nvim",
       "Myzel394/jsonfly.nvim",
@@ -60,8 +15,6 @@ return {
       telescope.setup(opts)
       telescope.load_extension "project"
       telescope.load_extension "lazy_plugins"
-      telescope.load_extension "lazy"
-      -- telescope.load_extension("git_submodules")
       telescope.load_extension "conventional_commits"
       telescope.load_extension "gitmoji"
       telescope.load_extension "jsonfly"
@@ -70,26 +23,16 @@ return {
     end,
     -- stylua: ignore
     keys = {
-      { "<leader><space>", function() require("search").open() end, desc = "File browser" },
-      -- {
-      --   "gs",
-      --   function()
-      --     require("telescope.builtin").lsp_document_symbols({
-      --       symbols = require("lazyvim.config").get_kind_filter(),
-      --     })
-      --   end,
-      --   desc = "Goto Symbol",
-      -- },
-      { "<leader>'",  "<cmd>Telescope resume<cr>",               desc = "Telescope resume" },
-      { "<leader>fl", "<cmd>Telescope lazy_plugins<cr>",         desc = "Find Lazy Plugins" },
-      { "<leader>fL", "<cmd>Telescope lazy<cr>",                 desc = "Find Lazy" },
-      { "<leader>fp", "<cmd>Telescope project<cr>",              desc = "Find projects" },
-      { "<leader>gm", "<cmd>Telescope conventional_commits<cr>", desc = "Conventional commit" },
-      { "<leader>XX", "<cmd>Telescope textcase<cr>",             desc = "Telescope Text Case", mode = { "n", "v" } },
-      { "<leader>sj", "<cmd>Telescope jsonfly<cr>",              desc = "Search JSON", mode = "n", ft = "json" },
-      { "<leader>Dd", "<cmd>Telescope docker<cr>",               desc = "Find docker" },
-      { "<leader>Di", "<cmd>Telescope docker images<cr>",        desc = "Find docker images" },
-      { "<leader>Dc", "<cmd>Telescope docker containers<cr>",    desc = "Find docker containers" },
+      { "<Leader><Space>",  "<Cmd>Telescope find_files<CR>",     desc = "Telescope Files " },
+      { "<Leader>'",  "<Cmd>Telescope resume<CR>",               desc = "Telescope Resume" },
+      { "<Leader>fl", "<Cmd>Telescope lazy_plugins<CR>",         desc = "Find Lazy Plugins" },
+      { "<Leader>fp", "<Cmd>Telescope project<CR>",              desc = "Find Projects" },
+      { "<Leader>gm", "<Cmd>Telescope conventional_commits<CR>", desc = "Conventional Commit" },
+      { "<Leader>XX", "<Cmd>Telescope textcase<CR>",             desc = "Telescope Text Case", mode = { "n", "v" } },
+      { "<Leader>sj", "<Cmd>Telescope jsonfly<CR>",              desc = "Find Json", mode = "n", ft = "json" },
+      { "<Leader>Dd", "<Cmd>Telescope docker<CR>",               desc = "Find Docker" },
+      { "<Leader>Di", "<Cmd>Telescope docker images<CR>",        desc = "Find Docker Images" },
+      { "<Leader>Dc", "<Cmd>Telescope docker containers<CR>",    desc = "Find Docker Containers" },
     },
     opts = function()
       local actions = require "telescope.actions"
@@ -103,6 +46,9 @@ return {
           sorting_strategy = "ascending",
           layout_strategy = "flex",
           layout_config = {
+            flex = {
+              flip_columns = 120,
+            },
             horizontal = {
               prompt_position = "top",
               -- preview_width = 0.55,
@@ -117,8 +63,8 @@ return {
           },
           mappings = {
             n = {
-              ["<A-d>"] = actions.delete_buffer,
-              ["<A-p>"] = actions_layout.toggle_preview,
+              ["<M-d>"] = actions.delete_buffer,
+              ["<M-p>"] = actions_layout.toggle_preview,
             },
             i = {
               ["<ESC>"] = actions.close,
@@ -137,12 +83,14 @@ return {
             },
           },
         },
-        -- pickers = {
-        --   buffers = {
-        --     theme = "flex",
-        --   },
-        -- },
+        pickers = {
+          buffers = { theme = "dropdown" },
+        },
         extensions = {
+          lazy_plugins = {
+            lazy_config = vim.fn.stdpath "config" .. "/lua/lazy_setup.lua", -- path to the file containing the lazy opts and setup() call.
+            lazy_spec_table = vim.fn.stdpath "config" .. "/lua/community.lua", -- path to the file containing the lazy plugin spec table.
+          },
           fzf = {
             fuzzy = true, -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
@@ -167,17 +115,54 @@ return {
             -- 	require("harpoon.ui").nav_file(1)
             -- end,
           },
-          conventional_commits = {
-            theme = "dropdown",
-          },
-          gitmoji = {
-            theme = "dropdown",
-          },
-          docker = {
-            theme = "dropdown",
-          },
+          conventional_commits = { theme = "dropdown" },
+          gitmoji = { theme = "dropdown" },
+          docker = { theme = "dropdown" },
         },
       }
     end,
   },
+
+  -- {
+  --   "FabianWirth/search.nvim",
+  --   keys = {
+  --     { "<Leader><Space>", function() require("search").open() end, desc = "Telescope Search" },
+  --     { "<leader>gc", function() require("search").open { collection = "git" } end, desc = "File browser" },
+  --   },
+  --   opts = function()
+  --     local builtin = require "telescope.builtin"
+  --     local anyBuffer = function() return #vim.fn.getbufinfo { buflisted = 1 } > 0 end
+  --     return {
+  --       mappings = {
+  --         next = { { "L", "n" }, { "<Tab>", "n" }, { "<Tab>", "i" } },
+  --         prev = { { "H", "n" }, { "<S-Tab>", "n" }, { "<S-Tab>", "i" } },
+  --       },
+  --       collections = {
+  --         files = { -- Define a collection named 'files'
+  --           tabs = {
+  --             { name = "Find Files", tele_func = builtin.find_files },
+  --             { name = "Live Grep", tele_func = builtin.live_grep },
+  --           },
+  --         },
+  --         -- Here the "git" collection is defined. It follows the same configuraton layout as tabs.
+  --         git = {
+  --           initial_tab = 2, -- git branches
+  --           tabs = {
+  --             { name = "Branches", tele_func = builtin.git_branches },
+  --             { name = "Commits", tele_func = builtin.git_commits },
+  --             { name = "Stashes", tele_func = builtin.git_stash },
+  --           },
+  --           available = function() return vim.fn.isdirectory ".git" == 1 end,
+  --         },
+  --       },
+  --       -- tabs = {
+  --       --   { name = "Files", tele_func = builtin.find_files, tele_opts = { no_ignore = true, hidden = true } },
+  --       -- },
+  --       append_tabs = { -- append_tabs will add the provided tabs to the default ones
+  --         { "Buffers", builtin.buffers, available = anyBuffer },
+  --         { "Symbols", builtin.lsp_document_symbols, available = anyBuffer },
+  --       },
+  --     }
+  --   end,
+  -- },
 }
