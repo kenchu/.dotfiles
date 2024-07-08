@@ -5,25 +5,23 @@ return {
       -- "FabianWirth/search.nvim",
       "jvgrootveld/telescope-zoxide",
       "nvim-telescope/telescope-project.nvim",
-      "nvim-telescope/telescope-file-browser.nvim",
+      -- "nvim-telescope/telescope-file-browser.nvim",
       "polirritmico/telescope-lazy-plugins.nvim",
       "tsakirist/telescope-lazy.nvim",
-      -- { "agoodshort/telescope-git-submodules.nvim", dependencies = "akinsho/toggleterm.nvim" },
       "olacin/telescope-cc.nvim",
       "olacin/telescope-gitmoji.nvim",
       "Myzel394/jsonfly.nvim",
       "lpoto/telescope-docker.nvim",
-      { "johmsalas/text-case.nvim", opts = { prefix = "<leader>k" } },
+      { "johmsalas/text-case.nvim", opts = { prefix = "<leader>X" } },
     },
     config = function(_, opts)
       local telescope = require("telescope")
       telescope.setup(opts)
       telescope.load_extension("zoxide")
       telescope.load_extension("project")
-      telescope.load_extension("file_browser")
+      -- telescope.load_extension("file_browser")
       telescope.load_extension("lazy_plugins")
       telescope.load_extension("lazy")
-      -- telescope.load_extension("git_submodules")
       telescope.load_extension("conventional_commits")
       telescope.load_extension("gitmoji")
       telescope.load_extension("jsonfly")
@@ -32,16 +30,28 @@ return {
     end,
     -- stylua: ignore
     keys = {
-      { "<leader>'", function() require("telescope.builtin").resume() end, desc = "Telescope Resume" },
-      -- { "<leader><space>", function() require("search").open() end, desc = "File browser" },
-      { "<leader>fl", "<cmd>Telescope lazy_plugins<cr>",          desc = "Find Lazy Plugins" },
-      { "<leader>fL", "<cmd>Telescope lazy<cr>",                  desc = "Find Lazy " },
-      { "<leader>fo", "<cmd>Telescope file_browser<cr>",          desc = "File browser" },
-      { "<leader>fp", "<cmd>Telescope project<cr>",               desc = "Find projects" },
-      { "<leader>fz", "<cmd>Telescope zoxide list<cr>",           desc = "Zoxide list" },
-      { "<leader>gm", "<cmd>Telescope conventional_commits<cr>",  desc = "Conventional commit" },
-      { "<leader>kk", "<cmd>Telescope textcase<cr>",              desc = "Telescope Text Case", mode = { "n", "v" } },
-      { "<leader>sj", "<cmd>Telescope jsonfly<cr>",               desc = "Open json(fly)", mode = "n", ft = "json" },
+      -- { "<leader><space>", function() require("search").open() end,        desc = "File browser" },
+      {
+        "gs",
+        function()
+          require("telescope.builtin").lsp_document_symbols({
+            symbols = require("lazyvim.config").get_kind_filter(),
+          })
+        end,
+        desc = "Goto Symbol",
+      },
+      { "<leader>'",  "<cmd>Telescope resume<cr>",               desc = "Telescope resume" },
+      { "<leader>fl", "<cmd>Telescope lazy_plugins<cr>",         desc = "Find Lazy Plugins" },
+      { "<leader>fL", "<cmd>Telescope lazy<cr>",                 desc = "Find Lazy" },
+      -- { "<leader>fo", "<cmd>Telescope file_browser<cr>",         desc = "File browser" },
+      { "<leader>fp", "<cmd>Telescope project<cr>",              desc = "Find projects" },
+      { "<leader>fz", "<cmd>Telescope zoxide list<cr>",          desc = "Zoxide list" },
+      { "<leader>gm", "<cmd>Telescope conventional_commits<cr>", desc = "Conventional commit" },
+      { "<leader>XX", "<cmd>Telescope textcase<cr>",             desc = "Telescope Text Case", mode = { "n", "v" } },
+      { "<leader>sj", "<cmd>Telescope jsonfly<cr>",              desc = "Search JSON", mode = "n", ft = "json" },
+      { "<leader>Dd", "<cmd>Telescope docker<cr>",               desc = "Find docker" },
+      { "<leader>Di", "<cmd>Telescope docker images<cr>",        desc = "Find docker images" },
+      { "<leader>Dc", "<cmd>Telescope docker containers<cr>",    desc = "Find docker containers" },
     },
     opts = function()
       local actions = require("telescope.actions")
@@ -53,12 +63,19 @@ return {
           -- selection_caret = "󰭎 ",
           -- path_display = { "truncate" },
           sorting_strategy = "ascending",
+          layout_strategy = "flex",
           layout_config = {
-            horizontal = { prompt_position = "top", preview_width = 0.55 },
-            vertical = { mirror = false },
-            width = 0.87,
-            height = 0.80,
-            preview_cutoff = 120,
+            horizontal = {
+              prompt_position = "top",
+              -- preview_width = 0.55,
+            },
+            vertical = {
+              prompt_position = "top",
+              mirror = true,
+            },
+            -- width = 0.87,
+            -- height = 0.80,
+            -- preview_cutoff = 120,
           },
           mappings = {
             n = {
@@ -96,6 +113,7 @@ return {
           },
           project = {
             base_dirs = {
+              { path = "~/.config", max_depth = 2 },
               { path = "~/repo", max_depth = 2 },
               { path = "~/ghq", max_depth = 4 },
             },
