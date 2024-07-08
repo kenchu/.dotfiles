@@ -7,6 +7,11 @@ return {
     opts = {
       mappings = {
         n = {
+          -- navigate buffer tabs with `H` and `L`
+          L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+          H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+          ["<Leader><Tab>n"] = { "<Cmd>tabnew<CR>", desc = "New tab" },
+          ["<Leader><Tab>c"] = { "<Cmd>tabclose<CR>", desc = "Close tab" },
           ["<Leader>c"] = {
             function()
               local bufs = vim.fn.getbufinfo { buflisted = 1 }
@@ -15,11 +20,7 @@ return {
             end,
             desc = "Close buffer",
           },
-          -- navigate buffer tabs with `H` and `L`
-          L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-          H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
-          ["<Leader><tab>n"] = { "<cmd>tabnew<cr>", desc = "New tab" },
-          ["<Leader><tab>c"] = { "<cmd>tabclose<cr>", desc = "Close tab" },
+          ["<Leader>bd"] = { "<Cmd>close<CR>" },
           ["<Leader>bD"] = {
             function()
               require("astroui.status").heirline.buffer_picker(
@@ -28,17 +29,18 @@ return {
             end,
             desc = "Pick to close",
           },
-          ["<C-/>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
-          ["<M-CR>"] = { "o<ese>k", noremap = true, desc = "New Line Down" },
-          ["<M-S-CR>"] = { "O<ese>j", noremap = true, desc = "New Line Up" },
-          ["<D-a>"] = { "<esc>ggVG", desc = "Select all" },
+          ["<M-CR>"] = { "o<Esc>k", desc = "New Line Below", noremap = true },
+          ["<M-S-CR>"] = { "O<Esc>j", desc = "New Line Above", noremap = true },
+          ["<D-a>"] = { "<Esc>ggVG", desc = "Select all" },
           ["<D-c>"] = { '"+yy', desc = "Copy" },
           ["<D-v>"] = { '"+P', desc = "Paste" },
-          ["<D-s>"] = { "<cmd>write<cr>" },
-          ["<D-w>"] = { "<cmd>close<cr>" },
-          ["<D-z>"] = { "<cmd>undo<cr>" },
-          ["<D-S-z>"] = { "<cmd>redo<cr>" },
+          ["<D-s>"] = { "<Cmd>write<CR>" },
+          ["<D-w>"] = { "<Cmd>close<CR>" },
+          ["<D-z>"] = { "<Cmd>undo<CR>" },
+          ["<D-S-z>"] = { "<Cmd>redo<CR>" },
+          ["<D-.>"] = function() vim.lsp.buf.code_action() end,
           ["<D-/>"] = function() end,
+          ["<C-/>"] = { "<Cmd>ToggleTerm<CR>", desc = "Toggle terminal" },
           -- ["gx"] = function()
           --   require("various-textobjs").url()
           --   local foundURL = vim.fn.mode():find "v"
@@ -74,9 +76,8 @@ return {
         i = {
           -- TODO: move to cmp.lua
           ["<D-v>"] = { '<ESC>l"+Pli' },
-        },
-        x = {
-          ["<D-/>"] = function() end,
+          ["<D-BS>"] = { "<C-u>", noremap = true },
+          ["<M-BS>"] = { "<C-w>", noremap = true },
         },
 
         c = {
@@ -84,25 +85,13 @@ return {
           ["<C-n>"] = { "<Down>" },
           ["<C-p>"] = { "<Up>" },
           ["<D-v>"] = { "<C-r>+" },
+          ["<D-BS>"] = { "<C-u>", noremap = true },
+          ["<M-BS>"] = { "<C-w>", noremap = true },
         },
 
         t = {
           ["<C-/>"] = { "<cmd>close<cr>", desc = "Close terminal" },
           ["<D-v>"] = { "<C-r>+" },
-        },
-      },
-    },
-  },
-
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        tsserver = {
-          keys = {
-            { "<leader>co", "<cmd>TypescriptOrganizeImports<CR>", desc = "Organize Imports" },
-            { "<leader>cR", "<cmd>TypescriptRenameFile<CR>", desc = "Rename File" },
-          },
         },
       },
     },
