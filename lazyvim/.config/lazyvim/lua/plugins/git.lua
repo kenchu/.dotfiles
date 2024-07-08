@@ -35,7 +35,7 @@ return {
     cmd = { "Neogit" },
     keys = {
       { prefix .. "n", desc = "+neogit" },
-      { prefix .. "nn", "<cmd>Neogit<cr>", desc = "[n]eogit" },
+      { prefix .. "nt", "<cmd>Neogit<cr>", desc = "[n]eogit" },
       { prefix .. "nb", "<cmd>Neogit branch<cr>", desc = "neogit [b]ranch" },
       { prefix .. "nc", "<cmd>Neogit commit<cr>", desc = "neogit [c]ommit" },
       { prefix .. "nl", "<cmd>Neogit log<cr>", desc = "neogit [l]og" },
