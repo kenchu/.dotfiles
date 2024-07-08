@@ -110,7 +110,8 @@ return {
         window = {
           delay = 200,
           config = {
-            width = "auto",
+            width = 40,
+            -- width = "auto",
             -- border = "double",
           },
         },
@@ -133,7 +134,10 @@ return {
     "echasnovski/mini.operators",
     version = false,
     event = "LazyFile",
-    opts = { exchange = { prefix = "sx" } },
+    opts = {
+      exchange = { prefix = "cx" },
+      sort = { prefix = "gS" },
+    },
   },
   {
     "echasnovski/mini.surround",
