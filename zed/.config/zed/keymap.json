@@ -5,16 +5,17 @@
       "ctrl-k": ["workspace::SendKeystrokes", "up"]
     }
   },
-  {
-    "context": "VimControl && !VimWaiting",
-    "bindings": {
-      "space e": "workspace::ToggleLeftDock",
-      "space q q": "workspace::CloseWindow",
-      "space t n": "workspace::NewTerminal",
-      "space t t": "terminal_panel::ToggleFocus",
-      "space x x": "diagnostics::Deploy"
-    }
-  },
+  // {
+  //   "context": "Editor && (showing_code_actions || showing_completions)",
+  //   "bindings": {
+  //     "up": "editor::ContextMenuPrev",
+  //     "down": "editor::ContextMenuNext",
+  //     "ctrl-k": "editor::ContextMenuPrev",
+  //     "ctrl-j": "editor::ContextMenuNext",
+  //     "pageup": "editor::ContextMenuFirst",
+  //     "pagedown": "editor::ContextMenuLast"
+  //   }
+  // },
   {
     "context": "Editor && vim_mode == insert && !menu",
     "bindings": {
@@ -26,6 +27,16 @@
     "context": "Editor && mode == full && inline_completion",
     "bindings": {
       "alt-l": "editor::AcceptPartialInlineCompletion"
+    }
+  },
+  {
+    "context": "VimControl && !VimWaiting",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock",
+      "space q q": "workspace::CloseWindow",
+      "space t n": "workspace::NewTerminal",
+      "space t t": "terminal_panel::ToggleFocus",
+      "space x x": "diagnostics::Deploy"
     }
   },
   {
@@ -86,6 +97,28 @@
     "context": "Editor && VimObject",
     "bindings": {
       "q": "vim::DoubleQuotes"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      // "h": "project_panel::CollapseSelectedEntry",
+      // "l": "project_panel::ExpandSelectedEntry",
+      // "j": "menu::SelectNext",
+      // "k": "menu::SelectPrev",
+      // "o": "menu::Confirm",
+      // "r": "project_panel::Rename",
+      "z c": "project_panel::CollapseSelectedEntry",
+      "z o": "project_panel::ExpandSelectedEntry",
+      // "shift-o": "project_panel::RevealInFinder",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "P": "project_panel::Paste",
+      // "d": "project_panel::Delete",
+      "a": "project_panel::NewFile",
+      "shift-a": "project_panel::NewDirectory",
+      "shift-y": "project_panel::CopyRelativePath",
+      "g y": "project_panel::CopyPath"
     }
   }
 ]
