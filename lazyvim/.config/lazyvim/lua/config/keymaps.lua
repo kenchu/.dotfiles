@@ -6,7 +6,7 @@
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr><esc>", { desc = "Write File" })
 vim.keymap.set("n", "<leader>ws", "<cmd>sp<cr><esc>", { desc = "Window Split" })
 vim.keymap.set("n", "<leader>wv", "<cmd>vsp<cr><esc>", { desc = "Window Vertical Split" })
-vim.keymap.set("n", "<leader>wm", "<C-w>o", { desc = "Window Maximize" })
+vim.keymap.set("n", "<leader>wM", "<C-w>o", { desc = "Window Maximize" })
 
 vim.keymap.set("n", "<M-CR>", "o<esc>k", { desc = "New Line Down" })
 vim.keymap.set("n", "<M-S-CR>", "O<esc>j", { desc = "New Line Up" })
