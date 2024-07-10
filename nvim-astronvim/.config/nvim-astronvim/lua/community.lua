@@ -13,6 +13,7 @@ return {
   { import = "astrocommunity.comment.ts-comments-nvim" },
   { import = "astrocommunity.completion.cmp-cmdline" },
   { import = "astrocommunity.completion.cmp-emoji" },
+  { import = "astrocommunity.completion.cmp-nerdfont" },
   { import = "astrocommunity.completion.codeium-nvim" },
   { import = "astrocommunity.debugging.nvim-bqf" },
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
