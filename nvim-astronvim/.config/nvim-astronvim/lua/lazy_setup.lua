@@ -22,7 +22,7 @@ require("lazy").setup({
   },
   concurrency = 64,
   checker = {
-    enabled = true,
+    enabled = false,
     notify = true,
   },
   performance = {
