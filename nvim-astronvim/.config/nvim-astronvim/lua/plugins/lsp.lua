@@ -4,5 +4,19 @@ return {
     features = {
       autoformat = true, -- enable or disable auto formatting on start
     },
+    mappings = {
+      n = {
+        ["<leader>lo"] = {
+          function() vim.cmd "VtsExec organize_imports" end,
+          desc = "Organize Imports",
+          cond = function(client, _) return client.name == "vtsls" end,
+        },
+        ["<M-S-o>"] = {
+          function() vim.cmd "VtsExec organize_imports" end,
+          desc = "Organize Imports",
+          cond = function(client, _) return client.name == "vtsls" end,
+        },
+      },
+    },
   },
 }
