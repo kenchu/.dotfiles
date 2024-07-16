@@ -89,7 +89,6 @@ return {
         extensions = {
           lazy_plugins = {
             lazy_config = vim.fn.stdpath "config" .. "/lua/lazy_setup.lua", -- path to the file containing the lazy opts and setup() call.
-            lazy_spec_table = vim.fn.stdpath "config" .. "/lua/community.lua", -- path to the file containing the lazy plugin spec table.
           },
           fzf = {
             fuzzy = true, -- false will only do exact matching
