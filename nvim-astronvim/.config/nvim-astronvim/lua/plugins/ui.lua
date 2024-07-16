@@ -1,5 +1,17 @@
 return {
   {
+    "AstroNvim/astrocore",
+    ---@type AstroCoreOpts
+    opts = {
+      options = {
+        opt = {
+          pumblend = 10,
+          winblend = 10,
+        },
+      },
+    },
+  },
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     dependencies = {
