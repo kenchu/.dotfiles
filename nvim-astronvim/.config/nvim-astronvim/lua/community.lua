@@ -14,6 +14,7 @@ return {
   { import = "astrocommunity.completion.cmp-cmdline" },
   { import = "astrocommunity.completion.cmp-emoji" },
   { import = "astrocommunity.completion.cmp-nerdfont" },
+  { import = "astrocommunity.completion.cmp-nvim-lua" },
   { import = "astrocommunity.completion.codeium-nvim" },
   { import = "astrocommunity.debugging.nvim-bqf" },
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
