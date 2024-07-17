@@ -23,6 +23,8 @@ return {
         neovide_padding_left = 0,
 
         neovide_transparency = 0.95,
+        neovide_touch_deadzone = 30.0,
+        -- neovide_touch_drag_timeout = 1.0,
         neovide_hide_mouse_when_typing = true,
         neovide_input_macos_option_key_is_meta = "only_left",
         neovide_cursor_vfx_mode = "railgun",
