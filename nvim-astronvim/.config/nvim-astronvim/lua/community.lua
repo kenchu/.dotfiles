@@ -54,6 +54,7 @@ return {
   { import = "astrocommunity.pack.ansible" },
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.fish" },
+  { import = "astrocommunity.pack.full-dadbod" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.kotlin" },
