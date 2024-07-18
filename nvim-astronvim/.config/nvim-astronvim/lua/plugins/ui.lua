@@ -44,13 +44,10 @@ return {
   },
 
   {
-    "rasulomaroff/reactive.nvim",
+    "brenoprata10/nvim-highlight-colors",
+    optional = true,
     opts = {
-      builtin = {
-        cursorline = true,
-        cursor = true,
-        modemsg = true,
-      },
+      render = "virtual",
     },
   },
 }
