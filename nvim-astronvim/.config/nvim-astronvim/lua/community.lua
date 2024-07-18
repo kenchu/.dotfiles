@@ -69,6 +69,7 @@ return {
   { import = "astrocommunity.recipes.neovide" },
   { import = "astrocommunity.recipes.vscode-icons" },
   { import = "astrocommunity.scrolling.satellite-nvim" },
+  { import = "astrocommunity.search.grug-far-nvim" },
   { import = "astrocommunity.terminal-integration.toggleterm-manager-nvim" },
   { import = "astrocommunity.utility.noice-nvim" },
   { import = "astrocommunity.utility.telescope-lazy-nvim" },
