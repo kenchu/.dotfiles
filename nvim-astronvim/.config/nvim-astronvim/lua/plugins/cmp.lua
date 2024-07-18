@@ -13,6 +13,7 @@ local function add_path_icon(entry, item)
       return item
     end
   end
+  return item
 end
 
 local function colorize(entry, item)
@@ -84,8 +85,7 @@ return {
 
         fields = { "abbr", "kind", "menu" },
         format = function(entry, item)
-          add_path_icon(entry, item)
-
+          item = add_path_icon(entry, item)
           item = colorize(entry, item)
           item = narrow_popup(item)
           return item
