@@ -9,6 +9,7 @@ return {
   { import = "astrocommunity.code-runner.compiler-nvim" },
   { import = "astrocommunity.code-runner.overseer-nvim" },
   { import = "astrocommunity.code-runner.sniprun" },
+  { import = "astrocommunity.color.modes-nvim" },
   { import = "astrocommunity.color.nvim-highlight-colors" },
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.comment.ts-comments-nvim" },
