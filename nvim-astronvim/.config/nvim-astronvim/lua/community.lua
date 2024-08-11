@@ -18,7 +18,7 @@ return {
   { import = "astrocommunity.completion.cmp-nerdfont" },
   { import = "astrocommunity.completion.cmp-nvim-lua" },
   { import = "astrocommunity.completion.codeium-nvim" },
-  { import = "astrocommunity.debugging.nvim-bqf" },
+  { import = "astrocommunity.quickfix.nvim-bqf" },
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.editing-support.dial-nvim" },
