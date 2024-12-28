@@ -20,7 +20,7 @@ return {
             end,
             desc = "Close buffer",
           },
-          ["<Leader>bd"] = { "<Cmd>close<CR>" },
+          ["<Leader>bd"] = { "<Cmd>close<CR>", desc = "Close buffer" },
           ["<Leader>bD"] = {
             function()
               require("astroui.status").heirline.buffer_picker(
@@ -40,7 +40,6 @@ return {
           ["<D-S-z>"] = { "<Cmd>redo<CR>" },
           ["<D-.>"] = function() vim.lsp.buf.code_action() end,
           ["<D-/>"] = { "gcc", remap = true, desc = "Toggle comment line" },
-          ["<C-/>"] = { "<Cmd>ToggleTerm<CR>", desc = "Toggle terminal" },
           -- ["gx"] = function()
           --   require("various-textobjs").url()
           --   local foundURL = vim.fn.mode():find "v"
