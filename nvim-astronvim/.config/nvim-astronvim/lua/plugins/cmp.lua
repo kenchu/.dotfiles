@@ -1,4 +1,4 @@
--- if true then return {} end
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 local cmp = require "cmp"
 local compare = require "cmp.config.compare"
@@ -69,25 +69,24 @@ return {
       sorting = {
         priority_weight = 2,
         comparators = {
+          compare.recently_used,
           compare.exact,
           compare.offset,
-          compare.recently_used,
           compare.locality,
-          -- compare.scopes,
+          compare.scopes,
           compare.score,
           compare.kind,
-          -- compare.sort_text,
           compare.length,
           compare.order,
+          compare.sort_text,
         },
       },
       formatting = {
-
         fields = { "abbr", "kind", "menu" },
         format = function(entry, item)
           item = add_path_icon(entry, item)
           item = colorize(entry, item)
-          item = narrow_popup(item)
+          -- item = narrow_popup(item)
           return item
         end,
       },
