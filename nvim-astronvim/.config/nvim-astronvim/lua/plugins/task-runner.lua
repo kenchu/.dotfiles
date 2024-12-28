@@ -1,6 +1,7 @@
 return {
   {
     "Zeioth/compiler.nvim",
+    optional = true,
     keys = {
       { "<leader>::", "<cmd>CompilerOpen<cr>", desc = "Compiler Open" },
       { "<leader>:r", "<cmd>CompilerRedo<cr>", desc = "Compiler Redo" },
@@ -11,6 +12,7 @@ return {
 
   {
     "stevearc/overseer.nvim",
+    optional = true,
     opts = function(_, opts)
       local astrocore = require "astrocore"
       if astrocore.is_available "toggleterm.nvim" then
@@ -27,14 +29,18 @@ return {
     ---@type AstroCoreOpts
     opts = {
       rooter = {
+        -- automatically update working directory (update manually with `:AstroRoot`)
         autochdir = true,
+        -- scope of working directory to change ("global"|"tab"|"win")
+        scope = "global",
+        -- show notification on every working directory change
         notify = false,
       },
-      options = {
-        g = {
-          NODEJS_PACKAGE_MANAGER = "bun",
-        },
-      },
+      -- options = {
+      --   g = {
+      --     NODEJS_PACKAGE_MANAGER = "bun",
+      --   },
+      -- },
     },
   },
 }
