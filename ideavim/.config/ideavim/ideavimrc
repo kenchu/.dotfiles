@@ -74,9 +74,12 @@ nmap sxx <Plug>(ExchangeLine)
 """ surround
 nmap sa <Action>(SurroundWith)
 
+""" Astronvim Keymap
 nmap H <Action>(PreviousTab)
 nmap L <Action>(NextTab)
-map <leader>bd <Action>(CloseEditor)
+map <leader>c <Action>(CloseEditor)
+map <leader>n <Action>(Kotlin.NewFile)
+map <leader>w <Action>(SaveAll)
 
 """ Editing Keymap
 map <C-s> <Action>(SaveAll)
@@ -84,18 +87,14 @@ map <M-j> <Action>(MoveLineDown)
 map <M-k> <Action>(MoveLineUp)
 map za <Action>(CollapseSelection)
 
-""" AI
-map <D-S-.> <Action>(ActivateCodeiumChatToolWindow)
-
-""" Code Keymap
-map <leader>cf <Action>(ReformatCode)
-map <leader>co <Action>(OptimizeImports)
-map <leader>cr <Action>(RenameElement)
-
 """ File Keymap
 map <leader><leader> <Action>(GotoFile)
-map <leader>fr <Action>(RecentFiles)
-map <leader>fn <Action>(Kotlin.NewFile)
+map <leader>fo <Action>(RecentFiles)
+
+""" LSP Keymap
+map <leader>lf <Action>(ReformatCode)
+map <leader>lo <Action>(OptimizeImports)
+map <leader>lr <Action>(RenameElement)
 
 """ Debug Keymap
 map <leader>dD <Action>(RunConfiguration)
@@ -124,15 +123,15 @@ map <leader>up <Action>(TogglePresentationMode)
 map <leader>uz <Action>(ToggleDistractionFreeMode)
 
 """ Window Keymap
-map <leader>wm <Action>(HideAllWindows)
-map <leader>ws <Action>(SplitHorizontally)
-map <leader>wv <Action>(SplitVertically)
-map <leader>wr <Action>(ChangeSplitOrientation)
-map <leader>wL <Action>(MoveTabRight)
-map <leader>wH <Action>(MoveEditorToOppositeTabGroup)
-map <leader>wJ <Action>(MoveTabDown)
-map <leader>ww <Action>(Switcher)
-""" map <leader>e <Action>(SelectInProjectView)
+"""map <leader>wm <Action>(HideAllWindows)
+"""map <leader>ws <Action>(SplitHorizontally)
+"""map <leader>wv <Action>(SplitVertically)
+"""map <leader>wr <Action>(ChangeSplitOrientation)
+"""map <leader>wL <Action>(MoveTabRight)
+"""map <leader>wH <Action>(MoveEditorToOppositeTabGroup)
+"""map <leader>wJ <Action>(MoveTabDown)
+"""map <leader>ww <Action>(Switcher)
+"""map <leader>e <Action>(SelectInProjectView)
 
 """ Error Keymap
 map <leader>en <Action>(GotoNextError)
@@ -171,3 +170,6 @@ map <leader>1 <Action>(GotoHarpoon1)
 map <leader>2 <Action>(GotoHarpoon2)
 map <leader>3 <Action>(GotoHarpoon3)
 map <leader>4 <Action>(GotoHarpoon4)
+
+""" AI
+map <D-S-.> <Action>(ActivateCodeiumChatToolWindow)
