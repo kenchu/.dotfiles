@@ -2,9 +2,9 @@ return {
   "goolord/alpha-nvim",
   opts = function(_, opts)
     opts.section.buttons.val = {
-      opts.button("e", "  New File", "<cmd>ene <bar> startinsert<cr>"),
+      opts.button("n", "  New File", "<cmd>ene <bar> startinsert<cr>"),
       opts.button("f", "  Find File", "<cmd>Telescope find_files<cr>"),
-      opts.button("r", "  Recently Files", "<cmd>Telescope oldfiles<cr>"),
+      opts.button("o", "  Old File", "<cmd>Telescope oldfiles<cr>"),
       opts.button("g", "  Find Text", "<cmd>Telescope live_grep<cr>"),
       opts.button("p", "  Project", "<cmd>Telescope project<cr>"),
       opts.button("z", "  Zoxide", "<cmd>Telescope zoxide list<cr>"),
