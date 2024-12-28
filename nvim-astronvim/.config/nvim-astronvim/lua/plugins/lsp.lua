@@ -3,6 +3,7 @@ return {
   opts = {
     features = {
       autoformat = true, -- enable or disable auto formatting on start
+      signature_help = true,
     },
     mappings = {
       n = {
