@@ -2,10 +2,11 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
+      "nvim-telescope/telescope-file-browser.nvim",
       "nvim-telescope/telescope-project.nvim",
-      "polirritmico/telescope-lazy-plugins.nvim",
       "olacin/telescope-cc.nvim",
       "olacin/telescope-gitmoji.nvim",
+      "polirritmico/telescope-lazy-plugins.nvim",
       "Myzel394/jsonfly.nvim",
       "lpoto/telescope-docker.nvim",
       { "johmsalas/text-case.nvim", opts = { prefix = "<leader>X" } },
@@ -25,6 +26,7 @@ return {
     keys = {
       { "<Leader><Space>",  "<Cmd>Telescope find_files<CR>",     desc = "Telescope Files " },
       { "<Leader>'",  "<Cmd>Telescope resume<CR>",               desc = "Telescope Resume" },
+      { "<Leader>fB", "<Cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",         desc = "Telescope File Browser" },
       { "<Leader>fl", "<Cmd>Telescope lazy_plugins<CR>",         desc = "Find Lazy Plugins" },
       { "<Leader>fp", "<Cmd>Telescope project<CR>",              desc = "Find Projects" },
       { "<Leader>gm", "<Cmd>Telescope conventional_commits<CR>", desc = "Conventional Commit" },
