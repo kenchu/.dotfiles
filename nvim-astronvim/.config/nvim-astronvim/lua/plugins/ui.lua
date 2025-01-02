@@ -99,8 +99,10 @@ return {
   --     close_key = "<Leader>c",
   --   },
   -- },
+
   {
     "sphamba/smear-cursor.nvim",
+    cond = function() return vim.g.neovide == nil end,
     opts = {},
   },
 }
