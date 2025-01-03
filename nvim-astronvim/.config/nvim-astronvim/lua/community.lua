@@ -76,7 +76,7 @@ return {
   { import = "astrocommunity.quickfix.nvim-bqf" },
   { import = "astrocommunity.quickfix.quicker-nvim" },
   { import = "astrocommunity.recipes.neovide" },
-  { import = "astrocommunity.recipes.vscode-icons" },
+  -- { import = "astrocommunity.recipes.vscode-icons" },
   { import = "astrocommunity.remote-development.remote-sshfs-nvim" },
   { import = "astrocommunity.scrolling.satellite-nvim" },
   { import = "astrocommunity.scrolling.neoscroll-nvim" },
