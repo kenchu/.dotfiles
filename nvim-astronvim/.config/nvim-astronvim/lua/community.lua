@@ -17,6 +17,7 @@ return {
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.docker.lazydocker" },
   { import = "astrocommunity.editing-support.dial-nvim" },
+  { import = "astrocommunity.editing-support.mcphub-nvim" },
   { import = "astrocommunity.editing-support.suda-vim" },
   { import = "astrocommunity.git.neogit" },
   { import = "astrocommunity.indent.snacks-indent-hlchunk" },
