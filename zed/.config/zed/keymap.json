@@ -5,28 +5,17 @@
       "ctrl-k": ["workspace::SendKeystrokes", "up"]
     }
   },
-  // {
-  //   "context": "Editor && (showing_code_actions || showing_completions)",
-  //   "bindings": {
-  //     "up": "editor::ContextMenuPrev",
-  //     "down": "editor::ContextMenuNext",
-  //     "ctrl-k": "editor::ContextMenuPrev",
-  //     "ctrl-j": "editor::ContextMenuNext",
-  //     "pageup": "editor::ContextMenuFirst",
-  //     "pagedown": "editor::ContextMenuLast"
-  //   }
-  // },
   {
     "context": "Editor && vim_mode == insert && !menu",
     "bindings": {
-      "j k": ["vim::SwitchMode", "Normal"],
-      "k j": ["vim::SwitchMode", "Normal"]
+      "j k": "vim::SwitchToNormalMode",
+      "k j": "vim::SwitchToNormalMode"
     }
   },
   {
-    "context": "Editor && mode == full && inline_completion",
+    "context": "Editor && mode == full && edit_prediction",
     "bindings": {
-      "alt-l": "editor::AcceptPartialInlineCompletion"
+      "alt-l": "editor::AcceptPartialEditPrediction"
     }
   },
   {
@@ -47,9 +36,10 @@
       "space b b": "tab_switcher::Toggle",
       "space b d": "pane::CloseActiveItem",
       "space c": "pane::CloseActiveItem",
+      "space f f": "workspace::OpenFiles",
       "space f p": "projects::OpenRecent",
       "space f w": "pane::DeploySearch",
-      "space g b": "editor::ToggleGitBlame",
+      "space g b": "git::Blame",
       "space l r": "editor::Rename",
       "space m p": "markdown::OpenPreviewToTheSide",
       "space m shift-p": "markdown::OpenPreview",
@@ -61,21 +51,21 @@
       "alt-shift-j": "editor::DuplicateLineDown",
       "alt-shift-k": "editor::DuplicateLineUp",
       "shift-l": "pane::ActivateNextItem",
-      "shift-h": "pane::ActivatePrevItem"
+      "shift-h": "pane::ActivatePreviousItem"
     }
   },
   {
     "context": "Editor && VimControl && !VimWaiting && !menu || Workspace",
     "bindings": {
       "space space": "file_finder::Toggle",
-      "ctrl-w shift-j": ["workspace::SwapPaneInDirection", "Down"],
-      "ctrl-w shift-k": ["workspace::SwapPaneInDirection", "Up"],
-      "ctrl-w shift-l": ["workspace::SwapPaneInDirection", "Right"],
-      "ctrl-w shift-h": ["workspace::SwapPaneInDirection", "Left"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"]
+      "ctrl-w shift-j": "workspace::SwapPaneDown",
+      "ctrl-w shift-k": "workspace::SwapPaneUp",
+      "ctrl-w shift-l": "workspace::SwapPaneRight",
+      "ctrl-w shift-h": "workspace::SwapPaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-h": "workspace::ActivatePaneLeft"
     }
   },
   {
@@ -87,23 +77,16 @@
   {
     "context": "ProjectPanel && not_editing",
     "bindings": {
-      // "h": "project_panel::CollapseSelectedEntry",
-      // "l": "project_panel::ExpandSelectedEntry",
-      // "j": "menu::SelectNext",
-      // "k": "menu::SelectPrev",
-      // "o": "menu::Confirm",
-      // "r": "project_panel::Rename",
       "z c": "project_panel::CollapseSelectedEntry",
       "z o": "project_panel::ExpandSelectedEntry",
-      // "shift-o": "project_panel::RevealInFinder",
+      "shift-o": "project_panel::RevealInFileManager",
       "x": "project_panel::Cut",
       "c": "project_panel::Copy",
       "P": "project_panel::Paste",
-      // "d": "project_panel::Delete",
       "a": "project_panel::NewFile",
       "shift-a": "project_panel::NewDirectory",
-      "shift-y": "project_panel::CopyRelativePath",
-      "g y": "project_panel::CopyPath"
+      "shift-y": "workspace::CopyRelativePath",
+      "g y": "workspace::CopyPath"
     }
   }
 ]

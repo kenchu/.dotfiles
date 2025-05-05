@@ -7,38 +7,33 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
+    },
+    "version": "2"
+  },
+  "base_keymap": "VSCode",
   "vim_mode": true,
   "relative_line_numbers": true,
-  "theme": "Catppuccin Mocha",
-  "base_keymap": "VSCode",
+  "theme": "Catppuccin Mocha (Blur)",
+  "icon_theme": "Catppuccin Mocha",
   "buffer_font_family": "JetBrainsMono Nerd Font",
-  "buffer_font_size": 13,
+  "buffer_font_size": 14,
   "ui_font_family": "JetBrainsMono Nerd Font",
   "ui_font_size": 15,
-  "inlay_hints": {
-    "enabled": true
-  },
+  "use_fuzzy_search": true,
+  "use_smartcase_search": true,
   "project_panel": {
     "auto_fold_dirs": true
   },
-  // "assistant": {
-  //   "version": "1",
-  //   "provider": {
-  //     "default_model": {
-  //       "name": "llama3:latest",
-  //       "max_tokens": 2048,
-  //       "keep_alive": "10m"
-  //     },
-  //     "name": "ollama",
-  //     // Recommended setting to allow for model startup
-  //     "low_speed_timeout_in_seconds": null
-  //   }
-  // }
-  "assistant": {
-    "version": "1",
-    "provider": {
-      "default_model": "claude-3-5-sonnet",
-      "name": "anthropic"
+  "inlay_hints": {
+    "enabled": false,
+    "toggle_on_modifiers_press": {
+      "control": true,
+      "shift": false,
+      "alt": true
     }
   }
 }
