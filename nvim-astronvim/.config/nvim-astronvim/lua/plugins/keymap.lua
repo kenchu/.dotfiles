@@ -2,6 +2,14 @@
 
 return {
   {
+    "folke/snacks.nvim",
+    keys = {
+      -- Top Pickers & Explorer
+      { "<leader><space>", function() require("snacks").picker.smart() end, desc = "Smart Find Files" },
+    },
+  },
+
+  {
     "AstroNvim/astrocore",
     ---@type AstroCoreOpts
     opts = {
@@ -76,14 +84,13 @@ return {
         },
 
         i = {
-          -- TODO: move to cmp.lua
+          ["<D-s>"] = { "<ESC>:w<CR>" },
           ["<D-v>"] = { '<ESC>l"+Pli' },
           ["<D-BS>"] = { "<C-u>", noremap = true },
           ["<M-BS>"] = { "<C-w>", noremap = true },
         },
 
         c = {
-          -- TODO: move to cmp.lua
           ["<C-n>"] = { "<Down>" },
           ["<C-p>"] = { "<Up>" },
           ["<D-v>"] = { "<C-r>+" },
