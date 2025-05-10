@@ -5,3 +5,4 @@ macos-option-as-alt = left
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 keybind = cmd+backspace=text:\x15
 keybind = alt+backspace=text:\x17
+background-opacity = 0.9
